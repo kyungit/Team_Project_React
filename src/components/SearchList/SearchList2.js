@@ -1,43 +1,74 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useRef, useState, useCallback } from 'react'
 
 export default function SearchList2() {
+    const [items, setItems] = useState([])
+    const [page, setPage] = useState(1)
+    const [loading, setLoading] = useState(false) // 로딩 상태 추가
+    const [initialLoad, setInitialLoad] = useState(true)
+
+    const containerRef = useRef(null)
+
+    const loadItems = useCallback(async () => {
+        if (loading) return // 로딩 중이면 함수를 종료합니다.
+
+        setLoading(true) // 로딩 시작
+
+        const newItems = await axios
+            .get(
+                `https://jsonplaceholder.typicode.com/posts?_start=${
+                    (page - 1) * 30
+                }&_limit=30`,
+            )
+            .then((res) => {
+                console.log(res.data)
+                return res.data
+            })
+
+        if (initialLoad) {
+            setItems((prevItems) => [...prevItems, ...newItems])
+            setPage(page + 1)
+            setLoading(false)
+            setInitialLoad(false)
+        } else {
+            setTimeout(() => {
+                setItems((prevItems) => [...prevItems, ...newItems])
+                setPage(page + 1)
+                setLoading(false)
+            }, 2000)
+        }
+    }, [loading, page])
+
+    // useEffect(() => {
+    //     loadItems() // 컴포넌트가 마운트될 때 한 번만 데이터 로드
+    // }, [loadItems])
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const { scrollTop, clientHeight, scrollHeight } =
+                document.documentElement
+            console.log(scrollHeight, scrollTop, clientHeight)
+            if (scrollHeight - scrollTop <= clientHeight + 30) {
+                loadItems()
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll)
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+        }
+    }, [loadItems]) // 스크롤 이벤트 리스너 등록 및 해제
+
     return (
-        <div className="col-start-5 col-end-11 w-full h-auto pt-16">
+        <div className="col-start-5 col-end-11 w-full pt-16" ref={containerRef}>
             <div className="flex flex-col">
                 <div className="flex flex-row">
                     <div className="w-20 h-20 bg-red-300"></div>
                     <div className="flex flex-col w-full">
-                        <div>HoteL DM</div>
-                        <div>2.5 STAR</div>
-                        <div>Seoul</div>
-                        <div className="text-end">1,000,000</div>
-                        <div className="text-end">NOT INCLUDE TAXES</div>
-                        <div className="flex flex-row justify-between">
-                            <div>4/5 30 review</div>
-                            <button className="w-10 h-10 bg-blue-300"> </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="flex flex-row">
-                    <div className="w-20 h-20 bg-red-300"></div>
-                    <div className="flex flex-col w-full">
-                        <div>HoteL DM</div>
-                        <div>2.5 STAR</div>
-                        <div>Seoul</div>
-                        <div className="text-end">1,000,000</div>
-                        <div className="text-end">NOT INCLUDE TAXES</div>
-                        <div className="flex flex-row justify-between">
-                            <div>4/5 30 review</div>
-                            <button className="w-10 h-10 bg-blue-300"> </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="flex flex-row">
-                    <div className="w-20 h-20 bg-red-300"></div>
-                    <div className="flex flex-col w-full">
-                        <div>HoteL DM</div>
+                        <div>qweasdzxc</div>
+                        {items.map((e, index) => (
+                            <div key={e.id}>{e.title}</div>
+                        ))}
                         <div>2.5 STAR</div>
                         <div>Seoul</div>
                         <div className="text-end">1,000,000</div>
