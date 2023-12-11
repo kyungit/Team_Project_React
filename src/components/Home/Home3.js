@@ -12,9 +12,9 @@ export default function Home3() {
         butterfly,
         forest,
         mountain,
-        beach,
-        bird,
-        butterfly,
+        // beach,
+        // bird,
+        // butterfly,
     ]
     return (
         // 1-3. 괜찮은 숙소
@@ -24,7 +24,7 @@ export default function Home3() {
                 <div className=" w-full flex flex-row justify-around flex-wrap">
                     {images?.map((image, i) => {
                         return (
-                            <div className="flex flex-col items-center">
+                            <div key={i} className="flex flex-col items-center">
                                 <img src={image} className="w-80 h-40" alt="" />
                                 <div>seoul</div>
                                 <div>hotel</div>

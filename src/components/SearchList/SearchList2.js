@@ -17,8 +17,8 @@ export default function SearchList2() {
         const newItems = await axios
             .get(
                 `https://jsonplaceholder.typicode.com/posts?_start=${
-                    (page - 1) * 30
-                }&_limit=30`,
+                    (page - 1) * 10
+                }&_limit=10`,
             )
             .then((res) => {
                 console.log(res.data)
@@ -27,28 +27,28 @@ export default function SearchList2() {
 
         if (initialLoad) {
             setItems((prevItems) => [...prevItems, ...newItems])
-            setPage(page + 1)
+            setPage((prevPage) => prevPage + 1)
             setLoading(false)
             setInitialLoad(false)
         } else {
             setTimeout(() => {
                 setItems((prevItems) => [...prevItems, ...newItems])
-                setPage(page + 1)
+                setPage((prevPage) => prevPage + 1)
                 setLoading(false)
-            }, 2000)
+            }, 1000)
         }
-    }, [loading, page])
+    }, [loading, initialLoad]) // page를 제거하고 initialLoad를 추가
 
-    // useEffect(() => {
-    //     loadItems() // 컴포넌트가 마운트될 때 한 번만 데이터 로드
-    // }, [loadItems])
+    useEffect(() => {
+        loadItems() // 컴포넌트가 마운트될 때 한 번만 데이터 로드
+    }, [])
 
     useEffect(() => {
         const handleScroll = () => {
             const { scrollTop, clientHeight, scrollHeight } =
                 document.documentElement
             console.log(scrollHeight, scrollTop, clientHeight)
-            if (scrollHeight - scrollTop <= clientHeight + 30) {
+            if (scrollHeight - scrollTop <= clientHeight + 50) {
                 loadItems()
             }
         }
@@ -61,14 +61,14 @@ export default function SearchList2() {
 
     return (
         <div className="col-start-5 col-end-11 w-full pt-16" ref={containerRef}>
-            <div className="flex flex-col">
-                <div className="flex flex-row">
-                    <div className="w-20 h-20 bg-red-300"></div>
-                    <div className="flex flex-col w-full">
-                        <div>qweasdzxc</div>
-                        {items.map((e, index) => (
-                            <div key={e.id}>{e.title}</div>
-                        ))}
+            <div className="flex flex-col w-full">
+                <div>qweasdzxc</div>
+                {items.map((e, index) => (
+                    <div key={e.id}>
+                        <div className="w-20 h-20 bg-red-300"></div>
+                        <div>{e.title}</div>
+                        <div>{e.id}</div>
+                        <div>{e.body}</div>
                         <div>2.5 STAR</div>
                         <div>Seoul</div>
                         <div className="text-end">1,000,000</div>
@@ -78,7 +78,7 @@ export default function SearchList2() {
                             <button className="w-10 h-10 bg-blue-300"> </button>
                         </div>
                     </div>
-                </div>
+                ))}
             </div>
         </div>
     )
