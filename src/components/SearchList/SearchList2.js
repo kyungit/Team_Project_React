@@ -15,11 +15,12 @@ export default function SearchList2() {
         setLoading(true) // 로딩 시작
 
         const newItems = await axios
-            .get(
-                `https://jsonplaceholder.typicode.com/posts?_start=${
-                    (page - 1) * 10
-                }&_limit=10`,
-            )
+            .get(`http://localhost:8080/searchList/dormitory`)
+            // .get(
+            //     `https://jsonplaceholder.typicode.com/posts?_start=${
+            //         (page - 1) * 10
+            //     }&_limit=10`,
+            // )
             .then((res) => {
                 console.log(res.data)
                 return res.data
@@ -41,7 +42,7 @@ export default function SearchList2() {
 
     useEffect(() => {
         loadItems() // 컴포넌트가 마운트될 때 한 번만 데이터 로드
-    }, [])
+    }, []) // dependency 배열에서 loadItems를 제거
 
     useEffect(() => {
         const handleScroll = () => {
@@ -64,11 +65,11 @@ export default function SearchList2() {
             <div className="flex flex-col w-full">
                 <div>qweasdzxc</div>
                 {items.map((e, index) => (
-                    <div key={e.id}>
+                    <div key={e.d_code}>
                         <div className="w-20 h-20 bg-red-300"></div>
-                        <div>{e.title}</div>
-                        <div>{e.id}</div>
-                        <div>{e.body}</div>
+                        <div>{e.d_name}</div>
+                        <div>{e.d_telno}</div>
+                        <div>{e.d_type}</div>
                         <div>2.5 STAR</div>
                         <div>Seoul</div>
                         <div className="text-end">1,000,000</div>

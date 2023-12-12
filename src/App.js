@@ -3,7 +3,7 @@ import Layout from './Layout'
 import SignIn from './components/Login/Signin'
 import Home from './pages/Home/Home'
 import SearchList from './pages/SearchList/SearchList'
-import Reservation from './pages/Reservation/Reservation'
+import RoomInfo from './pages/RoomInfo/RoomInfo'
 import Search from './components/Search/Search'
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<SignIn />}></Route>
                 <Route path="/searchList" element={<SearchList />} />
-                <Route path="/reservation" element={<Reservation />} />
+                <Route path="/roomInfo" element={<RoomInfo />} />
                 <Route path="/search" element={<Search />} />
             </Route>
         </Routes>
