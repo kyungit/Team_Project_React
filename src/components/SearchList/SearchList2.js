@@ -1,7 +1,12 @@
 import axios from 'axios'
-import React, { useEffect, useRef, useState, useCallback } from 'react'
+import React, { useEffect, useRef, useState, useCallback, useContext } from 'react'
+import SearchListContext from '../../context/SearchList_Context'
 
 export default function SearchList2() {
+    const data = useContext(SearchListContext)
+    const searchlists = data.searchlist1
+    console.log('images4 : ', searchlists)
+
     const [items, setItems] = useState([])
     const [page, setPage] = useState(1)
     const [loading, setLoading] = useState(false) // 로딩 상태 추가
@@ -46,8 +51,7 @@ export default function SearchList2() {
 
     useEffect(() => {
         const handleScroll = () => {
-            const { scrollTop, clientHeight, scrollHeight } =
-                document.documentElement
+            const { scrollTop, clientHeight, scrollHeight } = document.documentElement
             console.log(scrollHeight, scrollTop, clientHeight)
             if (scrollHeight - scrollTop <= clientHeight + 50) {
                 loadItems()
@@ -64,22 +68,23 @@ export default function SearchList2() {
         <div className="col-start-5 col-end-11 w-full pt-16" ref={containerRef}>
             <div className="flex flex-col w-full">
                 <div>qweasdzxc</div>
-                {items.map((e, index) => (
-                    <div key={e.d_code}>
-                        <div className="w-20 h-20 bg-red-300"></div>
-                        <div>{e.d_name}</div>
-                        <div>{e.d_telno}</div>
-                        <div>{e.d_type}</div>
-                        <div>2.5 STAR</div>
-                        <div>Seoul</div>
-                        <div className="text-end">1,000,000</div>
-                        <div className="text-end">NOT INCLUDE TAXES</div>
-                        <div className="flex flex-row justify-between">
-                            <div>4/5 30 review</div>
-                            <button className="w-10 h-10 bg-blue-300"> </button>
+                {searchlists &&
+                    searchlists.map((e, index) => (
+                        <div key={e.d_code}>
+                            <div className="w-20 h-20 bg-red-300"></div>
+                            <div>{e.d_name}</div>
+                            <div>{e.d_telno}</div>
+                            <div>{e.d_type}</div>
+                            <div>2.5 STAR</div>
+                            <div>Seoul</div>
+                            <div className="text-end">1,000,000</div>
+                            <div className="text-end">NOT INCLUDE TAXES</div>
+                            <div className="flex flex-row justify-between">
+                                <div>4/5 30 review</div>
+                                <button className="w-10 h-10 bg-blue-300"> </button>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
             </div>
         </div>
     )

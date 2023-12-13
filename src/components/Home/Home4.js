@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
-import beach from '../../assets/img/beach.jpg'
-import bird from '../../assets/img/bird.png'
-import butterfly from '../../assets/img/butterfly.jpg'
-import forest from '../../assets/img/forest.jpg'
-import mountain from '../../assets/img/mountain.jpg'
+import React, { useContext, useState } from 'react'
 import RoomImageSlide from './RoomImageSlide'
+import ImageContext from '../../context/Home_Context'
 
 export default function Home4() {
-    return <RoomImageSlide image_length="6" />
+    const data = useContext(ImageContext)
+    const images = data.images4
+    console.log('images4 : ', images)
+    return <RoomImageSlide image_length="6" images={images} />
 }
