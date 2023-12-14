@@ -1,5 +1,5 @@
 import { createContext } from 'react'
 
-const ReservationContext = createContext()
+const RoomInfoContext = createContext()
 
-export default ReservationContext
+export default RoomInfoContext

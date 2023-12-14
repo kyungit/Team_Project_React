@@ -1,8 +1,12 @@
 import { Button } from '@mui/material'
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import DataPicker from '../Calender/DataPicker'
+import HomeContext from '../../context/Home_Context'
 
 export default function Search() {
+    const { images, searchdata, setSearchdata } = useContext(HomeContext)
+    console.log('images, searchdata, setSearchdata : ', images, searchdata, setSearchdata)
+
     return (
         // 1-1. 검색 기능 : 이름, 장소, 연관 단어
         <div className="w-full h-80 pt-32 flex flex-row">

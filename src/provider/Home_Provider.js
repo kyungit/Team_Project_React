@@ -11,14 +11,33 @@ const ImageProvider = ({ children }) => {
         images4: null,
     })
 
+    const [searchdata, setSearchdata] = useState({
+        pageNum: 4,
+        keyword: '서울',
+        type: '호텔',
+        star: '3',
+        startDate: '2024-01-11',
+        endDate: '2024-01-05',
+        guest: 1,
+    })
+
+    useEffect(() => {
+        const SearchdataGet = async () => {
+            await axios
+                .get('http://localhost:8080/searchList/dormitory', { params: searchdata })
+                .then((res) => {
+                    console.log('res : ', res)
+                    console.log('res.data : ', res.data)
+                })
+        }
+
+        SearchdataGet()
+    }, [searchdata])
+
     useEffect(() => {
         const ImagesAPI = async () => {
-            const result1 = await axios.get(
-                'http://localhost:8080/searchList/dormitory',
-            )
-            const result2 = await axios.get(
-                'http://localhost:8080/earlyCheckin',
-            )
+            const result1 = await axios.get('http://localhost:8080/earlyCheckin')
+            const result2 = await axios.get('http://localhost:8080/earlyCheckin')
             const result3 = await axios.get('http://localhost:8080/grade')
             const result4 = await axios.get('http://localhost:8080/type')
 
@@ -39,7 +58,9 @@ const ImageProvider = ({ children }) => {
     }, [])
 
     return (
-        <HomeContext.Provider value={images}>{children}</HomeContext.Provider>
+        <HomeContext.Provider value={{ images, searchdata, setSearchdata }}>
+            {children}
+        </HomeContext.Provider>
     )
 }
 

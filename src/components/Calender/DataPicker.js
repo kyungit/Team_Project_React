@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import Datepicker from 'react-tailwindcss-datepicker'
 import 'tailwindcss/tailwind.css'
 import './your-tailwind.css'
-
 import styled from 'styled-components'
 
 const Styled = styled.div`

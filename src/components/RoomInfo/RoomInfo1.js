@@ -31,9 +31,7 @@ export default function RoomInfo1() {
                                 <div className="flex flex-row ">
                                     <div>save</div>
                                     <div>share</div>
-                                    <button className="w-10 h-10 bg-blue-300">
-                                        {' '}
-                                    </button>
+                                    <button className="w-10 h-10 bg-blue-300"> </button>
                                 </div>
                             </div>
                             <div className="flex flex-row justify-between">
