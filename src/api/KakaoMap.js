@@ -1,70 +1,75 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useState } from 'react'
+import { Map, MapInfoWindow, MapMarker } from 'react-kakao-maps-sdk'
 
-const MapKakaoDefault = () => {
+export default function KakaoMap() {
     const { kakao } = window
+    const [info, setInfo] = useState()
+    const [markers, setMarkers] = useState([])
+    const [map, setMap] = useState()
 
     useEffect(() => {
-        const container = document.getElementById('map') // 지도를 담을 영역의 DOM 레퍼런스
-        const options = {
-            center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심 좌표
-            level: 3,
-            draggable: true,
-            scrollwheel: true,
-        }
+        if (!map) return
+        const ps = new kakao.maps.services.Places()
 
-        const map = new kakao.maps.Map(container, options) // 지도 생성 및 객체 리턴
+        // 현재 지도의 범위를 가져옵니다.
+        const bounds = map.getBounds()
+        // 검색 옵션을 설정합니다. 이 경우, 지도의 현재 범위 내에서 검색되도록 설정했습니다.
+        const options = { bounds: bounds }
 
-        const setCenter = () => {
-            // 이동할 위도 경도 위치를 생성합니다
-            const moveLatLon = new kakao.maps.LatLng(33.452613, 126.570888)
+        ps.keywordSearch(
+            '안녕',
+            (data, status, _pagination) => {
+                if (status === kakao.maps.services.Status.OK) {
+                    // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+                    // LatLngBounds 객체에 좌표를 추가합니다
+                    let markers = []
 
-            // 지도 중심을 이동 시킵니다
-            map.setCenter(moveLatLon)
-        }
+                    for (var i = 0; i < 10; i++) {
+                        // @ts-ignore
+                        markers.push({
+                            position: {
+                                lat: data[i].y,
+                                lng: data[i].x,
+                            },
+                            content: data[i].place_name,
+                        })
+                        // @ts-ignore
+                        bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x))
+                    }
+                    setMarkers(markers)
 
-        const panTo = () => {
-            // 이동할 위도 경도 위치를 생성합니다
-            var moveLatLon = new kakao.maps.LatLng(33.45058, 126.574942)
-
-            // 지도 중심을 부드럽게 이동시킵니다
-            // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
-            map.panTo(moveLatLon)
-        }
-
-        // 버튼을 클릭하면 아래 배열의 좌표들이 모두 보이게 지도 범위를 재설정합니다
-        const points = [
-            new kakao.maps.LatLng(33.452278, 126.567803),
-            new kakao.maps.LatLng(33.452671, 126.574792),
-            new kakao.maps.LatLng(33.451744, 126.572441),
-        ]
-
-        // 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
-        const bounds = new kakao.maps.LatLngBounds()
-
-        for (let i = 0; i < points.length; i++) {
-            // 배열의 좌표들이 잘 보이게 마커를 지도에 추가합니다
-            let marker = new kakao.maps.Marker({ position: points[i] })
-            marker.setMap(map)
-
-            // LatLngBounds 객체에 좌표를 추가합니다
-            bounds.extend(points[i])
-        }
-
-        const setBounds = () => {
-            map.setBounds(bounds)
-        }
-
-        setCenter()
-        panTo()
-        setBounds()
-    }, [])
+                    // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+                    map.setBounds(bounds)
+                }
+            },
+            options,
+        )
+    }, [map])
 
     return (
-        <>
-            <h1>Kakao Map - Default</h1>
-            <div id="map" style={{ width: '500px', height: '500px' }}></div>
-        </>
+        <Map // 로드뷰를 표시할 Container
+            center={{
+                lat: 37.566826,
+                lng: 126.9786567,
+            }}
+            style={{
+                width: '100%',
+                height: '350px',
+            }}
+            level={3}
+            onCreate={setMap}
+        >
+            {markers.map((marker) => (
+                <MapMarker
+                    key={`marker-${marker.content}-${marker.position.lat},${marker.position.lng}`}
+                    position={marker.position}
+                    onClick={() => setInfo(marker)}
+                >
+                    {info && info.content === marker.content && (
+                        <div style={{ color: '#000' }}>{marker.content}</div>
+                    )}
+                </MapMarker>
+            ))}
+        </Map>
     )
 }
-
-export default MapKakaoDefault

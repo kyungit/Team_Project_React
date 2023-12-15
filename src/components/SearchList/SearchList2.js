@@ -14,22 +14,19 @@ export default function SearchList2() {
 
     const containerRef = useRef(null)
 
-    const loadItems = useCallback(async () => {
+    const loadItems = useCallback(() => {
         if (loading) return // 로딩 중이면 함수를 종료합니다.
 
         setLoading(true) // 로딩 시작
 
-        const newItems = await axios
-            .get(`http://localhost:8080/searchList/dormitory`)
-            // .get(
-            //     `https://jsonplaceholder.typicode.com/posts?_start=${
-            //         (page - 1) * 10
-            //     }&_limit=10`,
-            // )
-            .then((res) => {
-                console.log(res.data)
-                return res.data
-            })
+        const newItems = searchlists
+        // const newItems = await axios
+        // .get(`http://localhost:8080/searchList/dormitory`)
+        // // .get(`https://jsonplaceholder.typicode.com/posts?_start=${(page - 1) * 10}&_limit=10`)
+        // .then((res) => {
+        //     console.log(res.data)
+        //     return res.data
+        // })
 
         if (initialLoad) {
             setItems((prevItems) => [...prevItems, ...newItems])
@@ -43,7 +40,29 @@ export default function SearchList2() {
                 setLoading(false)
             }, 1000)
         }
-    }, [loading, initialLoad]) // page를 제거하고 initialLoad를 추가
+    }, [loading, initialLoad])
+
+    //     const newItems = await axios
+    //         .get(`http://localhost:8080/searchList/dormitory`)
+    //         // .get(`https://jsonplaceholder.typicode.com/posts?_start=${(page - 1) * 10}&_limit=10`)
+    //         .then((res) => {
+    //             console.log(res.data)
+    //             return res.data
+    //         })
+
+    //     if (initialLoad) {
+    //         setItems((prevItems) => [...prevItems, ...newItems])
+    //         setPage((prevPage) => prevPage + 1)
+    //         setLoading(false)
+    //         setInitialLoad(false)
+    //     } else {
+    //         setTimeout(() => {
+    //             setItems((prevItems) => [...prevItems, ...newItems])
+    //             setPage((prevPage) => prevPage + 1)
+    //             setLoading(false)
+    //         }, 1000)
+    //     }
+    // }, [loading, initialLoad]) // page를 제거하고 initialLoad를 추가
 
     useEffect(() => {
         loadItems() // 컴포넌트가 마운트될 때 한 번만 데이터 로드

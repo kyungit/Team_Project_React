@@ -7,7 +7,9 @@ export default function Reservation1() {
         <div className="w-full h-40 pt-16 pl-16">
             <div>Reservation1</div>
             <MapNaverDefault />
-            <MapKakaoDefault />
+            <div className="w-500 h-200">
+                <MapKakaoDefault />
+            </div>
         </div>
     )
 }

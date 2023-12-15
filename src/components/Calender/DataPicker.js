@@ -6,7 +6,32 @@ import styled from 'styled-components'
 
 const Styled = styled.div`
     div > input {
-        color: red;
+        padding: 2rem;
+        font-size: inherit;
+        background: transparent;
+        display: inline-block;
+        height: auto;
+        width: 19.5rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        border: none;
+        padding: 0;
+        color: #2d3748;
+        caret-color: #48bb78;
+        ::placeholder {
+            /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: #cbd5e0;
+        }
+        :focus::placeholder {
+            color: #f7fafc;
+        }
+        outline: none;
+        position: relative;
+        left: 2rem;
+        top: 0.25rem;
+        z-index: 20;
+        cursor: pointer;
+        line-height: normal;
     }
 `
 
