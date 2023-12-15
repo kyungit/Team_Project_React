@@ -30,7 +30,7 @@ export default function Home() {
         })
     }
 
-    return (
+    return (<>
         <HomeProvider onSubmit={onSubmit}>
             <Search />
             <Home1 />
@@ -38,5 +38,6 @@ export default function Home() {
             <Home3 />
             <Home4 />
         </HomeProvider>
+    </>
     )
 }

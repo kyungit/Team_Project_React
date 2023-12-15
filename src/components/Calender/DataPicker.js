@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useCallback, useContext, useEffect, useState } from 'react'
 import Datepicker from 'react-tailwindcss-datepicker'
 import 'tailwindcss/tailwind.css'
 import './your-tailwind.css'
 import styled from 'styled-components'
+import HomeContext from '../../context/Home_Context'
 
 const Styled = styled.div`
     div > input {
@@ -36,16 +37,37 @@ const Styled = styled.div`
 `
 
 export default function DataPicker() {
-    // document.querySelector('div>input').style.color = 'red'
+    const { images, searchdata, setSearchdata } = useContext(HomeContext)
+    const { keyword, startDate, endDate, guest } = searchdata
+
     const [value, setValue] = useState({
         startDate: new Date(),
-        endDate: new Date().setMonth(11),
+        endDate: new Date(),
     })
 
     const handleValueChange = (newValue) => {
-        console.log('newValue:', newValue)
+        // console.log('newValue:', newValue)
         setValue(newValue)
+
     }
+
+    useEffect(() => {
+        // console.log('value : ', value)
+        onSearchChange(value)
+    }, [value])
+
+    const onSearchChange = useCallback((value) => {
+
+        setSearchdata(searchdata => ({
+            ...searchdata,
+            startDate: value.startDate,
+            endDate: value.endDate
+        }))
+    }, [value])
+
+    useEffect(() => {
+        console.log('onSearchChange3 : ', searchdata)
+    }, [searchdata])
     return (
         <Styled>
             <Datepicker value={value} onChange={handleValueChange} />

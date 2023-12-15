@@ -17,7 +17,7 @@ export default function RoomImageSlide(props) {
     //         console.log(res.data)
     //     })
     // }
-    const images = props.images
+    // const images = props.images
     // console.log('home_images : ', images)
 
     // url 컨텍스트
@@ -58,12 +58,12 @@ export default function RoomImageSlide(props) {
                 {/* {images.map((image, i) => (
                     <div>{image.d_road}</div>
                 ))} */}
-                {images &&
+                {/* {images &&
                     images.map((image, i) => (
                         <div key={i} className="w-full flex flex-row">
                             {image.d_road}
                         </div>
-                    ))}
+                    ))} */}
                 {/* <button onClick={prevSlide}>Prev</button>
                 <div className=" w-full flex flex-row">
                     {getSlides().map((image, i) => (
