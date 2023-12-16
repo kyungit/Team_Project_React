@@ -2,7 +2,7 @@ import axios from 'axios'
 import KakaoLogin from 'react-kakao-login'
 
 const SocialKakao = () => {
-    const kakaoClientId = '804687699258cfabd49b5c6d2fc27dd3'
+    const Kakao_CLIENT_ID = process.env.KAKAO_CLIENT_ID // 발급받은 클라이언트 아이디
     const kakaoOnSuccess = async (data) => {
         console.log(data)
         const idToken = data.response.access_token // 엑세스 토큰 백엔드로 전달
@@ -21,7 +21,11 @@ const SocialKakao = () => {
 
     return (
         <>
-            <KakaoLogin token={kakaoClientId} onSuccess={kakaoOnSuccess} onFail={kakaoOnFailure} />
+            <KakaoLogin
+                token={Kakao_CLIENT_ID}
+                onSuccess={kakaoOnSuccess}
+                onFail={kakaoOnFailure}
+            />
         </>
     )
 }

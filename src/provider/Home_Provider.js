@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react'
 import axios from 'axios'
 import HomeContext from '../context/Home_Context'
-import Home from '../pages/Home/Home'
+import { useNavigate } from 'react-router-dom'
 
 const ImageProvider = ({ children }) => {
     const [images, setImages] = useState({
@@ -18,6 +18,8 @@ const ImageProvider = ({ children }) => {
         guest: null,
     })
 
+    const navigate = useNavigate()
+
     useEffect(() => {
         console.log(searchdata.keyword, searchdata.startDate, searchdata.endDate, searchdata.guest)
     }, [searchdata])
@@ -30,6 +32,9 @@ const ImageProvider = ({ children }) => {
                     console.log('success : ', res.status)
                     console.log('res : ', res)
                     console.log('res.data : ', res.data)
+
+                    // 성공적으로 처리되었을 때 리디렉션
+                    navigate('/searchlist')
                 })
                 .catch((error) => {
                     console.error('Error fetching data: ', error)

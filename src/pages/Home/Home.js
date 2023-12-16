@@ -32,7 +32,7 @@ export default function Home() {
 
     return (
         <>
-            <HomeProvider className="pt-80" onSubmit={onSubmit}>
+            <HomeProvider onSubmit={onSubmit}>
                 <Search />
                 <Home1 />
                 <Home2 />

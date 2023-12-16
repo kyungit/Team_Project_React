@@ -3,8 +3,8 @@ import React, { useEffect, useRef, useState, useCallback, useContext } from 'rea
 import SearchListContext from '../../context/SearchList_Context'
 
 export default function SearchList2() {
-    const data = useContext(SearchListContext)
-    const searchlists = data.searchlist1
+    const { images, setImages, GetSearchList } = useContext(SearchListContext)
+    const searchlists = images.searchlist1
     console.log('images4 : ', searchlists)
 
     const [items, setItems] = useState([])
@@ -14,12 +14,11 @@ export default function SearchList2() {
 
     const containerRef = useRef(null)
 
-    const loadItems = useCallback(() => {
+    const loadItems = useCallback(async (page) => {
         if (loading) return // 로딩 중이면 함수를 종료합니다.
 
         setLoading(true) // 로딩 시작
-
-        const newItems = searchlists
+        const newItems = await GetSearchList(page)
         // const newItems = await axios
         // .get(`http://localhost:8080/searchList/dormitory`)
         // // .get(`https://jsonplaceholder.typicode.com/posts?_start=${(page - 1) * 10}&_limit=10`)
@@ -29,18 +28,20 @@ export default function SearchList2() {
         // })
 
         if (initialLoad) {
-            setItems((prevItems) => [...prevItems, ...newItems])
-            setPage((prevPage) => prevPage + 1)
+            setImages((prevItems) => ({
+                searchlist1: [...prevItems.searchlist1, ...newItems],
+            }))
             setLoading(false)
             setInitialLoad(false)
         } else {
             setTimeout(() => {
-                setItems((prevItems) => [...prevItems, ...newItems])
-                setPage((prevPage) => prevPage + 1)
+                setImages((prevItems) => ({
+                    searchlist1: [...prevItems.searchlist1, ...newItems],
+                }))
                 setLoading(false)
             }, 1000)
         }
-    }, [loading, initialLoad])
+    }, [])
 
     //     const newItems = await axios
     //         .get(`http://localhost:8080/searchList/dormitory`)
@@ -65,15 +66,15 @@ export default function SearchList2() {
     // }, [loading, initialLoad]) // page를 제거하고 initialLoad를 추가
 
     useEffect(() => {
-        loadItems() // 컴포넌트가 마운트될 때 한 번만 데이터 로드
-    }, []) // dependency 배열에서 loadItems를 제거
+        loadItems(page) // 컴포넌트가 마운트될 때 한 번만 데이터 로드
+    }, [page, loadItems]) // dependency 배열에서 loadItems를 제거
 
     useEffect(() => {
         const handleScroll = () => {
             const { scrollTop, clientHeight, scrollHeight } = document.documentElement
             console.log(scrollHeight, scrollTop, clientHeight)
-            if (scrollHeight - scrollTop <= clientHeight + 50) {
-                loadItems()
+            if (scrollHeight - scrollTop <= clientHeight + 50 && !loading) {
+                setPage((prevPage) => prevPage + 1)
             }
         }
 
@@ -81,7 +82,7 @@ export default function SearchList2() {
         return () => {
             window.removeEventListener('scroll', handleScroll)
         }
-    }, [loadItems]) // 스크롤 이벤트 리스너 등록 및 해제
+    }, [page]) // 스크롤 이벤트 리스너 등록 및 해제
 
     return (
         <div className="col-start-5 col-end-11 w-full pt-16" ref={containerRef}>
@@ -89,7 +90,7 @@ export default function SearchList2() {
                 <div>qweasdzxc</div>
                 {searchlists &&
                     searchlists.map((e, index) => (
-                        <div key={e.d_code}>
+                        <div key={page + index}>
                             <div className="w-20 h-20 bg-red-300"></div>
                             <div>{e.d_name}</div>
                             <div>{e.d_telno}</div>
