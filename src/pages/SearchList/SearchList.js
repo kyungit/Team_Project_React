@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import SearchList1 from '../../components/SearchList/SearchList1'
 import SearchList2 from '../../components/SearchList/SearchList2'
 import SearchList3 from '../../components/SearchList/SearchList3'

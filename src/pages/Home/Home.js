@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import HomeProvider from '../../provider/Home_Provider'
 import Home1 from '../../components/Home/Home1'
 import Home2 from '../../components/Home/Home2'

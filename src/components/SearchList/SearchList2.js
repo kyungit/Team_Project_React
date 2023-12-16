@@ -1,4 +1,3 @@
-import axios from 'axios'
 import React, { useEffect, useRef, useState, useCallback, useContext } from 'react'
 import SearchListContext from '../../context/SearchList_Context'
 
@@ -7,7 +6,6 @@ export default function SearchList2() {
     const searchlists = images.searchlist1
     console.log('images4 : ', searchlists)
 
-    const [items, setItems] = useState([])
     const [page, setPage] = useState(1)
     const [loading, setLoading] = useState(false) // 로딩 상태 추가
     const [initialLoad, setInitialLoad] = useState(true)
@@ -39,7 +37,7 @@ export default function SearchList2() {
                     searchlist1: [...prevItems.searchlist1, ...newItems],
                 }))
                 setLoading(false)
-            }, 1000)
+            }, 3000)
         }
     }, [])
 

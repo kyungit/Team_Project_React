@@ -1,6 +1,6 @@
 import React from 'react'
-import MapNaverDefault from '../../api/NaverMap'
-import MapKakaoDefault from '../../api/KakaoMap'
+import MapNaverDefault from '../../api/Map/NaverMap'
+import MapKakaoDefault from '../../api/Map/KakaoMap'
 
 export default function Reservation1() {
     return (

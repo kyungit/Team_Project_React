@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Map, MapInfoWindow, MapMarker } from 'react-kakao-maps-sdk'
+import { Map, MapMarker } from 'react-kakao-maps-sdk'
 
 export default function KakaoMap() {
     const { kakao } = window

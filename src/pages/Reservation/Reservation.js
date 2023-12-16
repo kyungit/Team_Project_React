@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import Reservation1 from '../../components/Reservation/Reservation1'
 import Reservation2 from '../../components/Reservation/Reservation2'
 import Reservation3 from '../../components/Reservation/Reservation3'

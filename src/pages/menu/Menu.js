@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import Menu1 from '../../components/Menu/Menu1'
 import Menu2 from '../../components/Menu/Menu2'
 import Menu3 from '../../components/Menu/Menu3'

@@ -1,6 +1,5 @@
-import { Routes, Route, Router, Redirect, Switch } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Layout from './Layout'
-import SignIn from './components/Login/Signin'
 import Login from './components/Login/Login'
 import Home from './pages/Home/Home'
 import SearchList from './pages/SearchList/SearchList'

@@ -26,7 +26,7 @@ const SearchListProvider = ({ children }) => {
 
     useEffect(() => {
         GetSearchList()
-    }, [])
+    }, [GetSearchList])
 
     const value = useMemo(() => ({ images, setImages, GetSearchList }), [images, GetSearchList])
 
