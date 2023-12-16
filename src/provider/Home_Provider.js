@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useState, useEffect, useMemo, useCallback } from 'react'
 import axios from 'axios'
 import HomeContext from '../context/Home_Context'
 import Home from '../pages/Home/Home'
@@ -18,51 +18,60 @@ const ImageProvider = ({ children }) => {
         guest: null,
     })
 
-    const value = useMemo(() => ({ images, searchdata, setSearchdata }), [images, searchdata, setSearchdata]);
-
     useEffect(() => {
         console.log(searchdata.keyword, searchdata.startDate, searchdata.endDate, searchdata.guest)
     }, [searchdata])
 
-    // useEffect(() => {
-    //     const SearchdataGet = async () => {
-    //         await axios
-    //             .get('http://localhost:8080/searchList/dormitory', { params: searchdata })
-    //             .then((res) => {
-    //                 console.log('res : ', res)
-    //                 console.log('res.data : ', res.data)
-    //             })
-    //     }
+    const onSubmitSearch = useCallback(() => {
+        const SearchdataGet = async () => {
+            await axios
+                .get('http://localhost:8080/searchList/dormitory', { params: searchdata })
+                .then((res) => {
+                    console.log('success : ', res.status)
+                    console.log('res : ', res)
+                    console.log('res.data : ', res.data)
+                })
+                .catch((error) => {
+                    console.error('Error fetching data: ', error)
+                    // 요청이 실패했을 때의 동작을 여기에 추가합니다.
+                    // 예: setError('Error fetching data');
+                })
+        }
 
-    //     SearchdataGet()
-    // }, [searchdata])
+        SearchdataGet()
+    }, [searchdata])
 
-    // useEffect(() => {
-    //     const ImagesAPI = async () => {
-    //         const result1 = await axios.get('http://localhost:8080/earlyCheckin')
-    //         const result2 = await axios.get('http://localhost:8080/earlyCheckin')
-    //         const result3 = await axios.get('http://localhost:8080/grade')
-    //         const result4 = await axios.get('http://localhost:8080/type')
+    const value = useMemo(
+        () => ({ images, searchdata, setSearchdata, onSubmitSearch }),
+        [images, searchdata, setSearchdata, onSubmitSearch],
+    )
 
-    //         setImages({
-    //             images1: result1.data,
-    //             images2: result2.data,
-    //             images3: result3.data,
-    //             images4: result4.data,
-    //         })
+    useEffect(() => {
+        const ImagesAPI = async () => {
+            const result1 = await axios.get('http://localhost:8080/earlyCheckin')
+            const result2 = await axios.get('http://localhost:8080/earlyCheckin')
+            const result3 = await axios.get('http://localhost:8080/grade')
+            const result4 = await axios.get('http://localhost:8080/type')
 
-    //         console.log('result1 : ', result1)
-    //         console.log('result2 : ', result2)
-    //         console.log('result3 : ', result3)
-    //         console.log('result4 : ', result4)
-    //     }
+            setImages({
+                images1: result1.data,
+                images2: result2.data,
+                images3: result3.data,
+                images4: result4.data,
+            })
 
-    //     ImagesAPI()
-    // }, [])
+            console.log('result1 : ', result1)
+            console.log('result2 : ', result2)
+            console.log('result3 : ', result3)
+            console.log('result4 : ', result4)
+        }
+
+        ImagesAPI()
+    }, [])
 
     return (
         <HomeContext.Provider value={value}>
-            {children}
+            <div>{children}</div>
         </HomeContext.Provider>
     )
 }

@@ -30,14 +30,15 @@ export default function Home() {
         })
     }
 
-    return (<>
-        <HomeProvider onSubmit={onSubmit}>
-            <Search />
-            <Home1 />
-            <Home2 />
-            <Home3 />
-            <Home4 />
-        </HomeProvider>
-    </>
+    return (
+        <>
+            <HomeProvider className="pt-80" onSubmit={onSubmit}>
+                <Search />
+                <Home1 />
+                <Home2 />
+                <Home3 />
+                <Home4 />
+            </HomeProvider>
+        </>
     )
 }

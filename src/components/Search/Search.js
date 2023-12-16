@@ -4,11 +4,11 @@ import DataPicker from '../Calender/DataPicker'
 import HomeContext from '../../context/Home_Context'
 
 export default function Search() {
-    const { images, searchdata, setSearchdata } = useContext(HomeContext)
+    const { images, searchdata, setSearchdata, onSubmitSearch } = useContext(HomeContext)
     const { keyword, startDate, endDate, guest } = searchdata
 
     const onKeywordChange = useCallback((e) => {
-        setSearchdata(searchdata => ({
+        setSearchdata((searchdata) => ({
             ...searchdata,
             keyword: e.target.value,
         }))
@@ -18,7 +18,7 @@ export default function Search() {
     }, [])
 
     const onGuestChange = useCallback((e) => {
-        setSearchdata(searchdata => ({
+        setSearchdata((searchdata) => ({
             ...searchdata,
             guest: e.target.value,
         }))
@@ -28,13 +28,12 @@ export default function Search() {
     }, [])
 
     useEffect(() => {
-        console.log(searchdata);
-    }, [searchdata]);
-
+        console.log(searchdata)
+    }, [searchdata])
 
     return (
         // 1-1. 검색 기능 : 이름, 장소, 연관 단어
-        <div className="w-full h-80 pt-32 flex flex-row">
+        <div className="w-full h-80 pt-80 flex flex-row">
             <div className="w-full flex flex-row justify-center">
                 <div
                     className="
@@ -65,6 +64,7 @@ export default function Search() {
                         <button
                             type="submit"
                             className="text-black end-2.5 bottom-2.5 h-10 bg-lime-100 rounded-full focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            onClick={() => onSubmitSearch()}
                         >
                             Search
                         </button>
