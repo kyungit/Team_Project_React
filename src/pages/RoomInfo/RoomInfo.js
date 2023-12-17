@@ -1,3 +1,4 @@
+import Grid from '../../components/Common/Grid'
 import RoomInfo1 from '../../components/RoomInfo/RoomInfo1'
 import RoomInfo2 from '../../components/RoomInfo/RoomInfo2'
 import RoomInfo3 from '../../components/RoomInfo/RoomInfo3'
@@ -6,11 +7,11 @@ import RoomInfoProvider from '../../provider/RoomInfo_Provider'
 
 export default function Reservation() {
     return (
-        <RoomInfoProvider className="grid grid-cols-12 h-auto">
-            <RoomInfo1 />
-            <RoomInfo2 />
-            <RoomInfo3 />
-            <RoomInfo4 />
+        <RoomInfoProvider>
+                <RoomInfo1 />
+                <RoomInfo2 />
+                <RoomInfo3 />
+                <RoomInfo4 />
         </RoomInfoProvider>
     )
 }
