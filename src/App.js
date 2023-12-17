@@ -7,6 +7,7 @@ import RoomInfo from './pages/RoomInfo/RoomInfo'
 import Reservation from './pages/Reservation/Reservation'
 import Search from './components/Search/Search'
 import Menu from './pages/menu/Menu'
+import BoxColor from './BoxColor'
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                 <Route path="/reservation" element={<Reservation />} />
                 <Route path="/menu" element={<Menu />} />
                 <Route path="/search" element={<Search />} />
+                <Route path="/boxColor" element={<BoxColor />} />
             </Route>
         </Routes>
     )

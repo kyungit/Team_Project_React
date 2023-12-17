@@ -3,16 +3,16 @@ import React, { useEffect, useState } from 'react'
 
 export default function RoomInfo1() {
     const [dormitorys, setDormitorys] = useState(null)
-    const getApi = async () => {
-        await axios.get('http://localhost:8080/room/roomDetail').then((res) => {
-            setDormitorys(res.data)
-            console.log(res.data)
-        })
-    }
+    // const getApi = async () => {
+    //     await axios.get('http://localhost:8080/room/roomDetail').then((res) => {
+    //         setDormitorys(res.data)
+    //         console.log(res.data)
+    //     })
+    // }
 
-    useEffect(() => {
-        getApi()
-    }, [])
+    // useEffect(() => {
+    //     getApi()
+    // }, [])
 
     return (
         <div className="col-start-3 col-end-11 w-full h-1000 pt-16">

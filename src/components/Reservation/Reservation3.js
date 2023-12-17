@@ -1,9 +1,16 @@
 import React from 'react'
+import MapNaverDefault from '../../api/Map/NaverMap'
+import MapKakaoDefault from '../../api/Map/KakaoMap'
+import Column from '../Common/Column'
 
 export default function Reservation3() {
     return (
-        <div className="w-full h-40 pt-16 pl-16">
-            <div>Reservation3</div>
-        </div>
+        <Column className="col-start-3 col-end-8 h-auto pt-16">
+            <div>Map</div>
+            {/* <MapNaverDefault /> */}
+            <div className="w-500 h-200">
+                {/* <MapKakaoDefault /> */}
+            </div>
+        </Column>
     )
 }

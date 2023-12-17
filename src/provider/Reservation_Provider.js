@@ -28,40 +28,40 @@ const ReservationProvider = ({ children }) => {
         s_status: 3,
     })
 
-    useEffect(() => {
-        const ReservationdataPost = async () => {
-            await axios
-                .post('http://localhost:8080/reservation/reservationmemberInfo', reservationdata)
-                .then((res) => {
-                    console.log('res : ', res)
-                    console.log('res.data : ', res.data)
-                })
-        }
+    // useEffect(() => {
+    //     const ReservationdataPost = async () => {
+    //         await axios
+    //             .post('http://localhost:8080/reservation/reservationmemberInfo', reservationdata)
+    //             .then((res) => {
+    //                 console.log('res : ', res)
+    //                 console.log('res.data : ', res.data)
+    //             })
+    //     }
 
-        ReservationdataPost()
-    }, [reservationdata])
+    //     ReservationdataPost()
+    // }, [reservationdata])
 
-    useEffect(() => {
-        const ImagesAPI = async () => {
-            const result1 = await axios.get('http://localhost:8080/reservation/dormitoryRoom')
-            const result2 = await axios.get('http://localhost:8080/reservation/reservationInfo')
-            const result3 = await axios.get('http://localhost:8080/reservation/cancel')
+    // useEffect(() => {
+    //     const ImagesAPI = async () => {
+    //         const result1 = await axios.get('http://localhost:8080/reservation/dormitoryRoom')
+    //         const result2 = await axios.get('http://localhost:8080/reservation/reservationInfo')
+    //         const result3 = await axios.get('http://localhost:8080/reservation/cancel')
 
-            setImages({
-                images1: result1.data,
-                images2: result2.data,
-                images3: result3.data,
-            })
+    //         setImages({
+    //             images1: result1.data,
+    //             images2: result2.data,
+    //             images3: result3.data,
+    //         })
 
-            console.log('result1 : ', result1)
-            console.log('result2 : ', result2)
-            console.log('result3 : ', result3)
-        }
+    //         console.log('result1 : ', result1)
+    //         console.log('result2 : ', result2)
+    //         console.log('result3 : ', result3)
+    //     }
 
-        ImagesAPI()
-    }, [])
+    //     ImagesAPI()
+    // }, [])
 
-    return <ReservationContext.Provider value={images}>{children}</ReservationContext.Provider>
+    return <ReservationContext.Provider value={images} >{children}</ReservationContext.Provider>
 }
 
 export default ReservationProvider
