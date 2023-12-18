@@ -6,6 +6,7 @@ import Home3 from '../../components/Home/Home3'
 import Home4 from '../../components/Home/Home4'
 import Search from '../../components/Search/Search'
 import axios from 'axios'
+import Grid from '../../components/Common/Grid'
 
 export default function Home() {
     console.log('렌더링')
@@ -33,11 +34,13 @@ export default function Home() {
     return (
         <>
             <HomeProvider onSubmit={onSubmit}>
-                <Search />
-                <Home1 />
-                <Home2 />
-                <Home3 />
-                <Home4 />
+                <Grid>
+                    <Search />
+                    {/* <Home1 />
+                    <Home2 />
+                    <Home3 />
+                    <Home4 /> */}
+                </Grid>
             </HomeProvider>
         </>
     )

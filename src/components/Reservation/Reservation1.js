@@ -1,6 +1,8 @@
 import React from 'react'
-import Column from '../Common/Column'
+import MapNaverDefault from '../../api/Map/NaverMap'
+import MapKakaoDefault from '../../api/Map/KakaoMap'
 import Row from '../Common/Row'
+import Column from '../Common/Column'
 
 export default function Reservation1() {
     return (
@@ -10,7 +12,7 @@ export default function Reservation1() {
             <Row className="mt-4 text-lg">투윈룸</Row>
 
             <Row className="mt-16 text-2xl">예약자 정보</Row>
-            <hr className='mt-4 w-11/12' />
+            <hr className="mt-4 w-11/12" />
             <Row className="mt-8 text-lg">예약자 이름</Row>
             <input className="border-solid border mt-4 border-gray-300 rounded-lg h-12 p-4 w-1/2 bg-white text-gray-900 font-normal text-base" />
             <Row className="text-lg">휴대폰 번호</Row>
@@ -19,10 +21,9 @@ export default function Reservation1() {
             <input className="border-solid border mt-4 border-gray-300 rounded-lg h-12 p-4 w-1/2 bg-white text-gray-900 font-normal text-base" />
 
             <Row className="mt-16 text-2xl">투숙객 정보</Row>
-            <hr className='mt-4 w-11/12' />
+            <hr className="mt-4 w-11/12" />
             <Row className="mt-8 text-lg">투숙객 이름</Row>
             <input className="border-solid border mt-4 border-gray-300 rounded-lg h-12 p-4 w-1/2 bg-white text-gray-900 font-normal text-base" />
-
         </Column>
     )
 }

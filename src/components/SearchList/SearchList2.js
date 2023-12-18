@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState, useCallback, useContext } from 'react'
 import SearchListContext from '../../context/SearchList_Context'
+import Column from '../Common/Column'
+import Row from '../Common/Row'
 
 export default function SearchList2() {
     const { images, setImages, GetSearchList } = useContext(SearchListContext)
@@ -10,36 +12,20 @@ export default function SearchList2() {
     const [loading, setLoading] = useState(false) // 로딩 상태 추가
     const [initialLoad, setInitialLoad] = useState(true)
 
-    const containerRef = useRef(null)
-
-    const loadItems = useCallback(async (page) => {
-        if (loading) return // 로딩 중이면 함수를 종료합니다.
-
-        setLoading(true) // 로딩 시작
-        const newItems = await GetSearchList(page)
-        // const newItems = await axios
-        // .get(`http://localhost:8080/searchList/dormitory`)
-        // // .get(`https://jsonplaceholder.typicode.com/posts?_start=${(page - 1) * 10}&_limit=10`)
-        // .then((res) => {
-        //     console.log(res.data)
-        //     return res.data
-        // })
-
-        if (initialLoad) {
+    const loadItems = useCallback(
+        async (nextPage) => {
+            setLoading(true) // 로딩 시작
+            const newItems = await GetSearchList(nextPage)
             setImages((prevItems) => ({
                 searchlist1: [...prevItems.searchlist1, ...newItems],
             }))
-            setLoading(false)
-            setInitialLoad(false)
-        } else {
-            setTimeout(() => {
-                setImages((prevItems) => ({
-                    searchlist1: [...prevItems.searchlist1, ...newItems],
-                }))
-                setLoading(false)
-            }, 3000)
-        }
-    }, [])
+            // setTimeout(() => {
+            //     setLoading(false)
+            // }, 3000)
+            setLoading(false) // 로딩 상태 업데이트
+        },
+        [GetSearchList, setImages],
+    )
 
     //     const newItems = await axios
     //         .get(`http://localhost:8080/searchList/dormitory`)
@@ -65,14 +51,16 @@ export default function SearchList2() {
 
     useEffect(() => {
         loadItems(page) // 컴포넌트가 마운트될 때 한 번만 데이터 로드
-    }, [page, loadItems]) // dependency 배열에서 loadItems를 제거
+    }, [loadItems, page]) // dependency 배열에서 loadItems를 제거
 
     useEffect(() => {
         const handleScroll = () => {
             const { scrollTop, clientHeight, scrollHeight } = document.documentElement
             console.log(scrollHeight, scrollTop, clientHeight)
             if (scrollHeight - scrollTop <= clientHeight + 50 && !loading) {
-                setPage((prevPage) => prevPage + 1)
+                // setPage((prevPage) => prevPage + 1)
+                // loadItems()
+                loadItems(page + 1)
             }
         }
 
@@ -80,27 +68,35 @@ export default function SearchList2() {
         return () => {
             window.removeEventListener('scroll', handleScroll)
         }
-    }, [page]) // 스크롤 이벤트 리스너 등록 및 해제
+    }, [loadItems, loading, page]) // 스크롤 이벤트 리스너 등록 및 해제
 
     return (
-        <div className="col-start-5 col-end-11 w-full pt-16" ref={containerRef}>
+        <div className="col-start-5 col-end-11 w-full pt-16">
             <div className="flex flex-col w-full">
                 <div>qweasdzxc</div>
                 {searchlists &&
                     searchlists.map((e, index) => (
                         <div key={page + index}>
-                            <div className="w-20 h-20 bg-red-300"></div>
-                            <div>{e.d_name}</div>
-                            <div>{e.d_telno}</div>
-                            <div>{e.d_type}</div>
-                            <div>2.5 STAR</div>
-                            <div>Seoul</div>
-                            <div className="text-end">1,000,000</div>
-                            <div className="text-end">NOT INCLUDE TAXES</div>
-                            <div className="flex flex-row justify-between">
-                                <div>4/5 30 review</div>
-                                <button className="w-10 h-10 bg-blue-300"> </button>
-                            </div>
+                            <Row className="w-full">
+                                <Row className="w-1/3 h-40 bg-red-300"></Row>
+                                <Column className="ml-4 w-full">
+                                    <Row className="text-xl font-semibold">{e.d_name}</Row>
+                                    <Row className="mt-1">2.5-stars/</Row>
+                                    <Row className="mt-1">Susseong-gu, Daegu/</Row>
+                                    <Row className="mt-1 text-2xl font-semibold">/121,000</Row>
+                                    <Row className="mt-1">
+                                        /
+                                        <button
+                                            className="tab-size-4 user-select-text box-border flex items-center justify-center 
+                                                    h-10 w-1/4 rounded-md text-black font-bold text-lg"
+                                            style={{ backgroundColor: '#D9F99D' }}
+                                        >
+                                            결제하기
+                                        </button>
+                                    </Row>
+                                </Column>
+                            </Row>
+                            <hr className="mt-6" />
                         </div>
                     ))}
             </div>
