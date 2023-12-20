@@ -5,6 +5,7 @@ import './your-tailwind.css'
 import styled from 'styled-components'
 import HomeContext from '../../context/Home_Context'
 import SearchListContext from '../../context/SearchList_Context'
+import Context from '../../context/Context'
 
 const Styled = styled.div`
     div > input {
@@ -39,8 +40,9 @@ const Styled = styled.div`
 
 export default function DataPicker() {
     // const { images, searchdata, setSearchdata } = useContext(HomeContext)
-    const { images, searchdata, setSearchdata } = useContext(SearchListContext)
-    const { keyword, startDate, endDate, guest } = searchdata
+    const { images, searchdata, setSearchdata } = useContext(Context)
+    // const { images, searchdata, setSearchdata } = useContext(SearchListContext)
+    // const { keyword, startDate, endDate, guest } = searchdata
 
     const [value, setValue] = useState({
         startDate: new Date(),

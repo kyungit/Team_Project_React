@@ -3,10 +3,12 @@ import React, { useCallback, useContext, useEffect, useState } from 'react'
 import DataPicker from '../Calender/DataPicker'
 import SearchListContext from '../../context/SearchList_Context'
 import HomeContext from '../../context/Home_Context'
+import Context from '../../context/Context'
 
 export default function Search() {
     // const { images, searchdata, setSearchdata, onSubmitSearch } = useContext(HomeContext)
-    const { images, searchdata, setSearchdata, onSubmitSearch } = useContext(SearchListContext)
+    const { searchdata, setSearchdata, onSubmitSearch } = useContext(Context)
+    // const { images, searchdata, setSearchdata, onSubmitSearch } = useContext(SearchListContext)
     const { keyword, startDate, endDate, guest } = searchdata
 
     const onKeywordChange = useCallback((e) => {

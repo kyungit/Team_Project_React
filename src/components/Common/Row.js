@@ -11,7 +11,6 @@
 //         )
 //     return <div className={`flex justify-between mt-4 ${className}`}>{items}</div>
 // }
-
 import React from 'react'
 
 export default function Row({ className, children }) {
@@ -24,5 +23,5 @@ export default function Row({ className, children }) {
         return child
     })
 
-    return <div className={`flex justify-between mt-4 ${className}`}>{items}</div>
+    return <div className={`flex justify-between mt-4 ${className || ''}`}>{items}</div>
 }

@@ -5,7 +5,24 @@ module.exports = {
         './node_modules/react-tailwindcss-datepicker/dist/index.esm.js',
     ],
     theme: {
-        extend: {},
+        extend: {
+            spacing: {
+                1: '0.25rem',
+            },
+        },
     },
-    plugins: [],
+    variants: {},
+    plugins: [
+        function ({ addUtilities }) {
+            const newUtilities = {
+                '.mt-1': {
+                    marginTop: '0.25rem !important',
+                },
+                '.mt-0': {
+                    marginTop: '0rem !important',
+                },
+            }
+            addUtilities(newUtilities)
+        },
+    ],
 }

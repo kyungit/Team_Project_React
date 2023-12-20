@@ -6,12 +6,12 @@ import RoomInfo4 from '../../components/RoomInfo/RoomInfo4'
 import Search from '../../components/Search/Search'
 import RoomInfoProvider from '../../provider/RoomInfo_Provider'
 
-export default function Reservation() {
+export default function RoomInfo() {
     return (
         <RoomInfoProvider>
             <Grid>
                 <Search />
-                <RoomInfo1 />
+                {/* <RoomInfo1 /> */}
                 <RoomInfo2 />
                 <RoomInfo3 />
                 <RoomInfo4 />

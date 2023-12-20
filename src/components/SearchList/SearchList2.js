@@ -3,9 +3,11 @@ import SearchListContext from '../../context/SearchList_Context'
 import Column from '../Common/Column'
 import Row from '../Common/Row'
 import { useNavigate } from 'react-router-dom'
+import Context from '../../context/Context'
 
 export default function SearchList2() {
     const { images, setImages, GetSearchList } = useContext(SearchListContext)
+    // const { images, setImages, GetSearchList } = useContext(Context)
     const searchlists = images.searchlist1
     console.log('images4 : ', searchlists)
 
