@@ -1,3 +1,5 @@
+import kakaoLogin from '../../assets/img/kakaoLogin.png'
+
 const SocialKakao = () => {
     const Kakao_CLIENT_ID = process.env.KAKAO_CLIENT_ID // 발급받은 클라이언트 아이디
     // const Rest_api_key = 'REST API KEY' //REST API KEY
@@ -11,7 +13,7 @@ const SocialKakao = () => {
     }
     return (
         <>
-            <button onClick={handleLogin}>카카오 로그인</button>
+            <button onClick={handleLogin}><img src={kakaoLogin} /></button>
         </>
     )
 }

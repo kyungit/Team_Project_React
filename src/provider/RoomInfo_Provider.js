@@ -14,12 +14,23 @@ const RoomInfoProvider = ({ children }) => {
 
     useEffect(() => {
         const ImagesAPI = async () => {
+
+            const result1 = await axios.get('http://localhost:8080/roomInfo/roomReview')
+            // const result2 = await axios.get('http://localhost:8080/roomInfo/review')
+            const result3 = await axios.get('http://localhost:8080/roomInfo/map')
+            const result4 = await axios.get('http://localhost:8080/roomInfo/roomDetail')
+            const result5 = await axios.get('http://localhost:8080/roomInfo/dormitory')
+            // const result6 = await axios.get(
+            //     'http://localhost:8080/roomInfo/amenity',
+            // )
+
             const result1 = await axios.get('http://localhost:8080/room/roomReview')
             // const result2 = await axios.get('http://localhost:8080/room/review')
             const result3 = await axios.get('http://localhost:8080/room/map')
             const result4 = await axios.get('http://localhost:8080/room/roomDetail')
             const result5 = await axios.get('http://localhost:8080/room/dormitory')
             // const result6 = await axios.get('http://localhost:8080/room/amenity')
+
 
             setImages({
                 images1: result1.data,

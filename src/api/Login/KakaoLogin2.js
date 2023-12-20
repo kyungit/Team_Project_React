@@ -1,6 +1,8 @@
 import axios from 'axios'
 import KakaoLogin from 'react-kakao-login'
 
+import kakaoImg from '../../assets/img/kakaoLogin.png'
+
 const SocialKakao = () => {
     const Kakao_CLIENT_ID = process.env.KAKAO_CLIENT_ID // 발급받은 클라이언트 아이디
     const kakaoOnSuccess = async (data) => {
@@ -25,7 +27,11 @@ const SocialKakao = () => {
                 token={Kakao_CLIENT_ID}
                 onSuccess={kakaoOnSuccess}
                 onFail={kakaoOnFailure}
+
+            ><img src={kakaoImg} /></KakaoLogin>
+
             />
+
         </>
     )
 }
