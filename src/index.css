@@ -18,3 +18,8 @@ code {
 @tailwind utilities;
 
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+
+.bg-icon {
+    @apply h-5 w-5 bg-center bg-no-repeat;
+    background-image: url('https://www.tripbtoz.com/images/common/bg_chk01_on.svg');
+}
