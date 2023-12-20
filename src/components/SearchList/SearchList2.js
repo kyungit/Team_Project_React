@@ -32,6 +32,7 @@ export default function SearchList2() {
     const navigate = useNavigate()
 
     const onRoomInfo = (d_code) => {
+        sessionStorage.setItem('d_code', d_code)
         navigate('/roomInfo')
     }
 
@@ -87,7 +88,7 @@ export default function SearchList2() {
                         <div
                             key={page + index}
                             onClick={() => {
-                                onRoomInfo()
+                                onRoomInfo(e.d_code)
                             }}
                         >
                             <Row className="w-full">

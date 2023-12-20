@@ -12,9 +12,13 @@ const RoomInfoProvider = ({ children }) => {
         images6: null,
     })
 
+    let d_code = sessionStorage.getItem('d_code')
+
     useEffect(() => {
         const ImagesAPI = async () => {
-            const result1 = await axios.get('http://localhost:8080/roomInfo/roomReview')
+            const result1 = await axios.get(
+                `http://localhost:8080/roomInfo/roomReview?d_code=${d_code}`,
+            )
             // const result2 = await axios.get('http://localhost:8080/roomInfo/review')
             const result3 = await axios.get('http://localhost:8080/roomInfo/map')
             const result4 = await axios.get('http://localhost:8080/roomInfo/roomDetail')
