@@ -24,6 +24,7 @@ function App() {
                     <Route path="/menu" element={<Menu />} />
                     <Route path="/search" element={<Search />} />
                     <Route path="/boxColor" element={<BoxColor />} />
+    
                 </Route>
             </Routes>
         </Provider>
