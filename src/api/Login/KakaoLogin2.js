@@ -1,5 +1,6 @@
 import axios from 'axios'
 import KakaoLogin from 'react-kakao-login'
+
 import kakaoImg from '../../assets/img/kakaoLogin.png'
 
 const SocialKakao = () => {
@@ -26,7 +27,11 @@ const SocialKakao = () => {
                 token={Kakao_CLIENT_ID}
                 onSuccess={kakaoOnSuccess}
                 onFail={kakaoOnFailure}
+
             ><img src={kakaoImg} /></KakaoLogin>
+
+            />
+
         </>
     )
 }

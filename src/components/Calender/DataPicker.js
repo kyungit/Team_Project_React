@@ -4,6 +4,8 @@ import 'tailwindcss/tailwind.css'
 import './your-tailwind.css'
 import styled from 'styled-components'
 import HomeContext from '../../context/Home_Context'
+import SearchListContext from '../../context/SearchList_Context'
+import Context from '../../context/Context'
 
 const Styled = styled.div`
     div > input {
@@ -37,8 +39,10 @@ const Styled = styled.div`
 `
 
 export default function DataPicker() {
-    const { images, searchdata, setSearchdata } = useContext(HomeContext)
-    const { keyword, startDate, endDate, guest } = searchdata
+    // const { images, searchdata, setSearchdata } = useContext(HomeContext)
+    const { images, searchdata, setSearchdata } = useContext(Context)
+    // const { images, searchdata, setSearchdata } = useContext(SearchListContext)
+    // const { keyword, startDate, endDate, guest } = searchdata
 
     const [value, setValue] = useState({
         startDate: new Date(),
@@ -48,7 +52,6 @@ export default function DataPicker() {
     const handleValueChange = (newValue) => {
         // console.log('newValue:', newValue)
         setValue(newValue)
-
     }
 
     useEffect(() => {
@@ -56,14 +59,16 @@ export default function DataPicker() {
         onSearchChange(value)
     }, [value])
 
-    const onSearchChange = useCallback((value) => {
-
-        setSearchdata(searchdata => ({
-            ...searchdata,
-            startDate: value.startDate,
-            endDate: value.endDate
-        }))
-    }, [value])
+    const onSearchChange = useCallback(
+        (value) => {
+            setSearchdata((searchdata) => ({
+                ...searchdata,
+                startDate: value.startDate,
+                endDate: value.endDate,
+            }))
+        },
+        [value],
+    )
 
     useEffect(() => {
         console.log('onSearchChange3 : ', searchdata)
