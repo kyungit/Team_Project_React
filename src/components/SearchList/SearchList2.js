@@ -4,8 +4,10 @@ import Column from '../Common/Column'
 import Row from '../Common/Row'
 import { useNavigate } from 'react-router-dom'
 import Context from '../../context/Context'
+import axios from 'axios';
 
 export default function SearchList2() {
+
     const { images, setImages, GetSearchList } = useContext(SearchListContext)
     // const { images, setImages, GetSearchList } = useContext(Context)
     const searchlists = images.searchlist1
@@ -31,8 +33,14 @@ export default function SearchList2() {
     )
 
     const navigate = useNavigate()
-    const onRoomInfo = (d_code) => {
-        navigate('/roomInfo')
+    const onRoomInfo = async (d_code) => {
+        console.log(d_code);
+        const newItems = await axios.get('http://localhost:8080/roomInfo/roomReview',{
+            params:{d_code},
+        });
+        console.log("2222");
+        // navigate(`/roomInfo?d_code=${d_code}`)
+        document.location.href=`/roomInfo?d_code=${d_code}`;
     }
 
     //     const newItems = await axios
@@ -84,19 +92,14 @@ export default function SearchList2() {
                 <div>qweasdzxc</div>
                 {searchlists &&
                     searchlists.map((e, index) => (
-                        <div
-                            key={page + index}
-                            onClick={() => {
-                                onRoomInfo()
-                            }}
-                        >
+                        <div key={page + index} onClick={() => onRoomInfo(e.d_code)}>
                             <Row className="w-full">
                                 <Row className="w-1/3 h-40 bg-red-300"></Row>
                                 <Column className="ml-4 w-full">
                                     <Row className="text-xl font-semibold">{e.d_name}</Row>
                                     <Row className="mt-1">2.5-stars/</Row>
                                     <Row className="mt-1">Susseong-gu, Daegu/</Row>
-                                    <Row className="mt-1 text-2xl font-semibold">/121,000</Row>
+                                    <Row className="mt-1 text-2xl font-semibold">/120,000</Row>
                                     <Row className="mt-1">
                                         /
                                         <button

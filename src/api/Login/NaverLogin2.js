@@ -1,5 +1,6 @@
 import React from 'react'
 import NaverLogin from 'react-naver-login'
+import naverImg from '../../assets/img/naverLogin.png'
 
 const NaverLogin2 = () => {
     const Naver_CLIENT_ID = process.env.NAVER_CLIENT_ID // 발급받은 클라이언트 아이디
@@ -12,7 +13,7 @@ const NaverLogin2 = () => {
             render={(props) => <div onClick={props.onClick}>Naver Login</div>}
             onSuccess={(result) => console.log(result)}
             onFailure={(result) => console.error(result)}
-        ></NaverLogin>
+        ><img src={naverImg}/></NaverLogin>
     )
 }
 

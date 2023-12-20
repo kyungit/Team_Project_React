@@ -58,19 +58,19 @@ const ImageProvider = ({ children }) => {
             const result1 = await axios.get('http://localhost:8080/earlyCheckin')
             const result2 = await axios.get('http://localhost:8080/earlyCheckin')
             const result3 = await axios.get('http://localhost:8080/grade')
-            const result4 = await axios.get('http://localhost:8080/type')
+            // const result4 = await axios.get('http://localhost:8080/type')
 
             setImages({
                 images1: result1.data,
                 images2: result2.data,
                 images3: result3.data,
-                images4: result4.data,
+                // images4: result4.data,
             })
 
             console.log('result1 : ', result1)
             console.log('result2 : ', result2)
             console.log('result3 : ', result3)
-            console.log('result4 : ', result4)
+            // console.log('result4 : ', result4)
         }
 
         ImagesAPI()
