@@ -3,13 +3,8 @@ import SearchListContext from '../../context/SearchList_Context'
 import Column from '../Common/Column'
 import Row from '../Common/Row'
 import { useNavigate } from 'react-router-dom'
-import Context from '../../context/Context'
-
-import axios from 'axios';
-
 
 export default function SearchList2() {
-
     const { images, setImages, GetSearchList } = useContext(SearchListContext)
     // const { images, setImages, GetSearchList } = useContext(Context)
     const searchlists = images.searchlist1
@@ -36,10 +31,7 @@ export default function SearchList2() {
 
     const navigate = useNavigate()
 
-    const onRoomInfo = () => {
-
     const onRoomInfo = (d_code) => {
-
         navigate('/roomInfo')
     }
 
@@ -92,16 +84,12 @@ export default function SearchList2() {
                 <div>qweasdzxc</div>
                 {searchlists &&
                     searchlists.map((e, index) => (
-
-                        <div key={page + index} onClick={onRoomInfo}>
-
                         <div
                             key={page + index}
                             onClick={() => {
                                 onRoomInfo()
                             }}
                         >
-
                             <Row className="w-full">
                                 <Row className="w-1/3 h-40 bg-red-300"></Row>
                                 <Column className="ml-4 w-full">

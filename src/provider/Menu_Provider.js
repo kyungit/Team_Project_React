@@ -12,15 +12,9 @@ const MenuProvider = ({ children }) => {
 
     useEffect(() => {
         const ImagesAPI = async () => {
-            const result1 = await axios.get(
-                'http://localhost:8080/menu/memberInfo',
-            )
-            const result2 = await axios.get(
-                'http://localhost:8080/menu/reservationInfo',
-            )
-            const result3 = await axios.get(
-                'http://localhost:8080/menu/visited',
-            )
+            const result1 = await axios.get('http://localhost:8080/menu/memberInfo')
+            const result2 = await axios.get('http://localhost:8080/menu/reservationInfo')
+            const result3 = await axios.get('http://localhost:8080/menu/visited')
             // const result4 = await axios.get('')
 
             setImages({
@@ -39,9 +33,7 @@ const MenuProvider = ({ children }) => {
         ImagesAPI()
     }, [])
 
-    return (
-        <MenuContext.Provider value={images}>{children}</MenuContext.Provider>
-    )
+    return <MenuContext.Provider value={images}>{children}</MenuContext.Provider>
 }
 
 export default MenuProvider
