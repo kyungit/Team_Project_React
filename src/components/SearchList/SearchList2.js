@@ -9,7 +9,6 @@ import axios from 'axios';
 
 
 export default function SearchList2() {
-
     const { images, setImages, GetSearchList } = useContext(SearchListContext)
     // const { images, setImages, GetSearchList } = useContext(Context)
     const searchlists = images.searchlist1
@@ -108,7 +107,7 @@ export default function SearchList2() {
                                     <Row className="text-xl font-semibold">{e.d_name}</Row>
                                     <Row className="mt-1">2.5-stars/</Row>
                                     <Row className="mt-1">Susseong-gu, Daegu/</Row>
-                                    <Row className="mt-1 text-2xl font-semibold">/121,000</Row>
+                                    <Row className="mt-1 text-2xl font-semibold">/120,000</Row>
                                     <Row className="mt-1">
                                         /
                                         <button

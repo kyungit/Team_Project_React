@@ -1,4 +1,5 @@
 import axios from 'axios'
+import kakaoImg from '../../assets/img/kakaoLogin.png'
 import KakaoLogin from 'react-kakao-login'
 
 import kakaoImg from '../../assets/img/kakaoLogin.png'
