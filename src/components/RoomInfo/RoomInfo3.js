@@ -6,13 +6,19 @@ import RoomInfoContext from '../../context/RoomInfo_Context'
 
 export default function RoomInfo3() {
     const { roomInfos } = useContext(RoomInfoContext)
-
+    const data = roomInfos.roomInfos4
+    console.log('data123 : ', data)
     return (
         <div className="col-start-3 col-end-11 w-full h-1000">
-            {roomInfos.roomInfos4 &&
-                roomInfos.roomInfos4.map((roomInfo, index) => (
-                    <div key={index} className="mt-36">
-                        <Row>
+            {data &&
+                data.forEach((key, value) => {
+                    console.log(key)
+                })}
+            {/* {roomInfos.roomInfos4 &&
+                roomInfos.roomInfos4.forEach((listofRoomInfo, key) => {
+                    ;<div key={key} className="mt-36">
+                        console.log(${key}) */}
+            {/* <Row>
                             <img src={roomInfo.r_img} className="w-1/2  h-96 bg-red-400 rounded-3xl" alt="" />
 
                             <Column className="w-1/2 pl-10">
@@ -35,9 +41,10 @@ export default function RoomInfo3() {
                                     <Row>**Free cancellation before Tue, Dec 26**</Row>
                                 </Box>
                             </Column>
-                        </Row>
-                    </div>
-                ))}
+                        </Row> */}
+            //{' '}
         </div>
+        //         })}
+        // </div>
     )
 }
