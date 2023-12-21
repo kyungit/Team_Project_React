@@ -7,7 +7,7 @@ export default function RoomInfo3() {
     return (
         <div className="col-start-3 col-end-11 w-full h-1000 mt-36">
             <Row>
-                <Row className="w-1/2  h-96 bg-red-400"></Row>
+                <Row className="w-1/2  h-96 bg-red-400 rounded-3xl"></Row>
 
                 <Column className="w-1/2 pl-10">
                     <Row className="text-2xl font-semibold">Deluxe Room, 1 King Bed</Row>

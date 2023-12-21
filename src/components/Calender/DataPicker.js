@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import HomeContext from '../../context/Home_Context'
 import SearchListContext from '../../context/SearchList_Context'
 import Context from '../../context/Context'
+import { format, addDays } from 'date-fns'
 
 const Styled = styled.div`
     div > input {
@@ -44,9 +45,12 @@ export default function DataPicker() {
     // const { images, searchdata, setSearchdata } = useContext(SearchListContext)
     // const { keyword, startDate, endDate, guest } = searchdata
 
+    const today = new Date()
+    const tomorrow = addDays(today, 1)
+
     const [value, setValue] = useState({
-        startDate: new Date(),
-        endDate: new Date(),
+        startDate: format(today, 'yyyy-MM-dd'),
+        endDate: format(tomorrow, 'yyyy-MM-dd'),
     })
 
     const handleValueChange = (newValue) => {

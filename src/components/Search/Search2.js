@@ -5,7 +5,7 @@ import SearchListContext from '../../context/SearchList_Context'
 import HomeContext from '../../context/Home_Context'
 import Context from '../../context/Context'
 
-export default function Search() {
+export default function Search2() {
     // const { images, searchdata, setSearchdata, onSubmitSearch } = useContext(HomeContext)
     const { searchdata, setSearchdata, onSubmitSearch } = useContext(Context)
     // const { images, searchdata, setSearchdata, onSubmitSearch } = useContext(SearchListContext)
@@ -40,7 +40,7 @@ export default function Search() {
         {
             adults: 1,
             children: 0,
-            childAge: '',
+            childAge: null,
         },
     ])
 
@@ -50,19 +50,18 @@ export default function Search() {
         setRooms(newRooms)
     }
 
-    // handleGuestChange(index, 'adults', room.adults - 1)
     const addRoom = () => {
         setRooms([
             ...rooms,
             {
                 adults: 1,
                 children: 0,
-                childAge: '',
+                childAge: null,
             },
         ])
     }
 
-    const reomveRoom = (index) => {
+    const removeRoom = (index) => {
         const newRooms = [...rooms]
         newRooms.splice(index, 1)
         setRooms(newRooms)
@@ -101,10 +100,10 @@ export default function Search() {
                     {isModalOpen && (
                         <div className="modal">
                             {rooms.map((room, index) => (
-                                <div key={index} className="">
+                                <div key={index}>
                                     <div>Room(s) {index + 1}</div>
                                     <div>
-                                        어른
+                                        Adults
                                         <button
                                             disabled={room.adults === 1}
                                             onClick={() => handleGuestChange(index, 'adults', room.adults - 1)}
@@ -117,7 +116,7 @@ export default function Search() {
                                         </button>
                                     </div>
                                     <div>
-                                        아이
+                                        Children
                                         <button
                                             disabled={room.children === 0}
                                             onClick={() => handleGuestChange(index, 'children', room.children - 1)}
@@ -142,17 +141,11 @@ export default function Search() {
                                             ))}
                                         </select>
                                     )}
-                                    {rooms.length > 1 && <button onClick={() => reomveRoom(index)}>Remove Room</button>}
+                                    {rooms.length > 1 && <button onClick={() => removeRoom(index)}>Remove Room</button>}
                                 </div>
                             ))}
                             <button onClick={addRoom}>Add a Room</button>
-                            <button
-                                onClick={() => {
-                                    setIsModalOpen(false)
-                                }}
-                            >
-                                Done
-                            </button>
+                            <button onClick={() => setIsModalOpen(false)}>Done</button>
                         </div>
                     )}
                     <button
