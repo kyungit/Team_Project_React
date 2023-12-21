@@ -6,5 +6,5 @@ export default function Home4() {
     const data = useContext(ImageContext)
     const images = data.images4
     // console.log('images4 : ', images)
-    return <RoomImageSlide image_length="6" images={images} />
+    return <RoomImageSlide className="col-start-3 col-end-11 w-full h-auto pt-16" image_length="6" images={images} />
 }

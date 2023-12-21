@@ -1,8 +1,11 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import RoomInfoContext from '../../context/RoomInfo_Context'
 
 export default function RoomInfo1() {
     const [dormitorys, setDormitorys] = useState(null)
+    const { roomInfos } = useContext(RoomInfoContext)
+
     // const getApi = async () => {
     //     await axios.get('http://localhost:8080/room/roomDetail').then((res) => {
     //         setDormitorys(res.data)
@@ -17,8 +20,8 @@ export default function RoomInfo1() {
     return (
         <div className="col-start-3 col-end-11 w-full h-1000 pt-16">
             <div className="flex flex-col">
-                {dormitorys &&
-                    dormitorys.map((dormitory, index) => (
+                {roomInfos &&
+                    roomInfos.map((dormitory, index) => (
                         <div key={index}>
                             <div>{dormitory.d_code}</div>
                             <div>{dormitory.r_code}</div>

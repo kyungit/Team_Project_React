@@ -84,20 +84,20 @@ export default function SearchList2() {
             <div className="flex flex-col w-full">
                 <div>qweasdzxc</div>
                 {searchlists &&
-                    searchlists.map((e, index) => (
+                    searchlists.map((searchlist, index) => (
                         <div
                             key={page + index}
                             onClick={() => {
-                                onRoomInfo(e.d_code)
+                                onRoomInfo(searchlist.d_code)
                             }}
                         >
                             <Row className="w-full">
                                 <Row className="w-1/3 h-40 bg-red-300"></Row>
                                 <Column className="ml-4 w-full">
-                                    <Row className="text-xl font-semibold">{e.d_name}</Row>
-                                    <Row className="mt-1">2.5-stars/</Row>
-                                    <Row className="mt-1">Susseong-gu, Daegu/</Row>
-                                    <Row className="mt-1 text-2xl font-semibold">/121,000</Row>
+                                    <Row className="text-xl font-semibold">{searchlist.d_name}</Row>
+                                    <Row className="mt-1">**2.5-stars**/</Row>
+                                    <Row className="mt-1">{searchlist.d_road}/</Row>
+                                    <Row className="mt-1 text-2xl font-semibold">/**121,000**</Row>
                                     <Row className="mt-1">
                                         /
                                         <button

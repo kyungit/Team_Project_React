@@ -1,9 +1,10 @@
 import React from 'react'
+import Box from '../Common/Box'
 
 export default function Menu2() {
     return (
-        <div className="w-full h-40 pt-16 pl-16">
-            <div>Menu2</div>
+        <div className="col-start-4 col-end-13 w-full h-auto pt-16">
+            <Box>Menu2</Box>
         </div>
     )
 }

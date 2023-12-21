@@ -10,38 +10,16 @@ import Grid from '../../components/Common/Grid'
 import Search2 from '../../components/Search/Search2'
 
 export default function Home() {
-    console.log('렌더링')
-    const [data, setData] = useState({
-        id: '장진웅',
-        password: '칼퇴짱123',
-    })
-
-    const onSubmit = (e) => {
-        e.preventDefault()
-        console.log('data :  ', data) // 객체
-        console.log('JSON.stringify(data) : ', JSON.stringify(data)) // 문자열로
-        axios.post('http://localhost:8080/', data).then((res) => {
-            // axios.post('http://localhost:8080/api/login', JSON.stringify(data)).then((res) => {
-            console.log('res : ', res)
-            console.log('res.data : ', res.data)
-
-            // 로그인 성공여부 체크
-            window.sessionStorage.setItem('loginId', res.data.id)
-            window.sessionStorage.setItem('loginPassword', res.data.password)
-            setData({ ...data }) // => 렌더링이 다시 진행 되어짐.
-        })
-    }
-
     return (
         <>
-            <HomeProvider onSubmit={onSubmit}>
+            <HomeProvider>
                 <Grid>
                     <Search />
                     {/* <Search2 /> */}
-                    {/* <Home1 />
+                    <Home1 />
                     <Home2 />
                     <Home3 />
-                    <Home4 /> */}
+                    <Home4 />
                 </Grid>
             </HomeProvider>
         </>
