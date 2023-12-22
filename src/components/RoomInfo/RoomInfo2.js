@@ -9,7 +9,6 @@ export default function RoomInfo2() {
     if (roomInfos && roomInfos.roomInfos1) {
         firstRoomInfo = roomInfos.roomInfos1[0]
     }
-
     return (
         <div className="col-start-3 col-end-11 w-full h-1000">
             {firstRoomInfo && (
