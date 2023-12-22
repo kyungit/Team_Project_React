@@ -9,12 +9,12 @@ export default function Reservation2() {
             <Box>
                 <Column className="text-gray-500">
                     <Row className="text-2xl m-0 text-black">예약 정보</Row>
-                    <Row>투숙일 / 2024. 1. 9(화) - 2024. 1. 10 (수), 1박</Row>
-                    <Row>객실 인원 / 2인 (성인 2, 아동 0)</Row>
+                    <Row>투숙일 / **2024. 1. 9(화) - 2024. 1. 10 (수), 1박** </Row>
+                    <Row>객실 인원 / **2인 (성인 2, 아동 0)**</Row>
 
-                    <Row>예약 금액 / 330,000원</Row>
-                    <Row>할인 제공 / 15 %</Row>
-                    <Row>결제 금액 / 280,500</Row>
+                    <Row>예약 금액 / **330,000원**</Row>
+                    <Row>할인 제공 / **15 %**</Row>
+                    <Row>결제 금액 / **280,500**</Row>
                 </Column>
             </Box>
 

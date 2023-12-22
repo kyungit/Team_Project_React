@@ -10,7 +10,9 @@ export default function Menu() {
         <MenuProvider className="grid grid-cols-12 h-auto">
             <Grid>
                 <Menu1 />
-
+                <Menu2 />
+                {/* <Menu3 /> */}
+                <Menu4 />
             </Grid>
         </MenuProvider>
     )

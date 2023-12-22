@@ -9,6 +9,7 @@ import Search from './components/Search/Search'
 import Menu from './pages/menu/Menu'
 import BoxColor from './BoxColor'
 import Provider from './provider/Provider'
+import Payment from './components/Payment/Payment'
 // import page from './pages/page'
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
                     <Route path="/menu" element={<Menu />} />
                     <Route path="/search" element={<Search />} />
                     <Route path="/boxColor" element={<BoxColor />} />
+                    <Route path="/payment" element={<Payment />} />
                 </Route>
             </Routes>
         </Provider>

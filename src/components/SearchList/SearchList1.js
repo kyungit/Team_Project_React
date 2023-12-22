@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import Column from '../Common/Column'
 
 export default function HigherOrderRadioInputTest() {
@@ -6,6 +6,7 @@ export default function HigherOrderRadioInputTest() {
     const ReviewStar = useMemo(() => ['All', '5 ★', '4 ★', '3 ★', '2 ★'], [])
     const [SelectedIndexes, setSelectedIndexes] = useState([0])
     const [SelectedIndexes2, setSelectedIndexes2] = useState([0])
+    useEffect(() => {}, [SelectedIndexes, SelectedIndexes2])
     const onChange = useCallback(
         (index) => () => {
             setSelectedIndexes((prevIndexes) => {
