@@ -64,7 +64,7 @@ export default function RoomInfo3() {
                 Object.values(roomInfos4).map((roomInfos, index) => (
                     <Row key={index} className="w-full h-1000 mt-36">
                         <Column className="w-1/2">
-                            <img src={roomInfos[current].r_url} className="w-full h-auto" alt="" />
+                            <img src={roomInfos[current].r_url} className="w-full h-auto rounded-2xl" alt="" />
                             <div className="flex mt-4">
                                 <button
                                     onClick={() => {
@@ -75,7 +75,7 @@ export default function RoomInfo3() {
                                     ←
                                 </button>
                                 {roomInfos.slice(slideStart, slideStart + 4).map((roomInfo, index) => (
-                                    <img key={index} src={roomInfo.r_url} className="pl-2 w-1/4 h-auto" alt="" />
+                                    <img key={index} src={roomInfo.r_url} className="ml-4 w-1/4 h-auto rounded-2xl" alt="" />
                                 ))}
                                 <button
                                     onClick={() => {
