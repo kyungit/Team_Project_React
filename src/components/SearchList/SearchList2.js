@@ -10,24 +10,39 @@ export default function SearchList2() {
     const searchlists = images.searchlist1
     console.log('images4 : ', searchlists)
 
-    const [page, setPage] = useState(1)
+    const [pageNum, setPageNum] = useState(1)
     const [loading, setLoading] = useState(false) // 로딩 상태 추가
     const [initialLoad, setInitialLoad] = useState(true)
+    const loadingRef = useRef(false)
 
+    // const loadItems = useCallback(
+    //     async (nextPageNum) => {
+    //         setLoading(true) // 로딩 시작
+    //         const newItems = await GetSearchList(nextPageNum)
+    //         setImages((prevItems) => ({
+    //             searchlist1: [...prevItems.searchlist1, ...newItems],
+    //         }))
+    //         // setTimeout(() => {
+    //         //     setLoading(false)
+    //         // }, 3000)
+    //         setLoading(false) // 로딩 상태 업데이트
+    //     },
+    //     [GetSearchList, setImages],
+    // )
     const loadItems = useCallback(
-        async (nextPage) => {
-            setLoading(true) // 로딩 시작
-            const newItems = await GetSearchList(nextPage)
+        async () => {
+            if (loadingRef.current) return; // 이미 로딩 중이라면 더 이상 진행하지 않는다.
+            loadingRef.current = true
+            const newItems = await GetSearchList(pageNum)
             setImages((prevItems) => ({
                 searchlist1: [...prevItems.searchlist1, ...newItems],
             }))
-            // setTimeout(() => {
-            //     setLoading(false)
-            // }, 3000)
-            setLoading(false) // 로딩 상태 업데이트
+            console.log('pageNum : ', pageNum)
+            loadingRef.current = false
         },
-        [GetSearchList, setImages],
-    )
+        [GetSearchList, setImages, pageNum],)
+
+
 
     const navigate = useNavigate()
 
@@ -36,40 +51,27 @@ export default function SearchList2() {
         navigate('/roomInfo')
     }
 
-    //     const newItems = await axios
-    //         .get(`http://localhost:8080/searchList/dormitory`)
-    //         // .get(`https://jsonplaceholder.typicode.com/posts?_start=${(page - 1) * 10}&_limit=10`)
-    //         .then((res) => {
-    //             console.log(res.data)
-    //             return res.data
-    //         })
-
-    //     if (initialLoad) {
-    //         setItems((prevItems) => [...prevItems, ...newItems])
-    //         setPage((prevPage) => prevPage + 1)
-    //         setLoading(false)
-    //         setInitialLoad(false)
-    //     } else {
-    //         setTimeout(() => {
-    //             setItems((prevItems) => [...prevItems, ...newItems])
-    //             setPage((prevPage) => prevPage + 1)
-    //             setLoading(false)
-    //         }, 1000)
-    //     }
-    // }, [loading, initialLoad]) // page를 제거하고 initialLoad를 추가
-
     useEffect(() => {
-        loadItems(page) // 컴포넌트가 마운트될 때 한 번만 데이터 로드
-    }, [loadItems, page]) // dependency 배열에서 loadItems를 제거
+        loadItems(pageNum) // 컴포넌트가 마운트될 때 한 번만 데이터 로드
+    }, []) // dependency 배열에서 loadItems를 제거
 
     useEffect(() => {
         const handleScroll = () => {
             const { scrollTop, clientHeight, scrollHeight } = document.documentElement
             console.log(scrollHeight, scrollTop, clientHeight)
-            if (scrollHeight - scrollTop <= clientHeight + 50 && !loading) {
-                // setPage((prevPage) => prevPage + 1)
-                // loadItems()
-                loadItems(page + 1)
+            if (scrollHeight - scrollTop <= clientHeight + 50) {
+                // 로딩 중이 아닐 때만 새로운 데이터 불러오기
+                // if (!loading) {
+                //     setPageNum((prevPageNum) => prevPageNum + 1);
+                // }
+                // if (!loadingRef.current) {
+                //     setPageNum((prevPageNum) => prevPageNum + 1);
+                // }
+                if (!loadingRef.current) {
+                    setPageNum((prevpage) => prevpage + 1);
+                    // loadItems(pageNum); // loadItems 함수 내에서 페이지 번호를 업데이트
+                    // setPageNum((prevPageNum) => prevPageNum + 1);
+                }
             }
         }
 
@@ -77,7 +79,13 @@ export default function SearchList2() {
         return () => {
             window.removeEventListener('scroll', handleScroll)
         }
-    }, [loadItems, loading, page]) // 스크롤 이벤트 리스너 등록 및 해제
+    }, []) // 스크롤 이벤트 리스너 등록 및 해제
+
+    useEffect(() => {
+        if (pageNum > 1) {
+            loadItems();
+        }
+    }, [pageNum]) // pageNum이 업데이트 될 때마다 loadItems 함수 호출
 
     return (
         <div className="col-start-5 col-end-11 w-full pt-16">
@@ -86,7 +94,7 @@ export default function SearchList2() {
                 {searchlists &&
                     searchlists.map((searchlist, index) => (
                         <div
-                            key={page + index}
+                            key={pageNum + index}
                             onClick={() => {
                                 onRoomInfo(searchlist.d_code)
                             }}

@@ -22,7 +22,7 @@ function App() {
                     <Route path="/searchList" element={<SearchList />} />
                     <Route path="/roomInfo" element={<RoomInfo />} />
                     <Route path="/reservation" element={<Reservation />} />
-                    <Route path="/menu" element={<Menu />} />
+                    <Route path="/menu/*" element={<Menu />} />
                     <Route path="/search" element={<Search />} />
                     <Route path="/boxColor" element={<BoxColor />} />
                     <Route path="/payment" element={<Payment />} />

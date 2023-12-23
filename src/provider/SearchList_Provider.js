@@ -43,37 +43,27 @@ const SearchListProvider = ({ children }) => {
     //     SearchdataGet()
     // }, [searchdata])
 
-    const GetSearchList = useCallback(async (page) => {
-        const ImagesAPI = async (page) => {
-            const result1 = await axios.get(
-                `http://localhost:8080/searchList/dormitory?page=${page}`,
-                // `https://jsonplaceholder.typicode.com/posts?_start=${(page - 1) * 10}&_limit=10`
-            )
-            // setImages({
-            //     searchlist1: result1.data,
-            // })
+    const GetSearchList = useCallback(async (pageNum) => {
+        const result1 = await axios.get(
+            `http://localhost:8080/searchList/dormitory?pageNum=${pageNum}`,
+        )
+        // setImages({
+        //     searchlist1: result1.data,
+        // })
 
-            // setImages((prevItems) => ({
-            //     searchlist1: [...prevItems.searchlist1, result1.data],
-            // }))
+        // setImages((prevItems) => ({
+        //     searchlist1: [...prevItems.searchlist1, result1.data],
+        // }))
 
-            console.log('result1 : ', result1)
-            return result1.data
-        }
+        console.log('result1 : ', result1)
+        return result1.data
 
-        return await ImagesAPI(page)
     }, [])
 
     useEffect(() => {
         GetSearchList(1)
     }, [GetSearchList])
 
-    // const value = useMemo(
-    //     () => ({ images, setImages, searchdata, setSearchdata, onSubmitSearch, GetSearchList }),
-    //     [images, setImages, searchdata, setSearchdata, onSubmitSearch, GetSearchList],
-    // )
-
-    // const value = useMemo(() => ({ images, setImages }), [images, setImages])
 
     const value = useMemo(() => ({ images, setImages, GetSearchList }), [images, GetSearchList])
 

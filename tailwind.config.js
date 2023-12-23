@@ -15,12 +15,15 @@ module.exports = {
     plugins: [
         function ({ addUtilities }) {
             const newUtilities = {
-                '.mt-1': {
-                    marginTop: '0.25rem !important',
-                },
                 '.mt-0': {
                     marginTop: '0rem !important',
                 },
+                '.mt-1': {
+                    marginTop: '0.25rem !important',
+                },
+                '.mt-2': {
+                    marginTop: '0.5rem !important',
+                }
             }
             addUtilities(newUtilities)
         },

@@ -4,15 +4,24 @@ import Menu2 from '../../components/Menu/Menu2'
 import Menu3 from '../../components/Menu/Menu3'
 import Menu4 from '../../components/Menu/Menu4'
 import MenuProvider from '../../provider/Menu_Provider'
+import Layout2 from '../../Layout2'
+import { Route, Routes } from 'react-router-dom'
 
 export default function Menu() {
     return (
         <MenuProvider className="grid grid-cols-12 h-auto">
             <Grid>
-                <Menu1 />
+                {/* <Menu1 />
                 <Menu2 />
-                {/* <Menu3 /> */}
-                <Menu4 />
+                <Menu3 />
+                <Menu4 /> */}
+                <Routes>
+                    <Route path="/" element={<Layout2 />}>
+                        <Route path="/memberInfo" element={<Menu2 />} />
+                        <Route path="/Reservation" element={<Menu3 />} />
+                        <Route path="/visited" element={<Menu4 />} />
+                    </Route>
+                </Routes>
             </Grid>
         </MenuProvider>
     )
