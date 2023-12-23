@@ -14,22 +14,31 @@ import './slick-theme.css'
 import './slick.css'
 
 export default function Home2() {
+    const [isVisible, setIsVisible] = useState(true);
 
     const PrevArrow = (props) => {
         const { className, onClick } = props;
         return (
+            !isVisible &&
             <img width="64" height="64" className='absolute z-10  w-10 h-10 object-cover'
                 style={{ left: '1%', top: '61%' }}
-                onClick={onClick} src="https://www.tripbtoz.com/images/main/bg_btn_mGroup2_arr.svg" alt="circled-chevron-right" />
+                onClick={() => {
+                    onClick();
+                    setIsVisible(true)
+                }} src="https://www.tripbtoz.com/images/main/bg_btn_mGroup2_arr.svg" alt="circled-chevron-right" />
         );
     }
 
     const NextArrow = (props) => {
         const { className, onClick } = props;
         return (
+            isVisible &&
             <img width="32" height="32" className='absolute z-10 w-10 h-10 object-cover'
                 style={{ right: '1%', bottom: '28%', transform: 'scaleX(-1)' }}
-                onClick={onClick} src="https://www.tripbtoz.com/images/main/bg_btn_mGroup2_arr.svg" alt="circled-chevron-right" />
+                onClick={() => {
+                    onClick();
+                    setIsVisible(false)
+                }} src="https://www.tripbtoz.com/images/main/bg_btn_mGroup2_arr.svg" alt="circled-chevron-right" />
         );
     }
     const settings = {
