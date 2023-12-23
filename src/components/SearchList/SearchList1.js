@@ -6,7 +6,7 @@ export default function HigherOrderRadioInputTest() {
     const ReviewStar = useMemo(() => ['All', '5 ★', '4 ★', '3 ★', '2 ★'], [])
     const [SelectedIndexes, setSelectedIndexes] = useState([0])
     const [SelectedIndexes2, setSelectedIndexes2] = useState([0])
-    useEffect(() => {}, [SelectedIndexes, SelectedIndexes2])
+    useEffect(() => { }, [SelectedIndexes, SelectedIndexes2])
     const onChange = useCallback(
         (index) => () => {
             setSelectedIndexes((prevIndexes) => {
@@ -86,7 +86,7 @@ export default function HigherOrderRadioInputTest() {
     )
 
     return (
-        <div className="col-start-3 col-end-5 w-full h-auto pt-16">
+        <div className="col-start-2 col-end-5 w-full h-auto pt-16 flex flex-row justify-center">
             <Column className=" items-start">
                 <section className="mt-4">
                     <div>PropertyType</div>

@@ -70,7 +70,7 @@ export default function Search() {
 
     return (
         // 1-1. 검색 기능 : 이름, 장소, 연관 단어
-        <div className="col-start-3 col-end-11 w-full h-auto pt-16">
+        <div className="col-start-2 col-end-12 w-full h-auto pt-16">
             <div
                 className="
                  z-10 flex h-16 flex-row items-center rounded-full bg-white shadow-md"

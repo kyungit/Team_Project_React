@@ -88,8 +88,8 @@ export default function SearchList2() {
     }, [pageNum]) // pageNum이 업데이트 될 때마다 loadItems 함수 호출
 
     return (
-        <div className="col-start-5 col-end-11 w-full pt-16">
-            <div className="flex flex-col w-full">
+        <div className="col-start-5 col-end-12 w-full pt-16 flex flex-row justify-center">
+            <div className="flex flex-col w-5/6">
                 <div>qweasdzxc</div>
                 {searchlists &&
                     searchlists.map((searchlist, index) => (

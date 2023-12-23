@@ -62,7 +62,7 @@ export default function RoomInfo3() {
         <div className="col-start-3 col-end-11 w-full h-1000">
             {roomInfos4 &&
                 Object.values(roomInfos4).map((roomInfos, index) => (
-                    <Row key={index} className="w-full h-1000 mt-36">
+                    <Row key={index} className="w-full h-1000 mt-24">
                         <Column className="w-1/2">
                             <img src={roomInfos[current].r_url} className="w-full h-auto rounded-2xl" alt="" />
                             <div className="flex mt-4">

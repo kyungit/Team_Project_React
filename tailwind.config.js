@@ -23,6 +23,12 @@ module.exports = {
                 },
                 '.mt-2': {
                     marginTop: '0.5rem !important',
+                },
+                '.mt-24': {
+                    marginTop: '6rem !important',
+                },
+                '.mt-36': {
+                    marginTop: '9rem !important',
                 }
             }
             addUtilities(newUtilities)
