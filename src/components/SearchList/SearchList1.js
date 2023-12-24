@@ -1,12 +1,38 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import Column from '../Common/Column'
+import SearchListContext from '../../context/SearchList_Context'
+import Context from '../../context/Context'
 
 export default function HigherOrderRadioInputTest() {
-    const DormitoryType = useMemo(() => ['All', 'HOTEL', 'RESORT', 'MOTEL', 'OTHER'], [])
+    const DormitoryType = useMemo(() => ['All', 'HOTEL', 'MOTEL', 'PENSION', 'GUESTHOUSE'], [])
     const ReviewStar = useMemo(() => ['All', '5 ★', '4 ★', '3 ★', '2 ★'], [])
+    const Star = useMemo(() => ['All', '5', '4', '3', '2'])
     const [SelectedIndexes, setSelectedIndexes] = useState([0])
     const [SelectedIndexes2, setSelectedIndexes2] = useState([0])
-    useEffect(() => { }, [SelectedIndexes, SelectedIndexes2])
+    const { setSearchdata } = useContext(Context)
+
+    for (let i = 0; i < SelectedIndexes.length; i++) {
+        console.log(`SelectedIndexes ${i} : `, DormitoryType[SelectedIndexes[i]])
+    }
+    for (let i = 0; i < SelectedIndexes2.length; i++) {
+        console.log(`SelectedIndexes2 ${i} : `, ReviewStar[SelectedIndexes2[i]])
+    }
+
+    useEffect(() => {
+        console.log('SelectedIndexes', SelectedIndexes)
+        console.log('SelectedIndexes2', SelectedIndexes2)
+        const selectedTypes = SelectedIndexes.map((index) => DormitoryType[index])
+        const selectedStars = SelectedIndexes2.map((index) => Star[index])
+        console.log('selectedTypes', selectedTypes)
+        console.log('selectedStars', selectedStars)
+
+        setSearchdata((prevData) => ({
+            ...prevData,
+            type: selectedTypes,
+            star: selectedStars,
+        }))
+    }, [SelectedIndexes, SelectedIndexes2])
+
     const onChange = useCallback(
         (index) => () => {
             setSelectedIndexes((prevIndexes) => {

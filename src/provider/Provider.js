@@ -1,14 +1,21 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react'
+import React, { useState, useEffect, useMemo, useCallback, useContext } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import Context from '../context/Context'
+import SearchListContext from '../context/SearchList_Context'
 
 const Provider = ({ children }) => {
+    const [images, setImages] = useState({
+        searchlist1: [],
+    })
+
     const [searchdata, setSearchdata] = useState({
         keyword: null,
         startDate: null,
         endDate: null,
         guest: null,
+        type: [],
+        star: [],
     })
 
     const navigate = useNavigate()
@@ -18,30 +25,31 @@ const Provider = ({ children }) => {
     }, [searchdata])
 
     const onSubmitSearch = useCallback(() => {
-        const SearchdataGet = async () => {
-            await axios
-                .get('http://localhost:8080/searchList/dormitory', { params: searchdata })
-                .then((res) => {
-                    console.log('success : ', res.status)
-                    console.log('res : ', res)
-                    console.log('res.data : ', res.data)
+        setImages((prevItems) => ({
+            ...prevItems,
+            searchlist1: [], // or some default value
+        }))
+        navigate('/searchList')
+    }, [])
 
-                    // 성공적으로 처리되었을 때 리디렉션
-                    navigate('/searchList')
-                })
-                .catch((error) => {
-                    console.error('Error fetching data: ', error)
-                    // 요청이 실패했을 때의 동작을 여기에 추가합니다.
-                    // 예: setError('Error fetching data');
-                })
-        }
+    const GetSearchList = useCallback(
+        async (pageNum) => {
+            const result1 = await axios.post(`http://localhost:8080/searchList/dormitory?pageNum=${pageNum}`, searchdata)
 
-        SearchdataGet()
-    }, [searchdata])
+            console.log('result1 : ', result1)
+            console.log('searchdata.type', searchdata.type)
+            console.log('searchdata.star', searchdata.star)
+            // setImages((prevItems) => ({
+            //     searchlist1: [...prevItems.searchlist1, result1.data],
+            // }))
+            return result1.data
+        },
+        [searchdata],
+    )
 
     const value = useMemo(
-        () => ({ searchdata, setSearchdata, onSubmitSearch }),
-        [searchdata, setSearchdata, onSubmitSearch],
+        () => ({ images, setImages, searchdata, setSearchdata, GetSearchList, onSubmitSearch }),
+        [images, setImages, searchdata, setSearchdata, GetSearchList, onSubmitSearch],
     )
 
     return (

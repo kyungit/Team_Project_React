@@ -1,12 +1,18 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react'
+import React, { useState, useEffect, useMemo, useCallback, useContext } from 'react'
 import axios from 'axios'
 import SearchListContext from '../context/SearchList_Context'
 import { useNavigate } from 'react-router-dom'
+import Context from '../context/Context'
 
 const SearchListProvider = ({ children }) => {
-    const [images, setImages] = useState({
-        searchlist1: [],
-    })
+    // const [images, setImages] = useState({
+    //     searchlist1: [],
+    // })
+
+    // const { searchdata } = useContext(Context)
+
+    // const [type, setType] = useState([])
+    // const [star, setStar] = useState([])
 
     // const [searchdata, setSearchdata] = useState({
     //     keyword: null,
@@ -43,31 +49,25 @@ const SearchListProvider = ({ children }) => {
     //     SearchdataGet()
     // }, [searchdata])
 
-    const GetSearchList = useCallback(async (pageNum) => {
-        const result1 = await axios.get(
-            `http://localhost:8080/searchList/dormitory?pageNum=${pageNum}`,
-        )
-        // setImages({
-        //     searchlist1: result1.data,
-        // })
+    // const GetSearchList = useCallback(
+    //     async (pageNum) => {
+    //         const result1 = await axios.get(`http://localhost:8080/searchList/dormitory?pageNum=${pageNum}&type=${type}&star=${star}`, { params: searchdata })
 
-        // setImages((prevItems) => ({
-        //     searchlist1: [...prevItems.searchlist1, result1.data],
-        // }))
+    //         console.log('result1 : ', result1)
+    //         console.log('type : ', type)
+    //         console.log('star : ', star)
+    //         return result1.data
+    //     },
+    //     [searchdata, type, star],
+    // )
 
-        console.log('result1 : ', result1)
-        return result1.data
+    // useEffect(() => {
+    //     GetSearchList(1)
+    // }, [GetSearchList])
 
-    }, [])
+    // const value = useMemo(() => ({ images, setImages, GetSearchList, setStar, setType }), [images, setImages, GetSearchList, setStar, setType])
 
-    useEffect(() => {
-        GetSearchList(1)
-    }, [GetSearchList])
-
-
-    const value = useMemo(() => ({ images, setImages, GetSearchList }), [images, GetSearchList])
-
-    return <SearchListContext.Provider value={value}>{children}</SearchListContext.Provider>
+    return <SearchListContext.Provider>{children}</SearchListContext.Provider>
 }
 
 export default SearchListProvider

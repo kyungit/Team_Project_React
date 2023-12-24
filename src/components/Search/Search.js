@@ -4,6 +4,7 @@ import DataPicker from '../Calender/DataPicker'
 import SearchListContext from '../../context/SearchList_Context'
 import HomeContext from '../../context/Home_Context'
 import Context from '../../context/Context'
+import { useNavigate } from 'react-router-dom'
 
 export default function Search() {
     // const { images, searchdata, setSearchdata, onSubmitSearch } = useContext(HomeContext)
@@ -105,35 +106,22 @@ export default function Search() {
                                     <div>Room(s) {index + 1}</div>
                                     <div>
                                         어른
-                                        <button
-                                            disabled={room.adults === 1}
-                                            onClick={() => handleGuestChange(index, 'adults', room.adults - 1)}
-                                        >
+                                        <button disabled={room.adults === 1} onClick={() => handleGuestChange(index, 'adults', room.adults - 1)}>
                                             -
                                         </button>
                                         {room.adults}
-                                        <button onClick={() => handleGuestChange(index, 'adults', room.adults + 1)}>
-                                            +
-                                        </button>
+                                        <button onClick={() => handleGuestChange(index, 'adults', room.adults + 1)}>+</button>
                                     </div>
                                     <div>
                                         아이
-                                        <button
-                                            disabled={room.children === 0}
-                                            onClick={() => handleGuestChange(index, 'children', room.children - 1)}
-                                        >
+                                        <button disabled={room.children === 0} onClick={() => handleGuestChange(index, 'children', room.children - 1)}>
                                             -
                                         </button>
                                         {room.children}
-                                        <button onClick={() => handleGuestChange(index, 'children', room.children + 1)}>
-                                            +
-                                        </button>
+                                        <button onClick={() => handleGuestChange(index, 'children', room.children + 1)}>+</button>
                                     </div>
                                     {room.children > 0 && (
-                                        <select
-                                            value={room.childAge}
-                                            onChange={(e) => handleGuestChange(index, 'childAge', e.target.value)}
-                                        >
+                                        <select value={room.childAge} onChange={(e) => handleGuestChange(index, 'childAge', e.target.value)}>
                                             <option value="">나이를 선택해주세요</option>
                                             {Array.from({ length: 15 }, (_, i) => i + 1).map((age) => (
                                                 <option key={age} value={age}>
