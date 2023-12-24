@@ -31,8 +31,10 @@ export default function RoomInfo3() {
     }
 
     const navigate = useNavigate()
-    const onReservation = (d_code) => {
+    const onReservation = (d_code,r_code) => {
         sessionStorage.setItem('d_code', d_code)
+        sessionStorage.setItem('r_code', r_code)
+
         navigate('/reservation')
     }
 
@@ -101,7 +103,9 @@ export default function RoomInfo3() {
                     h-14 w-1/4 rounded-md text-black font-bold text-lg"
                                             style={{ backgroundColor: '#D9F99D' }}
                                             onClick={() => {
-                                                onReservation(roomInfos[0].d_code)
+                                                onReservation(roomInfos[0].d_code,
+                                                    roomInfos[0].r_code
+                                                )
                                             }}
                                         >
                                             예약하기

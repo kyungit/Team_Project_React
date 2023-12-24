@@ -27,7 +27,7 @@ const RoomInfoProvider = ({ children }) => {
 
             setRoomInfos({
                 roomInfos1: result1.data,
-                // roomInfoss2: result2.data,
+                // roomInfos2: result2.data,
                 roomInfos3: result3.data,
                 roomInfos4: result4.data,
                 roomInfos5: result5.data,

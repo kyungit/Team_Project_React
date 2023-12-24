@@ -46,8 +46,9 @@ export default function SearchList2() {
 
     const navigate = useNavigate()
 
-    const onRoomInfo = (d_code) => {
+    const onRoomInfo = (d_code,r_code) => {
         sessionStorage.setItem('d_code', d_code)
+        sessionStorage.setItem('r_code', r_code)
         navigate('/roomInfo')
     }
 
@@ -96,16 +97,16 @@ export default function SearchList2() {
                         <div
                             key={pageNum + index}
                             onClick={() => {
-                                onRoomInfo(searchlist.d_code)
+                                onRoomInfo(searchlist.d_code,searchlist.r_code)
                             }}
                         >
                             <Row className="w-full">
                                 <Row className="w-1/3 h-40 bg-red-300"></Row>
                                 <Column className="ml-4 w-full">
                                     <Row className="text-xl font-semibold">{searchlist.d_name}</Row>
-                                    <Row className="mt-1">**2.5-stars**/</Row>
+                                    <Row className="mt-1">★{searchlist.d_star}////////////////////////////////////////////////////////////////////</Row>
                                     <Row className="mt-1">{searchlist.d_road}/</Row>
-                                    <Row className="mt-1 text-2xl font-semibold">/**121,000**</Row>
+                                    <Row className="mt-1 text-2xl font-semibold">//////////////////////////////{parseInt(searchlist.min_r_price).toLocaleString()}원~{parseInt(searchlist.max_r_price).toLocaleString()}원</Row>
                                     <Row className="mt-1">
                                         /
                                         <button

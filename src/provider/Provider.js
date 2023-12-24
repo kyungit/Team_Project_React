@@ -27,7 +27,7 @@ const Provider = ({ children }) => {
                     console.log('res.data : ', res.data)
 
                     // 성공적으로 처리되었을 때 리디렉션
-                    navigate('/searchlist')
+                    navigate('/searchList')
                 })
                 .catch((error) => {
                     console.error('Error fetching data: ', error)

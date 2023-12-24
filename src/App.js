@@ -10,7 +10,7 @@ import Menu from './pages/menu/Menu'
 import BoxColor from './BoxColor'
 import Provider from './provider/Provider'
 import Payment from './components/Payment/Payment'
-// import page from './pages/page'
+import page from './pages/page'
 
 function App() {
     return (

@@ -10,21 +10,24 @@ const ReservationProvider = ({ children }) => {
     })
 
     const [reservationdata, setReservationdata] = useState({
-        d_code: '1',
-        r_code: '2',
-        d_name: '3',
-        d_type: '4',
-        r_img: 'a',
-        r_name: 'a',
+        d_code: null,
+        r_code: null,
+        d_name: null,
+        d_type: null,
+        r_img: null,
+        r_name: null,
+        d_discount:null,
 
-        m_userid: 'a',
-        m_telno: 'a',
+        m_userid: null,
+        m_telno: null,
+        m_username:null,
 
-        reservation_checkin: 'a',
-        reservation_checkout: 'a',
-        reservation_guest: 1,
-        reservation_price: 2,
-        reservation_description: 'a',
+
+        reservation_checkin: null,
+        reservation_checkout: null,
+        reservation_guest: null,
+        reservation_price: null,
+        reservation_description: null,
         s_status: 3,
     })
 
@@ -42,10 +45,11 @@ const ReservationProvider = ({ children }) => {
     // }, [reservationdata])
 
     let d_code = sessionStorage.getItem('d_code')
+    let r_code = sessionStorage.getItem('r_code')
 
     useEffect(() => {
         const ImagesAPI = async () => {
-            const result1 = await axios.get(`http://localhost:8080/reservation/dormitoryRoom?d_code=${d_code}`)
+            const result1 = await axios.get(`http://localhost:8080/reservation/dormitoryRoom?r_code=${r_code}`)
             // const result2 = await axios.get('http://localhost:8080/reservation/reservationInfo')
             // const result3 = await axios.get('http://localhost:8080/reservation/cancel')
 
@@ -63,7 +67,7 @@ const ReservationProvider = ({ children }) => {
         ImagesAPI()
     }, [])
 
-    const value = useMemo(() => ({ reservations }), [reservations])
+    const value = useMemo(() => ({ reservations,reservationdata,setReservationdata }), [reservations,reservationdata])
 
     return <ReservationContext.Provider value={value}>{children}</ReservationContext.Provider>
 }

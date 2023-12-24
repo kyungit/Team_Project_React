@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default function Nav() {
     return (
-        <div className="fixed w-full h-20 bg-purple-100 p-4">
+        <div className="fixed w-full h-20 bg-purple-100 p-4" >
             <div className="flex w-auto h-full flex-row justify-between items-center p-6">
                 <Link to="/">칼퇴시켜줄래</Link>
                 <div className=" w-1/6 flex justify-between">

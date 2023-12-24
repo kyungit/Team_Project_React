@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 
-const Payment = () => {
+const Payment = (paid) => {
     const [IMP, setIMP] = useState('imp30387750')
 
     const onClickRequestPay = () => {
@@ -52,8 +52,10 @@ const Payment = () => {
     }
 
     return (
-        <button className="mt-40" onClick={onClickRequestPay}>
-            결제하기
+        <button className="tab-size-4 user-select-text box-border flex items-center justify-center h-14 w-full rounded-md text-black font-bold text-lg mt-5"
+                style={{ backgroundColor: '#D9F99D' }}
+                onClick={onClickRequestPay}>
+            {parseInt(paid.data).toLocaleString()}원 결제하기
         </button>
     )
 }

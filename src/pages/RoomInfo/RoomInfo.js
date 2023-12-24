@@ -14,7 +14,7 @@ export default function RoomInfo() {
                 {/* <RoomInfo1 /> */}
                 <RoomInfo2 />
                 <RoomInfo3 />
-                {/* <RoomInfo4 /> */}
+                 <RoomInfo4 />
             </Grid>
         </RoomInfoProvider>
     )
