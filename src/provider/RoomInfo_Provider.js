@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useState, useEffect, useMemo, useContext } from 'react'
 import axios from 'axios'
 import RoomInfoContext from '../context/RoomInfo_Context'
+import Context from '../context/Context'
 
 const RoomInfoProvider = ({ children }) => {
     const [roomInfos, setRoomInfos] = useState({
@@ -15,12 +16,17 @@ const RoomInfoProvider = ({ children }) => {
 
     let d_code = sessionStorage.getItem('d_code')
 
+    const { searchdata } = useContext(Context)
+    const { startDate, endDate } = searchdata
+
     useEffect(() => {
         const ImagesAPI = async () => {
             const result1 = await axios.get(`http://localhost:8080/roomInfo/roomReview?d_code=${d_code}`)
             // const result2 = await axios.get('http://localhost:8080/roomInfo/review')
             const result3 = await axios.get(`http://localhost:8080/roomInfo/map?d_code=${d_code}`)
-            const result4 = await axios.get(`http://localhost:8080/roomInfo/roomDetail?d_code=${d_code}`)
+            const result4 = await axios.get(
+                `http://localhost:8080/roomInfo/roomDetail?d_code=${d_code}&reservation_checkin=${startDate}&reservation_checkout=${endDate}`,
+            )
             const result5 = await axios.get(`http://localhost:8080/roomInfo/dormitory?d_code=${d_code}`)
             const result6 = await axios.get(`http://localhost:8080/roomInfo/cancel?d_code=${d_code}`)
             const result7 = await axios.get(`http://localhost:8080/roomInfo/amenity?d_code=${d_code}`)

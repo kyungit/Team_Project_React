@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import RoomImageSlide from './RoomImageSlide'
 import ImageContext from '../../context/Home_Context'
 import Slider from 'react-slick'
@@ -10,6 +10,7 @@ import butterfly from '../../assets/img/butterfly.jpg'
 import forest from '../../assets/img/forest.jpg'
 import mountain from '../../assets/img/mountain.jpg'
 import Row from '../Common/Row'
+import { useLocation } from 'react-router-dom'
 const PrevArrow = (props) => {
     const { className, onClick } = props
     return (

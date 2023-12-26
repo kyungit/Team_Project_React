@@ -4,13 +4,29 @@ import DataPicker from '../Calender/DataPicker'
 import SearchListContext from '../../context/SearchList_Context'
 import HomeContext from '../../context/Home_Context'
 import Context from '../../context/Context'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 export default function Search() {
     // const { images, searchdata, setSearchdata, onSubmitSearch } = useContext(HomeContext)
     const { searchdata, setSearchdata, onSubmitSearch } = useContext(Context)
     // const { images, searchdata, setSearchdata, onSubmitSearch } = useContext(SearchListContext)
     const { keyword, startDate, endDate, guest } = searchdata
+
+    const location = useLocation()
+
+    useEffect(() => {
+        // URL이 변경될 때마다 keyword를 초기화합니다.
+        if (location.pathname === '/') {
+            setSearchdata({
+                keyword: '',
+                startDate: startDate,
+                endDate: endDate,
+                guest: 1,
+                type: [],
+                star: [],
+            })
+        }
+    }, [location])
 
     const onKeywordChange = useCallback((e) => {
         setSearchdata((searchdata) => ({
@@ -81,9 +97,10 @@ export default function Search() {
                         type="search"
                         id="default-search"
                         className="p-8 bg-transparent inline-block h-auto w-full overflow-ellipsis border-none text-gray-800 caret-green-500 placeholder-gray-400 focus:placeholder-gray-100 left-8 top-1 z-20 cursor-pointer leading-normal outline-none"
-                        placeholder="숙소를 검색하세요"
+                        placeholder={keyword ? keyword : '숙소를 검색하세요'}
                         required
                         onChange={onKeywordChange}
+                        value={keyword}
                     />
                 </div>
                 <div className="relative ml-4 w-1/3">
@@ -94,10 +111,11 @@ export default function Search() {
                         type="search"
                         id="default-search"
                         className="p-4 bg-transparent inline-block h-auto overflow-ellipsis border-none text-gray-800 caret-green-500 placeholder-gray-400 focus:placeholder-gray-100 left-8 top-1 z-20 cursor-pointer leading-normal outline-none"
-                        placeholder="인원을 입력하세요"
+                        placeholder={guest ? guest : '인원을 입력하세요'}
                         required
                         onChange={onGuestChange}
                         onClick={() => setIsModalOpen(true)}
+                        value={guest}
                     />
                     {isModalOpen && (
                         <div className="modal">

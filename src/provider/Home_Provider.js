@@ -3,7 +3,7 @@ import axios from 'axios'
 import HomeContext from '../context/Home_Context'
 import { useNavigate } from 'react-router-dom'
 
-const ImageProvider = ({ children }) => {
+const HomeProvider = ({ children }) => {
     const [images, setImages] = useState({
         images1: null,
         images2: null,
@@ -83,4 +83,4 @@ const ImageProvider = ({ children }) => {
     )
 }
 
-export default ImageProvider
+export default HomeProvider

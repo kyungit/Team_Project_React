@@ -7,6 +7,7 @@ import HomeContext from '../../context/Home_Context'
 import SearchListContext from '../../context/SearchList_Context'
 import Context from '../../context/Context'
 import { format, addDays } from 'date-fns'
+import { useLocation } from 'react-router-dom'
 
 const Styled = styled.div`
     div > input {
@@ -49,9 +50,27 @@ export default function DataPicker() {
     const tomorrow = addDays(today, 1)
 
     const [value, setValue] = useState({
-        startDate: format(today, 'yyyy-MM-dd'),
-        endDate: format(tomorrow, 'yyyy-MM-dd'),
+        startDate: null,
+        endDate: null,
     })
+
+    const { setSearchClicked, searchClicked } = useContext(Context)
+
+    const location = useLocation()
+
+    useEffect(() => {
+        if (location.pathname === '/' && !searchClicked) {
+            const today = new Date()
+            const tomorrow = addDays(today, 1)
+            const initialValue = {
+                startDate: format(today, 'yyyy-MM-dd'),
+                endDate: format(tomorrow, 'yyyy-MM-dd'),
+            }
+            setValue(initialValue)
+        } else if (location.pathname !== '/searchList') {
+            setSearchClicked(false)
+        }
+    }, [location, searchClicked])
 
     const handleValueChange = (newValue) => {
         // console.log('newValue:', newValue)

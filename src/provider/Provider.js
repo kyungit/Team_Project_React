@@ -9,6 +9,8 @@ const Provider = ({ children }) => {
         searchlist1: [],
     })
 
+    const [searchClicked, setSearchClicked] = useState(true)
+
     const [searchdata, setSearchdata] = useState({
         keyword: null,
         startDate: null,
@@ -30,6 +32,7 @@ const Provider = ({ children }) => {
             searchlist1: [], // or some default value
         }))
         navigate('/searchList')
+        setSearchClicked(true)
     }, [])
 
     const GetSearchList = useCallback(
@@ -48,8 +51,8 @@ const Provider = ({ children }) => {
     )
 
     const value = useMemo(
-        () => ({ images, setImages, searchdata, setSearchdata, GetSearchList, onSubmitSearch }),
-        [images, setImages, searchdata, setSearchdata, GetSearchList, onSubmitSearch],
+        () => ({ images, setImages, searchdata, setSearchdata, GetSearchList, onSubmitSearch, searchClicked, setSearchClicked }),
+        [images, setImages, searchdata, setSearchdata, GetSearchList, onSubmitSearch, searchClicked, setSearchClicked],
     )
 
     return (
