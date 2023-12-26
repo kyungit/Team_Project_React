@@ -51,23 +51,25 @@ const ReservationProvider = ({ children }) => {
         const ImagesAPI = async () => {
             const result1 = await axios.get(`http://localhost:8080/reservation/dormitoryRoom?r_code=${r_code}`)
             // const result2 = await axios.get('http://localhost:8080/reservation/reservationInfo')
-            // const result3 = await axios.get('http://localhost:8080/reservation/cancel')
+            const result3 = await axios.get(`http://localhost:8080/reservation/cancel?d_code=${d_code}`)
 
             setRerservations({
                 reservations1: result1.data,
                 // reservations2: result2.data,
-                // reservations3: result3.data,
+                reservations3: result3.data,
             })
 
             console.log('result1 : ', result1)
             // console.log('result2 : ', result2)
-            // console.log('result3 : ', result3)
+            console.log('result3 : ', result3)
         }
 
         ImagesAPI()
     }, [])
 
-    const value = useMemo(() => ({ reservations,reservationdata,setReservationdata }), [reservations,reservationdata])
+
+
+    const value = useMemo(() => ({ reservations,reservationdata,setReservationdata }), [reservations,reservationdata,setReservationdata])
 
     return <ReservationContext.Provider value={value}>{children}</ReservationContext.Provider>
 }

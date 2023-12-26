@@ -1,12 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import axios from 'axios'
+import ReservationContext from '../../context/Reservation_Context'
 
-const Payment = (paid) => {
+const Payment = (data) => {
+    const {price,name,telno} = data.data;
     const [IMP, setIMP] = useState('imp30387750')
+    const{reservationdata} = useContext(ReservationContext)
 
+
+    // console.log(price)
     const onClickRequestPay = () => {
+
         const { IMP } = window
         IMP.init('imp30387750')
+
 
         const today = new Date()
         const hours = today.getHours() // 시
@@ -20,9 +27,9 @@ const Payment = (paid) => {
                 pay_method: 'kakaopay',
                 merchant_uid: 'IMP' + makeMerchantUid,
                 name: '숙소예약Test', //입력란 만들기
-                amount: 20000, //나중에 숙소 가격 DB에서 가져오기
-                buyer_name: '이도경', //입력란 만들기
-                buyer_tel: '01012345678', //입력란 만들기
+                amount: price, //나중에 숙소 가격 DB에서 가져오기
+                buyer_name: name, //입력란 만들기
+                buyer_tel: telno, //입력란 만들기
             },
             (rsp) => {
                 if (rsp.success) {
@@ -44,6 +51,19 @@ const Payment = (paid) => {
                     }).then((data) => {
                         console.log(data)
                     })
+
+
+                    axios({
+                        url: 'http://localhost:8080/reservation/reservationInfo',
+                        method: 'post',
+                        headers: { 'Content-Type': 'application/json' },
+                        data: {
+                            ...reservationdata
+                        },
+                    }).then((data) => {
+                        console.log(data)
+                    })
+
                 } else {
                     alert(`결제에 실패하였습니다. 에러 내용: ${rsp.error_msg}`)
                 }
@@ -55,7 +75,7 @@ const Payment = (paid) => {
         <button className="tab-size-4 user-select-text box-border flex items-center justify-center h-14 w-full rounded-md text-black font-bold text-lg mt-5"
                 style={{ backgroundColor: '#D9F99D' }}
                 onClick={onClickRequestPay}>
-            {parseInt(paid.data).toLocaleString()}원 결제하기
+            {parseInt(price).toLocaleString()}원 결제하기
         </button>
     )
 }

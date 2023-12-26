@@ -12,7 +12,7 @@ export default function SearchList() {
                 <Reservation1 />
                 <Reservation2 />
                 <Reservation3 />
-                {/*<Reservation4 />*/}
+                <Reservation4 />
             </Grid>
         </ReservationProvider>
     )

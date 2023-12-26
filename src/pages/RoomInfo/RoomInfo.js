@@ -9,7 +9,7 @@ import RoomInfoProvider from '../../provider/RoomInfo_Provider'
 export default function RoomInfo() {
     return (
         <RoomInfoProvider>
-            <Grid>
+            <Grid >
                 <Search />
                 {/* <RoomInfo1 /> */}
                 <RoomInfo2 />

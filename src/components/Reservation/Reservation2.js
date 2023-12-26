@@ -7,6 +7,7 @@ import ReservationContext from '../../context/Reservation_Context'
 import Provider from '../../provider/Provider'
 import Context from '../../context/Context'
 import ReservationModal from './ReservationModal'
+import axios from 'axios'
 
 export default function Reservation2() {
     const { reservations, setReservationdata, reservationdata } = useContext(ReservationContext)
@@ -29,49 +30,53 @@ export default function Reservation2() {
     //모달 전용 함수
     const [isModalOpen, setIsModalOpen] = useState(false)
 
-    const openModal = async () => {
-        if (reservationdata.m_username == null) {
-            alert('이름을 입력하세요')
-            return false
+    const openModal =  () => {
+
+        if(reservationdata.m_username == null){
+            alert('이름을 입력하세요');
+            return false;
         }
-        if (reservationdata.m_telno == null) {
-            alert('번호를 입력하세요')
-            return false
+        if(reservationdata.m_telno == null){
+            alert('번호를 입력하세요');
+            return false;
         }
-        if (reservationdata.m_userid == null) {
-            alert('이메일을 입력하세요')
-            return false
-        } else {
-            var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/
-            if (exptext.test(reservationdata.m_userid) == false) {
+        if(reservationdata.m_userid == null){
+            alert('이메일을 입력하세요');
+            return false;
+        }
+        else{
+            var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+            if(exptext.test(reservationdata.m_userid)==false) {
                 //이메일 형식이 알파벳+숫자@알파벳+숫자.알파벳+숫자 형식이 아닐경우
-                alert('이메일형식이 올바르지 않습니다.')
-                return false
+                alert("이메일형식이 올바르지 않습니다.");
+                return false;
             }
         }
 
-        setReservationdata &&
-            setReservationdata({
-                ...reservationdata,
-                d_code: reservation.d_code,
-                r_code: reservation.r_code,
-                d_name: reservation.d_name,
-                d_type: reservation.d_type,
-                r_img: reservation.r_img,
-                r_name: reservation.r_name,
+        setReservationdata&&setReservationdata((reservate)  => ({
+            ...reservate,
+            d_code: reservation.d_code,
+            r_code: reservation.r_code,
+            d_name: reservation.d_name,
+            d_type: reservation.d_type,
+            r_img: reservation.r_img,
+            r_name: reservation.r_name,
 
-                reservation_checkin: searchdata.startDate,
-                reservation_checkout: searchdata.endDate,
-                reservation_guest: searchdata.guest,
-                reservation_price: reservation.r_price,
-                s_status: 3,
-            })
-        setIsModalOpen(true)
-    }
+
+            reservation_checkin: searchdata.startDate,
+            reservation_checkout: searchdata.endDate,
+            reservation_guest: searchdata.guest,
+            reservation_price: reservation.r_price,
+            s_status: 3,
+        }))
+
+        setIsModalOpen(true);
+    };
 
     const closeModal = () => {
-        setIsModalOpen(false)
-    }
+        setIsModalOpen(false);
+    };
+
 
     return (
         <div className="col-start-8 col-end-11 h-auto pt-56">
@@ -106,7 +111,12 @@ export default function Reservation2() {
                 </Column>
             </Box>
 
-            {isModalOpen && <ReservationModal closeModal={closeModal}></ReservationModal>}
+            {isModalOpen && (
+                <ReservationModal closeModal={closeModal}>
+
+                </ReservationModal>
+            )}
+
         </div>
     )
 }

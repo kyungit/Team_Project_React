@@ -15,19 +15,23 @@ export default function RoomInfo3() {
     }, [roomInfos])
     console.log('roomInfos4 : ', roomInfos4)
     // console.log('roomInfos4 : ', roomInfos4["228417"])
-
-    if (roomInfos4) {
-        Object.values(roomInfos4).map((roomInfo, index) => {
-            console.log('index : ', index)
-            console.log('roomInfo : ', roomInfo)
-        })
-
-        Object.keys(roomInfos4).forEach((key) => {
-            roomInfos4[key].forEach(({ r_name, r_description }) => {
-                console.log(`r_name: ${r_name}`)
-                console.log(`r_description: ${r_description}`)
-            })
-        })
+    //
+    // if (roomInfos4) {
+    //     Object.values(roomInfos4).map((roomInfo, index) => {
+    //         console.log('index : ', index)
+    //         console.log('roomInfo : ', roomInfo)
+    //     })
+    //
+    //     Object.keys(roomInfos4).forEach((key) => {
+    //         roomInfos4[key].forEach(({ r_name, r_description }) => {
+    //             console.log(`r_name: ${r_name}`)
+    //             console.log(`r_description: ${r_description}`)
+    //         })
+    //     })
+    // }
+    let roomInfo6 = null;
+    if(roomInfos&&roomInfos.roomInfos6){
+        roomInfo6 = roomInfos.roomInfos6
     }
 
     const navigate = useNavigate()
@@ -97,10 +101,10 @@ export default function RoomInfo3() {
                             <Box className="mt-8">
                                 <Column>
                                     <Row className="">
-                                        <Row className="mt-0 text-2xl">{roomInfos[0].r_price}원</Row>
+                                        <Row className="mt-0 text-2xl">{parseInt(roomInfos[0].r_price).toLocaleString()}원</Row>
                                         <button
                                             className="tab-size-4 user-select-text box-border flex items-center justify-center 
-                    h-14 w-1/4 rounded-md text-black font-bold text-lg"
+                                                    h-14 w-1/4 rounded-md text-black font-bold text-lg"
                                             style={{ backgroundColor: '#D9F99D' }}
                                             onClick={() => {
                                                 onReservation(roomInfos[0].d_code,
@@ -111,9 +115,11 @@ export default function RoomInfo3() {
                                             예약하기
                                         </button>
                                     </Row>
-                                    <Row>**Free cancellation before Tue, Dec 26**</Row>
+
                                 </Column>
                             </Box>
+
+
                         </Column>
                     </Row>
                 ))}
