@@ -3,6 +3,7 @@ import Menu1 from '../../components/Menu/Menu1'
 import Menu2 from '../../components/Menu/Menu2'
 import Menu3 from '../../components/Menu/Menu3'
 import Menu4 from '../../components/Menu/Menu4'
+import Menu5 from '../../components/Menu/Menu5'
 import MenuProvider from '../../provider/Menu_Provider'
 import Layout2 from '../../Layout2'
 import { Route, Routes } from 'react-router-dom'
@@ -20,6 +21,7 @@ export default function Menu() {
                         <Route path="/memberInfo" element={<Menu2 />} />
                         <Route path="/Reservation" element={<Menu3 />} />
                         <Route path="/visited" element={<Menu4 />} />
+                        <Route path="/codeInput" element={<Menu5 />} />
                     </Route>
                 </Routes>
             </Grid>
