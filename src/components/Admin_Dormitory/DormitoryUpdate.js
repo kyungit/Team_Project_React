@@ -12,7 +12,7 @@ export default function DormitoryUpdate() {
         event.preventDefault();
         // 서버로 수정할 정보를 보냅니다.
         try {
-            const response = await axios.put(`/api/dormitory/${code}`, {
+            const response = await axios.put(`/components/RoomInfo/RoomInfo1/${code}`, {
                 name,
                 location,
                 amenity,

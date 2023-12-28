@@ -8,7 +8,7 @@ export default function ReserveUpdate() {
     useEffect(() => {
         const fetchPayment = async () => {
             try {
-                const response = await axios.get('/api/payment');
+                const response = await axios.get('/components/payment/payment');
                 setPayment(response.data);
             } catch (error) {
                 console.log(error);
@@ -21,10 +21,10 @@ export default function ReserveUpdate() {
     const handleUpdate = async (paymentId, updatedInfo) => {
         // 결제 정보를 수정합니다.
         try {
-            await axios.put(`/api/payment/${paymentId}`, updatedInfo);
+            await axios.put(`//components/payment/payment/${paymentId}`, updatedInfo);
             alert('결제 정보가 수정되었습니다.');
             // 수정 후 결제 정보를 다시 가져옵니다.
-            const response = await axios.get('/api/payment');
+            const response = await axios.get('/components/payment/payment');
             setPayment(response.data);
         } catch (error) {
             console.log(error);
@@ -34,10 +34,10 @@ export default function ReserveUpdate() {
     const handleConfirm = async (id) => {
         // 결제를 확정합니다.
         try {
-            await axios.post(`/api/payment/${id}/confirm`);
+            await axios.post(`/components/payment/payment/${id}/confirm`);
             alert('결제가 확정되었습니다.');
             // 확정 후 결제 정보를 다시 가져옵니다.
-            const response = await axios.get('/api/payment');
+            const response = await axios.get('/components/payment/payment');
             setPayment(response.data);
         } catch (error) {
             console.log(error);
@@ -47,10 +47,10 @@ export default function ReserveUpdate() {
     const handleCancel = async (id) => {
         // 결제를 취소합니다.
         try {
-            await axios.post(`/api/payment/${id}/cancel`);
+            await axios.post(`/components/payment/payment/${id}/cancel`);
             alert('결제가 취소되었습니다.');
             // 취소 후 결제 정보를 다시 가져옵니다.
-            const response = await axios.get('/api/payment');
+            const response = await axios.get('/components/payment/payment');
             setPayment(response.data);
         } catch (error) {
             console.log(error);
