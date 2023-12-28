@@ -5,28 +5,39 @@ import SearchListContext from '../../context/SearchList_Context'
 import HomeContext from '../../context/Home_Context'
 import Context from '../../context/Context'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { format, addDays } from 'date-fns'
 
 export default function Search() {
     // const { images, searchdata, setSearchdata, onSubmitSearch } = useContext(HomeContext)
     const { searchdata, setSearchdata, onSubmitSearch } = useContext(Context)
     // const { images, searchdata, setSearchdata, onSubmitSearch } = useContext(SearchListContext)
-    const { keyword, startDate, endDate, guest } = searchdata
+    const { keyword, startDate, endDate, guest, type, star } = searchdata
 
-    const location = useLocation()
+    // const location = useLocation()
 
-    useEffect(() => {
-        // URL이 변경될 때마다 keyword를 초기화합니다.
-        if (location.pathname === '/') {
-            setSearchdata({
-                keyword: '',
-                startDate: startDate,
-                endDate: endDate,
-                guest: 1,
-                type: [],
-                star: [],
-            })
-        }
-    }, [location])
+    // const today = new Date()
+    // const tomorrow = addDays(today, 1)
+
+    // useEffect(() => {
+    //     // URL이 변경될 때마다 keyword를 초기화합니다.
+    //     if (location.pathname === '/') {
+    //         setSearchdata({
+    //             keyword: '',
+    //             guest: 1,
+    //             type: [],
+    //             star: [],
+    //         })
+    //     } else {
+    //         setSearchdata({
+    //             keyword: keyword,
+    //             guest: guest,
+    //             startDate: startDate,
+    //             endDate: endDate,
+    //             type: type,
+    //             star: star,
+    //         })
+    //     }
+    // }, [location])
 
     const onKeywordChange = useCallback((e) => {
         setSearchdata((searchdata) => ({

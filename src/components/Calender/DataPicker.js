@@ -45,36 +45,50 @@ export default function DataPicker() {
     const { images, searchdata, setSearchdata } = useContext(Context)
     // const { images, searchdata, setSearchdata } = useContext(SearchListContext)
     // const { keyword, startDate, endDate, guest } = searchdata
+    const { startDate, endDate } = searchdata
 
     const today = new Date()
     const tomorrow = addDays(today, 1)
 
     const [value, setValue] = useState({
-        startDate: null,
-        endDate: null,
+        startDate: format(today, 'yyyy-MM-dd'),
+        endDate: format(tomorrow, 'yyyy-MM-dd'),
     })
 
-    const { setSearchClicked, searchClicked } = useContext(Context)
+    // const location = useLocation()
 
-    const location = useLocation()
+    // useEffect(() => {
+    //     setValue({
+    //         startDate: startDate,
+    //         endDate: endDate,
+    //     })
+    //     if (location.pathname === '/') {
+    //         setValue({
+    //             startDate: format(today, 'yyyy-MM-dd'),
+    //             endDate: format(tomorrow, 'yyyy-MM-dd'),
+    //         })
+    //     }
+    // }, [location])
 
-    useEffect(() => {
-        if (location.pathname === '/' && !searchClicked) {
-            const today = new Date()
-            const tomorrow = addDays(today, 1)
-            const initialValue = {
-                startDate: format(today, 'yyyy-MM-dd'),
-                endDate: format(tomorrow, 'yyyy-MM-dd'),
-            }
-            setValue(initialValue)
-        } else if (location.pathname !== '/searchList') {
-            setSearchClicked(false)
-        }
-    }, [location, searchClicked])
+    const [trigger, setTrigger] = useState(Date.now())
 
     const handleValueChange = (newValue) => {
+        const newStartDate = new Date(newValue.startDate)
+        const newEndDate = new Date(newValue.endDate)
         // console.log('newValue:', newValue)
-        setValue(newValue)
+        if (newStartDate.getTime() < today.getTime() || newEndDate.getTime() < today.getTime()) {
+            alert('날짜를 오늘 날짜 이후로 설정해주세요.')
+            setValue({
+                startDate: format(today, 'yyyy-MM-dd'),
+                endDate: format(tomorrow, 'yyyy-MM-dd'),
+            })
+
+            // 달력 컴포넌트의 인스턴스를 새로 만들기 위해 key값을 변경
+            setTrigger(Date.now())
+        }
+        // else {
+        //     setValue(newValue)
+        // }
     }
 
     useEffect(() => {
@@ -98,7 +112,7 @@ export default function DataPicker() {
     }, [searchdata])
     return (
         <Styled>
-            <Datepicker value={value} onChange={handleValueChange} />
+            <Datepicker key={trigger} value={value} />
             {/* <Datepicker
                 className="hello"
                 value={value}

@@ -9,9 +9,7 @@ export default function Reservation3() {
         <Column className="col-start-3 col-end-8 h-auto pt-16 mb-40">
             <div>Map</div>
             {/* <MapNaverDefault /> */}
-            <div className="w-500 h-200">
-                 <MapKakaoDefault />
-            </div>
+            <div className="w-500 h-200">{/* <MapKakaoDefault /> */}</div>
         </Column>
     )
 }

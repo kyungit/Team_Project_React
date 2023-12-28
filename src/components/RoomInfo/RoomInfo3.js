@@ -29,13 +29,13 @@ export default function RoomInfo3() {
     //         })
     //     })
     // }
-    let roomInfo6 = null;
-    if(roomInfos&&roomInfos.roomInfos6){
+    let roomInfo6 = null
+    if (roomInfos && roomInfos.roomInfos6) {
         roomInfo6 = roomInfos.roomInfos6
     }
 
     const navigate = useNavigate()
-    const onReservation = (d_code,r_code) => {
+    const onReservation = (d_code, r_code) => {
         sessionStorage.setItem('d_code', d_code)
         sessionStorage.setItem('r_code', r_code)
 
@@ -70,7 +70,7 @@ export default function RoomInfo3() {
                 Object.values(roomInfos4).map((roomInfos, index) => (
                     <Row key={index} className="w-full h-1000 mt-24">
                         <Column className="w-1/2">
-                            <img src={roomInfos[current].r_url} className="w-full h-auto rounded-2xl" alt="" />
+                            <img src={roomInfos.r_url[current]} className="w-full h-auto rounded-2xl" alt="" />
                             <div className="flex mt-4">
                                 <button
                                     onClick={() => {
@@ -80,9 +80,9 @@ export default function RoomInfo3() {
                                 >
                                     ←
                                 </button>
-                                {roomInfos.slice(slideStart, slideStart + 4).map((roomInfo, index) => (
+                                {/* {roomInfos.slice(slideStart, slideStart + 4).map((roomInfo, index) => (
                                     <img key={index} src={roomInfo.r_url} className="ml-4 w-1/4 h-auto rounded-2xl" alt="" />
-                                ))}
+                                ))} */}
                                 <button
                                     onClick={() => {
                                         handleNext()
@@ -95,31 +95,26 @@ export default function RoomInfo3() {
                             </div>
                         </Column>
                         <Column className="w-1/2 pl-8">
-                            <Row className="text-3xl font-semibold mt-0">{roomInfos[0].r_name}</Row>
+                            <Row className="text-3xl font-semibold mt-0">{roomInfos.r_name}</Row>
                             <hr className="mt-4 border-b-2 border-b-black" />
-                            <Column>{roomInfos[0].r_description}</Column>
+                            <Column>{roomInfos.r_description}</Column>
                             <Box className="mt-8">
                                 <Column>
                                     <Row className="">
-                                        <Row className="mt-0 text-2xl">{parseInt(roomInfos[0].r_price).toLocaleString()}원</Row>
+                                        <Row className="mt-0 text-2xl">{parseInt(roomInfos.r_price).toLocaleString()}원</Row>
                                         <button
                                             className="tab-size-4 user-select-text box-border flex items-center justify-center 
                                                     h-14 w-1/4 rounded-md text-black font-bold text-lg"
                                             style={{ backgroundColor: '#D9F99D' }}
                                             onClick={() => {
-                                                onReservation(roomInfos[0].d_code,
-                                                    roomInfos[0].r_code
-                                                )
+                                                onReservation(roomInfos.d_code, roomInfos.r_code)
                                             }}
                                         >
                                             예약하기
                                         </button>
                                     </Row>
-
                                 </Column>
                             </Box>
-
-
                         </Column>
                     </Row>
                 ))}

@@ -11,6 +11,7 @@ import BoxColor from './BoxColor'
 import Provider from './provider/Provider'
 import Payment from './components/Payment/Payment'
 import page from './pages/page'
+import KakaoMap from './api/Map/KakaoMap'
 
 function App() {
     return (
@@ -26,6 +27,7 @@ function App() {
                     <Route path="/search" element={<Search />} />
                     <Route path="/boxColor" element={<BoxColor />} />
                     <Route path="/payment" element={<Payment />} />
+                    <Route path="/map" element={<KakaoMap />} />
                 </Route>
             </Routes>
         </Provider>
