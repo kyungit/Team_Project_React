@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 
 export default function DormitoryUpdate() {
     const [code, setCode] = useState('');
@@ -13,14 +12,18 @@ export default function DormitoryUpdate() {
         event.preventDefault();
         // 서버로 수정할 정보를 보냅니다.
         try {
-            const response = await axios.put('/api/dormitory/${d_code}', {
+            const response = await axios.put(`/api/dormitory/${code}`, {
                 name,
                 location,
                 amenity,
-
                 // 필요한 만큼의 정보를 추가합니다.
             });
             console.log(response.data);
+            alert('정보가 수정되었습니다.');
+            setCode('');
+            setName('');
+            setLocation('');
+            setAmenity('');
         } catch (error) {
             console.log(error);
         }
@@ -30,19 +33,19 @@ export default function DormitoryUpdate() {
         <form onSubmit={handleSubmit}>
             <label>
                 코드:
-                <input type="text" value={d_code} onChange={e => setCode(e.target.value)} />
+                <input type="text" value={code} onChange={e => setCode(e.target.value)} required />
             </label>
             <label>
                 이름:
-                <input type="text" value={name} onChange={e => setName(e.target.value)} />
+                <input type="text" value={name} onChange={e => setName(e.target.value)} required />
             </label>
             <label>
                 위치:
-                <input type="text" value={location} onChange={e => setLocation(e.target.value)} />
+                <input type="text" value={location} onChange={e => setLocation(e.target.value)} required />
             </label>
             <label>
                 시설물:
-                <input type="text" value={amenity} onChange={e => setAmenity(e.target.value)} />
+                <input type="text" value={amenity} onChange={e => setAmenity(e.target.value)} required />
             </label>
             <input type="submit" value="수정" />
         </form>

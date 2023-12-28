@@ -3,7 +3,6 @@ import axios from 'axios';
 
 export default function ReserveCheck() {
     const [payments, setPayments] = useState([]);
-    let ReserveCheck
 
     useEffect(() => {
         // 서버에서 결제 정보를 가져옵니다.
@@ -22,8 +21,11 @@ export default function ReserveCheck() {
     const handleConfirm = async (paymentId) => {
         // 결제를 확정합니다.
         try {
-            await axios.post('/api/payment/${paymentId}/confirm');
+            await axios.post(`/api/payment/${paymentId}/confirm`);
             alert('결제가 확정되었습니다.');
+            // 결제 확정 후, 데이터를 다시 가져옵니다.
+            const response = await axios.get('/api/payment');
+            setPayments(response.data);
         } catch (error) {
             console.log(error);
         }
