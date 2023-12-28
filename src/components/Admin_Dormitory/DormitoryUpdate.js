@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-function DormitoryUpdate() {
+export default function DormitoryUpdate() {
     const [code, setCode] = useState('');
     const [name, setName] = useState('');
     const [location, setLocation] = useState('');
