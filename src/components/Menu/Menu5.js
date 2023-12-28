@@ -24,7 +24,7 @@ export default function Menu5() {
                         <Row>
                             <Column className="w-full">
                                 <Row className="text-base">숙박시설 코드</Row>
-                                <input type="text" value={code} onChange={e => setCode(e.target.value)} />
+                                <input type="text" value={d_code} onChange={e => setCode(e.target.value)} />
                             </Column>
                             <input type="submit" value="제출" />
                         </Row>

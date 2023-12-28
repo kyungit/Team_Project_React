@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function ReserveUpdate() {
+export default function ReserveUpdate() {
     // ... 기존 코드 ...
 
     const handleUpdate = async (paymentId, updatedInfo) => {
+        let ReserveUpdate
         // 결제 정보를 수정합니다.
         try {
             await axios.put('/api/payment/${paymentId}', updatedInfo);

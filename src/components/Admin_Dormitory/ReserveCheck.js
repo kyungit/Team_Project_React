@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function ReserveCheck() {
+export default function ReserveCheck() {
     const [payments, setPayments] = useState([]);
+    let ReserveCheck
 
     useEffect(() => {
         // 서버에서 결제 정보를 가져옵니다.

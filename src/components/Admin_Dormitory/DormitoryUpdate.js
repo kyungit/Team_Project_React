@@ -13,7 +13,7 @@ export default function DormitoryUpdate() {
         event.preventDefault();
         // 서버로 수정할 정보를 보냅니다.
         try {
-            const response = await axios.put(`/api/dormitory/${code}`, {
+            const response = await axios.put('/api/dormitory/${d_code}', {
                 name,
                 location,
                 amenity,
@@ -30,7 +30,7 @@ export default function DormitoryUpdate() {
         <form onSubmit={handleSubmit}>
             <label>
                 코드:
-                <input type="text" value={code} onChange={e => setCode(e.target.value)} />
+                <input type="text" value={d_code} onChange={e => setCode(e.target.value)} />
             </label>
             <label>
                 이름:
