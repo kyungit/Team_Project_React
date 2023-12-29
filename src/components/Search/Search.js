@@ -13,31 +13,31 @@ export default function Search() {
     // const { images, searchdata, setSearchdata, onSubmitSearch } = useContext(SearchListContext)
     const { keyword, startDate, endDate, guest, type, star } = searchdata
 
-    // const location = useLocation()
+    const location = useLocation()
 
-    // const today = new Date()
-    // const tomorrow = addDays(today, 1)
+    const today = new Date()
+    const tomorrow = addDays(today, 1)
 
-    // useEffect(() => {
-    //     // URL이 변경될 때마다 keyword를 초기화합니다.
-    //     if (location.pathname === '/') {
-    //         setSearchdata({
-    //             keyword: '',
-    //             guest: 1,
-    //             type: [],
-    //             star: [],
-    //         })
-    //     } else {
-    //         setSearchdata({
-    //             keyword: keyword,
-    //             guest: guest,
-    //             startDate: startDate,
-    //             endDate: endDate,
-    //             type: type,
-    //             star: star,
-    //         })
-    //     }
-    // }, [location])
+    useEffect(() => {
+        // URL이 변경될 때마다 keyword를 초기화합니다.
+        if (location.pathname === '/') {
+            setSearchdata({
+                keyword: '',
+                guest: 1,
+                type: [],
+                star: [],
+            })
+        } else {
+            setSearchdata({
+                keyword: keyword,
+                guest: guest,
+                startDate: startDate,
+                endDate: endDate,
+                type: type,
+                star: star,
+            })
+        }
+    }, [location])
 
     const onKeywordChange = useCallback((e) => {
         setSearchdata((searchdata) => ({

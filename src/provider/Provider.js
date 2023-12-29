@@ -22,9 +22,9 @@ const Provider = ({ children }) => {
 
     const navigate = useNavigate()
 
-    // useEffect(() => {
-    //     console.log(searchdata.keyword, searchdata.startDate, searchdata.endDate, searchdata.guest)
-    // }, [searchdata])
+    useEffect(() => {
+        console.log(searchdata.keyword, searchdata.startDate, searchdata.endDate, searchdata.guest)
+    }, [searchdata])
 
     const onSubmitSearch = useCallback(() => {
         setImages((prevItems) => ({
@@ -35,20 +35,20 @@ const Provider = ({ children }) => {
         setSearchClicked(true)
     }, [])
 
-    const GetSearchList =
-        useCallback()
-        // async (pageNum) => {
-        //     const result1 = await axios.post(`http://localhost:8080/searchList/dormitory?pageNum=${pageNum}`, searchdata)
+    const GetSearchList = useCallback(
+        async (pageNum) => {
+            const result1 = await axios.post(`http://localhost:8080/searchList/dormitory?pageNum=${pageNum}`, searchdata)
 
-        //     console.log('result1 : ', result1)
-        //     console.log('searchdata.type', searchdata.type)
-        //     console.log('searchdata.star', searchdata.star)
-        //     // setImages((prevItems) => ({
-        //     //     searchlist1: [...prevItems.searchlist1, result1.data],
-        //     // }))
-        //     return result1.data
-        // },
-        // [searchdata],
+            console.log('result1 : ', result1)
+            console.log('searchdata.type', searchdata.type)
+            console.log('searchdata.star', searchdata.star)
+            // setImages((prevItems) => ({
+            //     searchlist1: [...prevItems.searchlist1, result1.data],
+            // }))
+            return result1.data
+        },
+        [searchdata],
+    )
 
     const value = useMemo(
         () => ({ images, setImages, searchdata, setSearchdata, GetSearchList, onSubmitSearch }),

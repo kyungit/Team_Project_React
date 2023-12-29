@@ -55,20 +55,20 @@ export default function DataPicker() {
         endDate: format(tomorrow, 'yyyy-MM-dd'),
     })
 
-    // const location = useLocation()
+    const location = useLocation()
 
-    // useEffect(() => {
-    //     setValue({
-    //         startDate: startDate,
-    //         endDate: endDate,
-    //     })
-    //     if (location.pathname === '/') {
-    //         setValue({
-    //             startDate: format(today, 'yyyy-MM-dd'),
-    //             endDate: format(tomorrow, 'yyyy-MM-dd'),
-    //         })
-    //     }
-    // }, [location])
+    useEffect(() => {
+        setValue({
+            startDate: startDate,
+            endDate: endDate,
+        })
+        if (location.pathname === '/') {
+            setValue({
+                startDate: format(today, 'yyyy-MM-dd'),
+                endDate: format(tomorrow, 'yyyy-MM-dd'),
+            })
+        }
+    }, [location])
 
     const [trigger, setTrigger] = useState(Date.now())
 
@@ -85,10 +85,9 @@ export default function DataPicker() {
 
             // 달력 컴포넌트의 인스턴스를 새로 만들기 위해 key값을 변경
             setTrigger(Date.now())
+        } else {
+            setValue(newValue)
         }
-        // else {
-        //     setValue(newValue)
-        // }
     }
 
     useEffect(() => {
@@ -112,7 +111,7 @@ export default function DataPicker() {
     }, [searchdata])
     return (
         <Styled>
-            <Datepicker key={trigger} value={value} />
+            <Datepicker key={trigger} value={value} onChange={handleValueChange} />
             {/* <Datepicker
                 className="hello"
                 value={value}
