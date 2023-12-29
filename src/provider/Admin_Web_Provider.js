@@ -10,7 +10,7 @@ const AdminWebProvider = ({ children }) => {
     // 회원 정보 가져오기
     const getUsers = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/users') // 회원 정보를 가져오는 API 엔드포인트
+            const response = await axios.get('http://localhost:3000/users') // 회원 정보를 가져오는 API 엔드포인트
             setUsers(response.data) // 가져온 회원 정보를 상태 변수에 저장
         } catch (error) {
             console.error(error)
