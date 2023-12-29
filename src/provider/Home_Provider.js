@@ -51,11 +51,9 @@ const HomeProvider = ({ children }) => {
     //     [images, searchdata, setSearchdata, onSubmitSearch],
     // )
 
-    const value = useMemo(() => ({ images }), [images])
-
     useEffect(() => {
         const ImagesAPI = async () => {
-            const result1 = await axios.get('http://localhost:8080/earlyCheckin')
+            const result1 = await axios.get('http://localhost:8080/star')
             const result2 = await axios.get('http://localhost:8080/earlyCheckin')
             const result3 = await axios.get('http://localhost:8080/grade')
             // const result4 = await axios.get('http://localhost:8080/type')
@@ -75,6 +73,8 @@ const HomeProvider = ({ children }) => {
 
         ImagesAPI()
     }, [])
+
+    const value = useMemo(() => ({ images }), [images])
 
     return (
         <HomeContext.Provider value={value}>

@@ -55,6 +55,7 @@ export default function Home2() {
             )
         )
     }
+
     const settings = {
         // className: 'center',
         // centerMode: true,
@@ -71,7 +72,10 @@ export default function Home2() {
         // autoplaySpeed: 2000,
         // cssEase: "linear"
     }
+
+    const region = ['서울', '인천', '경기', '강원', '충북,대전,세종', '충남', '부산,울산,대구', '경북', '경남', '전북', '광주', '전남,광주', '제주']
     const images = [mountain, vine, beach, bird, butterfly, forest, mountain, vine, beach, bird, butterfly, forest]
+
     return (
         <div className="col-start-2 col-end-12 w-full h-auto pt-16 pl-6 pr-6 mt-32 relative">
             <Row className="pl-3 text-3xl font-bold w-full">/국내 지역 여행지/</Row>
@@ -79,8 +83,8 @@ export default function Home2() {
                 {images &&
                     images.map((image, index) => (
                         <div key={index} className="pl-3 pr-3 w-44 h-44 mt-8">
-                            <img className="w-full h-full object-fit rounded-2xl" src={image} alt="" />
-                            <Row className="mt-2 text-sm">제주</Row>
+                            <img className="w-full h-full object-fit rounded-2xl" src={images[index]} alt="" />
+                            <Row className="mt-2 text-sm">{region[index]}</Row>
                         </div>
                     ))}
             </Slider>
