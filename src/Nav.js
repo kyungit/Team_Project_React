@@ -8,7 +8,7 @@ export default function Nav() {
                 <Link to="/">칼퇴시켜줄래</Link>
                 <div className=" w-1/6 flex justify-between">
                     <Link to="/login">로그인</Link>
-                    <Link>로그아웃</Link>
+                    <Link to="http://localhost:8080/logout" >로그아웃</Link>
                     <Link>회원가입</Link>
                 </div>
             </div>

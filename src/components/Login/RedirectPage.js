@@ -16,8 +16,8 @@ const RedirectPage = () => {
         userid = getCookie('userid')
         if (accessToken) {
             // 토큰을 로컬 스토리지에 저장하거나 상태 관리 라이브러리를 사용하여 저장합니다.
-            localStorage.setItem('access_token', accessToken);
-            localStorage.setItem('userid',userid);
+            // localStorage.setItem('access_token', accessToken);
+            // localStorage.setItem('userid',userid);
             // 토큰을 받은 후에 추가 작업을 수행할 수 있습니다.
             console.log('Access Token Received:', accessToken);
         }
