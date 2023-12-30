@@ -33,6 +33,17 @@ const Payment = (data) => {
                 if (rsp.success) {
                     console.log('가격' + rsp.paid_amount)
                     axios({
+                        url: 'http://localhost:8080/reservation/reservationInfo',
+                        method: 'post',
+                        headers: { 'Content-Type': 'application/json' },
+                        data: {
+                            ...reservationdata
+                        },
+                    }).then((data) => {
+                        console.log(data)
+                    })
+
+                    axios({
                         url: 'http://localhost:8080/reservation/payment',
                         method: 'post',
                         headers: { 'Content-Type': 'application/json' },
@@ -56,16 +67,8 @@ const Payment = (data) => {
                             alert('예약 처리 중 오류가 발생했습니다.')
                         })
 
-                    axios({
-                        url: 'http://localhost:8080/reservation/reservationInfo',
-                        method: 'post',
-                        headers: { 'Content-Type': 'application/json' },
-                        data: {
-                            ...reservationdata,
-                        },
-                    }).then((data) => {
-                        console.log(data)
-                    })
+
+
                 } else {
                     alert(`결제에 실패하였습니다. 에러 내용: ${rsp.error_msg}`)
                 }

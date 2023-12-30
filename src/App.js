@@ -10,6 +10,7 @@ import Menu from './pages/menu/Menu'
 import BoxColor from './BoxColor'
 import Provider from './provider/Provider'
 import Payment from './components/Payment/Payment'
+import RedirectPage from './components/Login/RedirectPage'
 import page from './pages/page'
 import KakaoMap from './api/Map/KakaoMap'
 
@@ -27,7 +28,9 @@ function App() {
                     <Route path="/search" element={<Search />} />
                     <Route path="/boxColor" element={<BoxColor />} />
                     <Route path="/payment" element={<Payment />} />
+                    <Route path="/redirect" element={<RedirectPage />} />
                     <Route path="/map" element={<KakaoMap />} />
+
                 </Route>
             </Routes>
         </Provider>
