@@ -71,7 +71,7 @@ export default function Home1() {
                     images1.map((image, index) => (
                         <div className="pl-2 pr-2 w-92 h-64 mt-8">
                             <img className="w-full h-full object-fit rounded-2xl" src={imagess[index]} alt="" />
-                            <Row className="mt-4 text-xs text-gray-500">/{`${image.d_star}성급 - ${image.d_road}`}/</Row>
+                            <Row className="mt-4 text-xs text-gray-500">/{`★${image.d_star} - ${image.d_road}`}/</Row>
                             <Row className="mt-0 text-lg font-bold">/{image.d_name}/</Row>
                         </div>
                     ))}

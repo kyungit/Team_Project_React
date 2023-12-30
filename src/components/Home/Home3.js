@@ -39,7 +39,7 @@ export default function Home3() {
                     images2.map((image, index) => (
                         <div key={index} className="pl-3 pr-3 w-44 h-44 mt-2">
                             <img className="w-full h-full object-fit rounded-2xl mt-6" src={imagess[index]} alt="" />
-                            <Row className="mt-4 text-xs text-gray-500" splitEnabled={false}>{`${image.d_star}/5 - ${image.d_road}`}</Row>
+                            <Row className="mt-4 text-xs text-gray-500" splitEnabled={false}>{`★${image.d_star} - ${image.d_road}`}</Row>
                             <Row className="mt-0 text-base">{image.d_name}</Row>
                             <Row className="mt-2 text-lg text-gray-500">{`${image.d_discount}%`}</Row>
                             <Row className="mt-0 text-base font-medium text-gray-400 line-through">{`${image.min_r_price}`}</Row>
