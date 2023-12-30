@@ -103,7 +103,7 @@ export default function RoomInfo3() {
                                     <Row className="">
                                         <Row className="mt-0 text-2xl">{parseInt(roomInfos.r_price).toLocaleString()}원</Row>
                                         <button
-                                            className="tab-size-4 user-select-text box-border flex items-center justify-center 
+                                            className="tab-size-4 user-select-text box-border flex items-center justify-center
                                                     h-14 w-1/4 rounded-md text-black font-bold text-lg"
                                             style={{ backgroundColor: '#D9F99D' }}
                                             onClick={() => {

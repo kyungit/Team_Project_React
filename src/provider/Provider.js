@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useMemo, useCallback, useContext } from 'react'
+import React, { useState, useEffect, useMemo, useCallback, useContext, useQuery } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import Context from '../context/Context'
 import SearchListContext from '../context/SearchList_Context'
+import getCookie from'../api/cookie/getCookie'
 
 const Provider = ({ children }) => {
     const [images, setImages] = useState({
@@ -19,6 +20,7 @@ const Provider = ({ children }) => {
         type: [],
         star: [],
     })
+
 
     const navigate = useNavigate()
 
@@ -60,6 +62,84 @@ const Provider = ({ children }) => {
             <div>{children}</div>
         </Context.Provider>
     )
+    //
+    //
+    // axios({
+    //     method: 'get', // 또는 'post', 서버 설정에 따라 다름
+    //     url: 'http://localhost:8080/login/oauth2/code/{registrationId}',
+    //     // 필요하다면 headers 등의 추가적인 설정이 가능합니다.
+    // })
+    //     .then(response => {
+    //         // 서버로부터 받은 응답에서 액세스 토큰을 추출합니다.
+    //         const accessToken = response.data.access_token;
+    //
+    //         sessionStorage.setItem("token",accessToken);
+    //         console.log("왜 안돼ㅐㅐㅐㅐㅐ",sessionStorage.getItem());
+    //
+    //         // 액세스 토큰을 사용하는 로직을 여기에 작성합니다.
+    //         // 예를 들어, 상태에 저장하거나, API 요청에 사용하거나, 로컬 스토리지에 저장할 수 있습니다.
+    //     })
+    //     .catch(error => {
+    //         // 오류 처리
+    //         console.error('There was an error!', error);
+    //     });
+
+    // useEffect(() => {
+    //     axios({
+    //         method: 'get', // 또는 'post', 서버 설정에 따라 다름
+    //         url: '/api/token',
+    //         // 필요하다면 headers 등의 추가적인 설정이 가능합니다.
+    //     })
+    //         .then(response => {
+    //             // 서버로부터 받은 응답에서 액세스 토큰을 추출합니다.
+    //             const accessToken = response.data.access_token;
+    //
+    //             sessionStorage.setItem("token",accessToken);
+    //             console.log("왜 안돼ㅐㅐㅐㅐㅐ",sessionStorage.getItem());
+    //
+    //             // 액세스 토큰을 사용하는 로직을 여기에 작성합니다.
+    //             // 예를 들어, 상태에 저장하거나, API 요청에 사용하거나, 로컬 스토리지에 저장할 수 있습니다.
+    //         })
+    //         .catch(error => {
+    //             // 오류 처리
+    //             console.error('There was an error!', error);
+    //         });
+    // }, [])
+
+
+    // let query = useQuery();
+    //
+    // useEffect(() => {
+    //     const accessToken = query.get('cookie');
+    //     if (accessToken) {
+    //         console.log('Access Token:', accessToken);
+    //         // 여기서 상태 관리 라이브러리에 토큰을 저장하거나 다른 처리를 할 수 있습니다.
+    //         // 예: localStorage.setItem('accessToken', accessToken);
+    //     }
+    // }, [query]);
+
+
+    //
+    // let accessToken = null;
+    // useEffect(() => {
+    //     accessToken = getCookie('accessToken')
+    //     if (accessToken) {
+    //         // 토큰을 로컬 스토리지에 저장하거나 상태 관리 라이브러리를 사용하여 저장합니다.
+    //         localStorage.setItem('access_token', accessToken);
+    //
+    //         // 토큰을 받은 후에 추가 작업을 수행할 수 있습니다.
+    //         console.log('Access Token Received:', accessToken);
+    //     }
+    // }, [accessToken]);
+
+    useEffect(()=>{
+        axios.get('http://localhost:8080/api/token', {
+            withCredentials: true
+        }).then(response => console.log(response.data));
+    },[])
+
+
+
 }
 
 export default Provider

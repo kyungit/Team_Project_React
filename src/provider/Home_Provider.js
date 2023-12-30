@@ -11,6 +11,8 @@ const HomeProvider = ({ children }) => {
         images4: null,
     })
 
+    // const[token,setToken] = useState(null);
+
     // const [searchdata, setSearchdata] = useState({
     //     keyword: null,
     //     startDate: null,
@@ -75,6 +77,25 @@ const HomeProvider = ({ children }) => {
     }, [])
 
     const value = useMemo(() => ({ images }), [images])
+
+
+    // axios({
+    //     method: 'get', // 또는 'post', 서버 설정에 따라 다름
+    //     url: 'http://localhost:8080/login/oauth2/code/{registrationId}',
+    //     // 필요하다면 headers 등의 추가적인 설정이 가능합니다.
+    //     })
+    //     .then(response => {
+    //         // 서버로부터 받은 응답에서 액세스 토큰을 추출합니다.
+    //         const accessToken = response.data.access_token;
+    //         setToken(accessToken);
+    //         console.log(accessToken);
+    //         // 액세스 토큰을 사용하는 로직을 여기에 작성합니다.
+    //         // 예를 들어, 상태에 저장하거나, API 요청에 사용하거나, 로컬 스토리지에 저장할 수 있습니다.
+    //     })
+    //     .catch(error => {
+    //         // 오류 처리
+    //         console.error('There was an error!', error);
+    //     });
 
     return (
         <HomeContext.Provider value={value}>
