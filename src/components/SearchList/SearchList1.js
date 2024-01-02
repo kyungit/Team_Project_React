@@ -112,7 +112,7 @@ export default function HigherOrderRadioInputTest() {
     )
 
     return (
-        <div className="col-start-2 col-end-5 w-full h-auto pt-16 flex flex-row justify-center">
+        <div className="col-start-2 col-end-5 w-4/5 h-auto pt-16 flex flex-row justify-center">
             <Column className=" items-start">
                 <section className="mt-4">
                     <div>PropertyType</div>
