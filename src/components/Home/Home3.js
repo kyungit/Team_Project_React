@@ -49,7 +49,7 @@ export default function Home3() {
                             onClick={() => {
                                 onRoomInfo(image.d_code)
                             }}>
-                            <img className="w-full h-full object-fit rounded-2xl mt-6" src={imagess[index]} alt="" />
+                            <img className="w-full h-full object-fit rounded-2xl mt-6" src={image.d_img} alt="" />
                             <Row className="mt-4 text-xs text-gray-500" splitEnabled={false}>{`★${image.d_star} - ${image.d_road}`}</Row>
                             <Row className="mt-0 text-base">{image.d_name}</Row>
                             <Row className="mt-2 text-lg text-gray-500">{`${image.d_discount}%`}</Row>
