@@ -80,9 +80,9 @@ export default function RoomInfo3() {
                                 >
                                     ←
                                 </button>
-                                {/* {roomInfos.slice(slideStart, slideStart + 4).map((roomInfo, index) => (
-                                    <img key={index} src={roomInfo.r_url} className="ml-4 w-1/4 h-auto rounded-2xl" alt="" />
-                                ))} */}
+                                {roomInfos.r_url.slice(slideStart, slideStart + 4).map((roomInfo, index) => (
+                                    <img key={index} src={roomInfo} className="ml-4 w-1/4 h-auto rounded-2xl" alt="" />
+                                ))}
                                 <button
                                     onClick={() => {
                                         handleNext()

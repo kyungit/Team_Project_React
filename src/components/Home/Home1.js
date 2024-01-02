@@ -10,7 +10,7 @@ import butterfly from '../../assets/img/butterfly.jpg'
 import forest from '../../assets/img/forest.jpg'
 import mountain from '../../assets/img/mountain.jpg'
 import Row from '../Common/Row'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import HomeContext from '../../context/Home_Context'
 
 export default function Home1() {
@@ -59,6 +59,12 @@ export default function Home1() {
         nextArrow: <NextArrow />,
     }
 
+    const navigate = useNavigate()
+    const onRoomInfo = (d_code) => {
+        sessionStorage.setItem('d_code', d_code)
+        navigate('/roomInfo')
+    }
+
     const { images } = useContext(HomeContext)
     const images1 = images.images1
 
@@ -69,7 +75,10 @@ export default function Home1() {
             <Slider {...settings}>
                 {images1 &&
                     images1.map((image, index) => (
-                        <div className="pl-2 pr-2 w-92 h-64 mt-8">
+                        <div className="pl-2 pr-2 w-92 h-64 mt-8"
+                        onClick={() => {
+                            onRoomInfo(image.d_code)
+                        }}>
                             <img className="w-full h-full object-fit rounded-2xl" src={imagess[index]} alt="" />
                             <Row className="mt-4 text-xs text-gray-500">/{`★${image.d_star} - ${image.d_road}`}/</Row>
                             <Row className="mt-0 text-lg font-bold">/{image.d_name}/</Row>
