@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react'
+import React, { useState, useEffect, useMemo, useCallback, useContext } from 'react'
 import axios from 'axios'
 import HomeContext from '../context/Home_Context'
 import { useNavigate } from 'react-router-dom'
+import Context from '../context/Context'
 
 const HomeProvider = ({ children }) => {
     const [images, setImages] = useState({
@@ -53,11 +54,23 @@ const HomeProvider = ({ children }) => {
     //     [images, searchdata, setSearchdata, onSubmitSearch],
     // )
 
+    const { location } = useContext(Context)
+    const coordinates = location.coordinates
+
     useEffect(() => {
         const ImagesAPI = async () => {
-            const result1 = await axios.get('http://localhost:8080/star')
-            const result2 = await axios.get('http://localhost:8080/discount')
-            const result3 = await axios.get('http://localhost:8080/earlyCheckin')
+            let result1 = ''
+            let result2 = ''
+            let result3 = ''
+
+            result1 = await axios.get('http://localhost:8080/star', {
+                params: {
+                    lat: coordinates.lat || '37.49616859',
+                    lng: coordinates.lng || '127.0204826',
+                },
+            })
+            result2 = await axios.get('http://localhost:8080/discount')
+            result3 = await axios.get('http://localhost:8080/earlyCheckin')
             // const result4 = await axios.get('http://localhost:8080/type')
 
             setImages({
@@ -74,10 +87,9 @@ const HomeProvider = ({ children }) => {
         }
 
         ImagesAPI()
-    }, [])
+    }, [location])
 
     const value = useMemo(() => ({ images }), [images])
-
 
     // axios({
     //     method: 'get', // 또는 'post', 서버 설정에 따라 다름

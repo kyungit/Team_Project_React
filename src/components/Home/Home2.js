@@ -85,14 +85,16 @@ export default function Home2() {
 
     const navigate = useNavigate()
 
-    const onRegionChange = useCallback((region) => {
-        setSearchdata((searchdata) => ({
-            ...searchdata,
-            keyword: region
-        }))
-        navigate('/searchList')
-    }, [setSearchdata])
-    
+    const onRegionChange = useCallback(
+        (region) => {
+            setSearchdata((searchdata) => ({
+                ...searchdata,
+                keyword: region,
+            }))
+            navigate('/searchList')
+        },
+        [setSearchdata],
+    )
 
     const region = ['서울', '인천', '경기', '강원', '충북,대전,세종', '충남', '부산,울산,대구', '경북', '경남', '전북',  '전남,광주', '제주']
     const images = [Seoul, Incheon, Gyeonggi, Gangwon, Daejeon, Chungnam, Busan, Gyeongbuk, Gyeongnam, Jeonbuk, Jeonnam, Jeju]
@@ -103,10 +105,13 @@ export default function Home2() {
             <Slider {...settings}>
                 {images &&
                     images.map((image, index) => (
-                        <div key={index} className="pl-3 pr-3 w-44 h-44 mt-8"
-                        onClick={() => {
-                            onRegionChange(region[index])
-                            }}>
+                        <div
+                            key={index}
+                            className="pl-3 pr-3 w-44 h-44 mt-8"
+                            onClick={() => {
+                                onRegionChange(region[index])
+                            }}
+                        >
                             <img className="w-full h-full object-fit rounded-2xl" src={images[index]} alt="" />
                             <Row className="mt-2 text-sm">{region[index]}</Row>
                         </div>

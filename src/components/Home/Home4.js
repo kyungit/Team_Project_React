@@ -24,7 +24,7 @@ export default function Home4() {
         slidesToShow: 6,
         slidesToScroll: 1,
         autoplay: true,
-        speed: 10000,
+        speed: 15000,
         autoplaySpeed: 0,
         cssEase: 'linear',
         pauseOnHover: true,
@@ -46,7 +46,13 @@ export default function Home4() {
             <Slider {...settings}>
                 {images3 &&
                     images3.map((image, index) => (
-                        <div key={index} className="pl-3 pr-3 w-44 h-44 mt-2">
+                        <div
+                            key={index}
+                            className="pl-3 pr-3 w-44 h-44 mt-2"
+                            onClick={() => {
+                                onRoomInfo(image.d_code)
+                            }}
+                        >
                             <img className="w-full h-full object-fit rounded-2xl mt-6" src={image.d_img} alt="" />
                             <Row className="mt-4 text-xs text-gray-500">{`★${image.d_star} - ${image.d_road}`}</Row>
                             <Row className="mt-2 text-lg font-bold">{image.d_name}</Row>
