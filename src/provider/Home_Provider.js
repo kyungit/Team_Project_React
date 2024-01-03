@@ -57,7 +57,7 @@ const HomeProvider = ({ children }) => {
         const ImagesAPI = async () => {
             const result1 = await axios.get('http://localhost:8080/star')
             const result2 = await axios.get('http://localhost:8080/discount')
-            const result3 = await axios.get('http://localhost:8080/discount')
+            const result3 = await axios.get('http://localhost:8080/earlyCheckin')
             // const result4 = await axios.get('http://localhost:8080/type')
 
             setImages({

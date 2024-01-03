@@ -1,9 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import Row from '../Common/Row'
 import Column from '../Common/Column'
 import RoomInfoContext from '../../context/RoomInfo_Context'
 import Box from '../Common/Box'
 import { useNavigate } from 'react-router-dom'
+import Slider from 'react-slick'
+import '../../assets/css/slick-theme.css'
+import '../../assets/css/slick.css'
 
 export default function RoomInfo3() {
     const { roomInfos } = useContext(RoomInfoContext)
@@ -42,27 +45,65 @@ export default function RoomInfo3() {
         navigate('/reservation')
     }
 
-    const [current, setCurrent] = useState(0)
-    const [slideStart, setSlideStart] = useState(0)
+    const [nav1, setNav1] = useState(null);
+    const [nav2, setNav2] = useState(null);
+    const slider1Ref = useRef();
+    const slider2Ref = useRef();
+  
+    useEffect(() => {
+      setNav1(slider1Ref.current);
+      setNav2(slider2Ref.current);
+    }, []);
 
-    const handleNext = () => {
-        console.log('current : ', current)
-        if (current < roomInfos.length - 1) {
-            setCurrent((prevCurrent) => prevCurrent + 1)
-        }
-        if (current >= 2) {
-            setSlideStart((prevSlideStart) => prevSlideStart + 1)
-        }
+    const [isVisible, setIsVisible] = useState(true)
+
+    const PrevArrow = (props) => {
+        const { className, onClick } = props
+        return (
+            !isVisible && (
+                <img
+                    width="64"
+                    height="64"
+                    className="absolute z-10  w-10 h-10 object-cover"
+                    style={{ left: '1%', top: '61%' }}
+                    onClick={() => {
+                        onClick()
+                        // setIsVisible(true)
+                    }}
+                    src="https://www.tripbtoz.com/images/main/bg_btn_mGroup2_arr.svg"
+                    alt="circled-chevron-right"
+                />
+            )
+        )
     }
 
-    const handlePrev = () => {
-        if (current > 0) {
-            setCurrent((prevCurrent) => prevCurrent - 1)
-        }
-        if (current - slideStart > 0) {
-            setSlideStart((prevSlideStart) => prevSlideStart - 1)
-        }
+    const NextArrow = (props) => {
+        const { className, onClick } = props
+        return (
+            isVisible && (
+                <img
+                    width="32"
+                    height="32"
+                    className="absolute z-10 w-10 h-10 object-cover"
+                    style={{ right: '1%', bottom: '28%', transform: 'scaleX(-1)' }}
+                    onClick={() => {
+                        onClick()
+                        // setIsVisible(false)
+                    }}
+                    src="https://www.tripbtoz.com/images/main/bg_btn_mGroup2_arr.svg"
+                    alt="circled-chevron-right"
+                />
+            )
+        )
     }
+
+    const settings = {
+        dots: true,
+        arrows: true,
+        prevArrow: <PrevArrow />,
+        nextArrow: <NextArrow />,
+    }
+
 
     return (
         <div className="col-start-3 col-end-11 w-full h-1000">
@@ -70,20 +111,33 @@ export default function RoomInfo3() {
                 Object.values(roomInfos4).map((roomInfos, index) => (
                     <Row key={index} className="w-full h-1000 mt-24">
                         <Column className="w-1/2">
-                            <img src={roomInfos.r_url[current]} className="w-full h-auto rounded-2xl" alt="" />
+                            <Slider asNavFor={nav2} ref={slider1Ref}>
+                                    {roomInfos.r_url.map((roomInfo, index) => (
+                                        <img key={index} src={roomInfo} className="w-full h-auto rounded-2xl" alt="" />
+                                    ))}
+                            </Slider>
                             <div className="flex mt-4">
-                                <button
+                                {/* <button
                                     onClick={() => {
                                         handlePrev()
                                     }}
                                     disabled={current === 0}
                                 >
                                     ←
-                                </button>
-                                {roomInfos.r_url.slice(slideStart, slideStart + 4).map((roomInfo, index) => (
-                                    <img key={index} src={roomInfo} className="ml-4 w-1/4 h-auto rounded-2xl" alt="" />
-                                ))}
-                                <button
+                                </button> */}
+                                <Slider
+                                    asNavFor={nav1}
+                                    ref={slider2Ref}
+                                    slidesToShow={3}
+                                    swipeToSlide={true}
+                                    focusOnSelect={true}
+                                    {...settings}
+                                >
+                                    {roomInfos.r_url.map((roomInfo, index) => (
+                                        <img key={index} src={roomInfo} className="" alt="" />
+                                    ))}
+                                </Slider>
+                                {/* <button
                                     onClick={() => {
                                         handleNext()
                                     }}
@@ -91,7 +145,7 @@ export default function RoomInfo3() {
                                     disabled={current === roomInfos.length - 1}
                                 >
                                     →
-                                </button>
+                                </button> */}
                             </div>
                         </Column>
                         <Column className="w-1/2 pl-8">

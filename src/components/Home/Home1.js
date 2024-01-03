@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import RoomImageSlide from './RoomImageSlide'
 import ImageContext from '../../context/Home_Context'
 import Slider from 'react-slick'
-import './slick-theme.css'
-import './slick.css'
+import '../../assets/css/slick-theme.css'
+import '../../assets/css/slick.css'
 import beach from '../../assets/img/beach.jpg'
 import bird from '../../assets/img/bird.png'
 import butterfly from '../../assets/img/butterfly.jpg'
@@ -76,9 +76,9 @@ export default function Home1() {
                 {images1 &&
                     images1.map((image, index) => (
                         <div className="pl-2 pr-2 w-92 h-64 mt-8"
-                            onClick={() => {
-                                onRoomInfo(image.d_code)
-                            }}>
+                        onClick={() => {
+                            onRoomInfo(image.d_code)
+                        }}>
                             <img className="w-full h-full object-fit rounded-2xl" src={image.d_img} alt="" />
                             <Row className="mt-4 text-xs text-gray-500">/{`★${image.d_star} - ${image.d_road}`}/</Row>
                             <Row className="mt-0 text-lg font-bold">/{image.d_name}/</Row>

@@ -78,15 +78,15 @@ export default function SearchList2() {
                             }}
                         >
                             <Row className="w-full">
-                                <img className=" w-64 h-48 object-cover rounded-2xl" src={searchlist.d_img} alt=""></img>
+                                <img className=" w-64 h-48 object-contain rounded-2xl" src={searchlist.d_img} alt=""></img>
                                 <Column className="ml-4 w-full">
                                     <Row className="mt-2 text-xl font-semibold">{searchlist.d_name}</Row>
                                     <Row className="text-base mt-0" splitEnabled={false}>{searchlist.d_type}</Row>
                                     <Row className="text-sm mt-1 text-gray-500" splitEnabled={false}>★ {searchlist.d_star}</Row>
                                     <Row className="mt-0" >{searchlist.d_road}</Row>
                                     <Row className="mt-4 text-xl font-semibold">
-                                        //////////////////////////////{parseInt(searchlist.min_r_price).toLocaleString()}원~
-                                        {parseInt(searchlist.max_r_price).toLocaleString()}원
+                                        /<Row>{parseInt(searchlist.min_r_price).toLocaleString()}원 ~ 
+                                        {parseInt(searchlist.max_r_price).toLocaleString()}원</Row>
                                     </Row>
                                     <Row className="mt-1">
                                         /

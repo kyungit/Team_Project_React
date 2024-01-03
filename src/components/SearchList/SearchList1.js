@@ -5,8 +5,8 @@ import Context from '../../context/Context'
 
 export default function HigherOrderRadioInputTest() {
     const DormitoryType = useMemo(() => ['All', 'HOTEL', 'MOTEL', 'PENSION', 'GUESTHOUSE'], [])
-    const ReviewStar = useMemo(() => ['All', '5 ★', '4 ★', '3 ★', '2 ★'], [])
-    const Star = useMemo(() => ['All', '5', '4', '3', '2'])
+    const ReviewStar = useMemo(() => ['All', '★ 9 ~ 10', '★ 8 ~ 9', '★ 7 ~ 8', '★ 6 ~ 7', '★ 5 ~ 6'], [])
+    const Star = useMemo(() => ['All', '10', '9', '8', '7', '6'])
     const [SelectedIndexes, setSelectedIndexes] = useState([0])
     const [SelectedIndexes2, setSelectedIndexes2] = useState([0])
     const { setSearchdata } = useContext(Context)
