@@ -3,9 +3,43 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import Context from '../context/Context'
 import SearchListContext from '../context/SearchList_Context'
-import getCookie from'../api/cookie/getCookie'
+import getCookie from '../api/cookie/getCookie'
 
 const Provider = ({ children }) => {
+    const [location, setLocation] = useState({
+        loaded: false,
+        coordinates: { lat: '', lng: '' },
+    })
+
+    const onSuccess = (location) => {
+        setLocation({
+            loaded: true,
+            coordinates: {
+                lat: location.coords.latitude,
+                lng: location.coords.longitude,
+            },
+        })
+    }
+
+    useEffect(() => {
+        console.log('location.coordinates : ', location.coordinates)
+    }, [location])
+
+    const onError = (error) => {
+        setLocation({
+            loaded: true,
+            error,
+        })
+    }
+
+    useEffect(() => {
+        if (!navigator.geolocation) {
+            onError({ code: 0, message: 'Geolocation not supported' })
+        } else {
+            navigator.geolocation.getCurrentPosition(onSuccess, onError)
+        }
+    }, [])
+
     const [images, setImages] = useState({
         searchlist1: [],
     })
@@ -20,7 +54,6 @@ const Provider = ({ children }) => {
         type: [],
         star: [],
     })
-
 
     const navigate = useNavigate()
 
@@ -53,8 +86,8 @@ const Provider = ({ children }) => {
     )
 
     const value = useMemo(
-        () => ({ images, setImages, searchdata, setSearchdata, GetSearchList, onSubmitSearch }),
-        [images, setImages, searchdata, setSearchdata, GetSearchList, onSubmitSearch],
+        () => ({ location, images, setImages, searchdata, setSearchdata, GetSearchList, onSubmitSearch }),
+        [location, images, setImages, searchdata, setSearchdata, GetSearchList, onSubmitSearch],
     )
 
     return (
@@ -106,7 +139,6 @@ const Provider = ({ children }) => {
     //         });
     // }, [])
 
-
     // let query = useQuery();
     //
     // useEffect(() => {
@@ -117,7 +149,6 @@ const Provider = ({ children }) => {
     //         // 예: localStorage.setItem('accessToken', accessToken);
     //     }
     // }, [query]);
-
 
     //
     // let accessToken = null;
@@ -132,14 +163,13 @@ const Provider = ({ children }) => {
     //     }
     // }, [accessToken]);
 
-    useEffect(()=>{
-        axios.get('http://localhost:8080/api/token', {
-            withCredentials: true
-        }).then(response => console.log(response.data));
-    },[])
-
-
-
+    useEffect(() => {
+        axios
+            .get('http://localhost:8080/api/token', {
+                withCredentials: true,
+            })
+            .then((response) => console.log(response.data))
+    }, [])
 }
 
 export default Provider
