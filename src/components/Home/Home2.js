@@ -95,8 +95,8 @@ export default function Home2() {
     }, [setSearchdata])
     
 
-    const region = ['서울', '인천', '경기', '강원', '충북,대전,세종', '충남', '부산,울산,대구', '경북', '경남', '전북', '광주', '전남,광주', '제주']
-    const images = [Seoul, Incheon, Gyeonggi, Gangwon, Daejeon, Chungnam, Busan, Gyeongbuk, Gyeongnam, Jeonbuk, Gwangju, Jeonnam, Jeju]
+    const region = ['서울', '인천', '경기', '강원', '충북,대전,세종', '충남', '부산,울산,대구', '경북', '경남', '전북',  '전남,광주', '제주']
+    const images = [Seoul, Incheon, Gyeonggi, Gangwon, Daejeon, Chungnam, Busan, Gyeongbuk, Gyeongnam, Jeonbuk, Jeonnam, Jeju]
 
     return (
         <div className="col-start-2 col-end-12 w-full h-auto pt-16 pl-6 pr-6 mt-32 relative">
