@@ -157,17 +157,32 @@ export default function RoomInfo3() {
                             <Box className="mt-8">
                                 <Column>
                                     <Row className="">
-                                        <Row className="mt-0 text-2xl">{parseInt(roomInfos.r_price).toLocaleString()}원</Row>
-                                        <button
-                                            className="tab-size-4 user-select-text box-border flex items-center justify-center
+                                        <Row
+                                            className="mt-0 text-2xl">{parseInt(roomInfos.r_price).toLocaleString()}원</Row>
+                                        {roomInfos.r_status=="O" ?
+                                            <button
+                                                className="tab-size-4 user-select-text box-border flex items-center justify-center
                                                     h-14 w-1/4 rounded-md text-black font-bold text-lg"
-                                            style={{ backgroundColor: '#D9F99D' }}
-                                            onClick={() => {
-                                                onReservation(roomInfos.d_code, roomInfos.r_code)
-                                            }}
-                                        >
-                                            예약하기
-                                        </button>
+                                                style={{ backgroundColor: '#D9F99D' }}
+                                                onClick={() => {
+                                                    onReservation(roomInfos.d_code, roomInfos.r_code)
+                                                }}
+                                            >
+
+                                                예약하기
+                                            </button> :
+                                            <button
+                                                className="tab-size-4 user-select-text box-border flex items-center justify-center
+                                                    h-14 w-1/4 rounded-md text-black font-bold text-lg"
+                                                style={{ backgroundColor: '#adadad' }}
+                                                onClick={() => {
+                                                    onReservation(roomInfos.d_code, roomInfos.r_code)
+                                                }}
+                                                disabled>
+
+                                                예약불가
+                                            </button>}
+
                                     </Row>
                                 </Column>
                             </Box>
