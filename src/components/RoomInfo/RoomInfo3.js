@@ -45,16 +45,6 @@ export default function RoomInfo3() {
         navigate('/reservation')
     }
 
-    const [nav1, setNav1] = useState(null);
-    const [nav2, setNav2] = useState(null);
-    const slider1Ref = useRef();
-    const slider2Ref = useRef();
-  
-    useEffect(() => {
-      setNav1(slider1Ref.current);
-      setNav2(slider2Ref.current);
-    }, []);
-
     const [isVisible, setIsVisible] = useState(true)
 
     const PrevArrow = (props) => {
@@ -64,7 +54,7 @@ export default function RoomInfo3() {
                 <img
                     width="64"
                     height="64"
-                    className="absolute z-10  w-10 h-10 object-cover"
+                    className="absolute z-10  w-10 h-10 object-cover bg-blue-300"
                     style={{ left: '1%', top: '61%' }}
                     onClick={() => {
                         onClick()
@@ -84,7 +74,7 @@ export default function RoomInfo3() {
                 <img
                     width="32"
                     height="32"
-                    className="absolute z-10 w-10 h-10 object-cover"
+                    className="absolute z-10 w-10 h-10 object-cover bg-red-300"
                     style={{ right: '1%', bottom: '28%', transform: 'scaleX(-1)' }}
                     onClick={() => {
                         onClick()
@@ -100,53 +90,49 @@ export default function RoomInfo3() {
     const settings = {
         dots: true,
         arrows: true,
+        infinite: true,
         prevArrow: <PrevArrow />,
         nextArrow: <NextArrow />,
     }
 
+    // const [nav1, setNav1] = useState();
+    // const [nav2, setNav2] = useState();
+    // const slider1Ref = useRef();
+    // const slider2Ref = useRef();
+
+    // useEffect(() => {
+    //     setNav1(slider1Ref.current);
+    //     setNav2(slider2Ref.current);
+    // }, [slider1Ref, slider2Ref]);
+
+    const [nav1, setNav1] = useState()
+    const [nav2, setNav2] = useState()
+
+    // useEffect(() => {
+    //     setNav1(sliderRef1)
+    //     setNav2(sliderRef2)
+    // }, [])
 
     return (
         <div className="col-start-3 col-end-11 w-full h-1000">
             {roomInfos4 &&
                 Object.values(roomInfos4).map((roomInfos, index) => (
                     <Row key={index} className="w-full h-1000 mt-24">
-                        <Column className="w-1/2">
-                            <Slider asNavFor={nav2} ref={slider1Ref}>
-                                    {roomInfos.r_url.map((roomInfo, index) => (
-                                        <img key={index} src={roomInfo} className="w-full h-auto rounded-2xl" alt="" />
-                                    ))}
+                        <Column className="w-5/12 m-auto">
+                            <Slider asNavFor={nav2} ref={(slider1) => setNav1(slider1)}>
+                                {roomInfos.r_url.map((roomInfo, index) => (
+                                    <div key={index} className="">
+                                        <img src={roomInfo} className="w-full h-96 rounded-2xl" alt="" />
+                                    </div>
+                                ))}
                             </Slider>
-                            <div className="flex mt-4">
-                                {/* <button
-                                    onClick={() => {
-                                        handlePrev()
-                                    }}
-                                    disabled={current === 0}
-                                >
-                                    ←
-                                </button> */}
-                                <Slider
-                                    asNavFor={nav1}
-                                    ref={slider2Ref}
-                                    slidesToShow={3}
-                                    swipeToSlide={true}
-                                    focusOnSelect={true}
-                                    {...settings}
-                                >
-                                    {roomInfos.r_url.map((roomInfo, index) => (
-                                        <img key={index} src={roomInfo} className="" alt="" />
-                                    ))}
-                                </Slider>
-                                {/* <button
-                                    onClick={() => {
-                                        handleNext()
-                                    }}
-                                    className="pl-2"
-                                    disabled={current === roomInfos.length - 1}
-                                >
-                                    →
-                                </button> */}
-                            </div>
+                            <Slider asNavFor={nav1} ref={(slider2) => setNav2(slider2)} slidesToShow={3} swipeToSlide={true} focusOnSelect={true}>
+                                {roomInfos.r_url.map((roomInfo, index) => (
+                                    <div key={index} className="pl-3 pr-3 h-44 mt-6">
+                                        <img src={roomInfo} className="w-full h-36 object-fit" alt="" />
+                                    </div>
+                                ))}
+                            </Slider>
                         </Column>
                         <Column className="w-1/2 pl-8">
                             <Row className="text-3xl font-semibold mt-0">{roomInfos.r_name}</Row>
