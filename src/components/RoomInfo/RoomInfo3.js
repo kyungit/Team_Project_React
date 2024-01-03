@@ -5,8 +5,11 @@ import RoomInfoContext from '../../context/RoomInfo_Context'
 import Box from '../Common/Box'
 import { useNavigate } from 'react-router-dom'
 import Slider from 'react-slick'
-import '../../assets/css/slick-theme.css'
-import '../../assets/css/slick.css'
+// import '../../assets/css/slick-theme.css'
+// import '../../assets/css/slick.css'
+import "../../../node_modules/slick-carousel/slick/slick.css";
+import "..//../../node_modules/slick-carousel/slick/slick-theme.css";
+import mountain from '../../assets/img/mountain.jpg'
 
 export default function RoomInfo3() {
     const { roomInfos } = useContext(RoomInfoContext)
@@ -85,110 +88,161 @@ export default function RoomInfo3() {
         )
     }
 
-    const [nav1, setNav1] = useState(null)
-    const [nav2, setNav2] = useState(null)
-    const slider1Ref = useRef()
-    const slider2Ref = useRef()
+    // const [nav1, setNav1] = useState(null)
+    // const [nav2, setNav2] = useState(null)
+    // const slider1Ref = useRef()
+    // const slider2Ref = useRef()
+
+    // useEffect(() => {
+    //     setNav1(slider1Ref.current)
+    //     setNav2(slider2Ref.current)
+    // }, [])
+
+    // const settings = {
+    //     // className: 'center',
+    //     // centerMode: true,
+    //     lazyLoad: true,
+    //     dots: true,
+    //     infinite: true,
+    //     speed: 2000,
+    //     slidesToShow: 1,
+    //     slidesToScroll: 1,
+    //     arrows: true,
+    //     prevArrow: <PrevArrow />,
+    //     nextArrow: <NextArrow />,
+    //     // autoplay: true,
+    //     // autoplaySpeed: 2000,
+    //     // cssEase: "linear"
+    // }
+
+    // const settings2 = {
+    //     // className: 'center',
+    //     // centerMode: true,
+    //     lazyLoad: true,
+    //     dots: true,
+    //     infinite: true,
+    //     speed: 2000,
+    //     slidesToShow: 3,
+    //     slidesToScroll: 1,
+    //     arrows: true,
+    //     prevArrow: <PrevArrow />,
+    //     nextArrow: <NextArrow />,
+    //     // autoplay: true,
+    //     // autoplaySpeed: 2000,
+    //     // cssEase: "linear"
+    // }
+
+    const slider1 = useRef();
+    const slider2 = useRef();
 
     useEffect(() => {
-        setNav1(slider1Ref.current)
-        setNav2(slider2Ref.current)
-    }, [])
-
-    const settings = {
-        // className: 'center',
-        // centerMode: true,
-        lazyLoad: true,
-        dots: true,
-        infinite: true,
-        speed: 2000,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: true,
-        prevArrow: <PrevArrow />,
-        nextArrow: <NextArrow />,
-        // autoplay: true,
-        // autoplaySpeed: 2000,
-        // cssEase: "linear"
-    }
-
-    const settings2 = {
-        // className: 'center',
-        // centerMode: true,
-        lazyLoad: true,
-        dots: true,
-        infinite: true,
-        speed: 2000,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        arrows: true,
-        prevArrow: <PrevArrow />,
-        nextArrow: <NextArrow />,
-        // autoplay: true,
-        // autoplaySpeed: 2000,
-        // cssEase: "linear"
-    }
+        if (slider1.current && slider2.current) {
+            slider1.current.slickGoTo(slider2.current.innerSlider.state.currentSlide);
+            slider2.current.slickGoTo(slider1.current.innerSlider.state.currentSlide);
+        }
+    }, []);
 
     return (
         <div className="col-start-3 col-end-11 w-full h-1000">
             {roomInfos4 &&
                 Object.values(roomInfos4).map((roomInfos, index) => (
-                    <Row key={index} className="w-full h-1000 mt-24">
-                        <Column className="w-5/12 m-auto relative">
-                            <Slider asNavFor={nav2} ref={slider1Ref} {...settings}>
-                                {roomInfos.r_url.map((roomInfo, index) => (
-                                    <div key={index} className="">
-                                        <img src={roomInfo} className="w-full h-96 rounded-2xl" alt="" />
-                                    </div>
-                                ))}
-                            </Slider>
-                            <Slider asNavFor={nav2} ref={slider1Ref} {...settings2}>
-                                {roomInfos.r_url.map((roomInfo, index) => (
-                                    <div key={index} className="pl-3 pr-3 h-44 mt-6">
-                                        <img src={roomInfo} className="w-full h-36 object-fit" alt="" />
-                                    </div>
-                                ))}
-                            </Slider>
-                        </Column>
-                        <Column className="w-1/2 pl-8">
-                            <Row className="text-3xl font-semibold mt-0">{roomInfos.r_name}</Row>
-                            <hr className="mt-4 border-b-2 border-b-black" />
-                            <Column>{roomInfos.r_description}</Column>
-                            <Box className="mt-8">
-                                <Column>
-                                    <Row className="">
-                                        <Row
-                                            className="mt-0 text-2xl">{parseInt(roomInfos.r_price).toLocaleString()}원</Row>
-                                        {roomInfos.r_status=="O" ?
-                                            <button
-                                                className="tab-size-4 user-select-text box-border flex items-center justify-center
-                                                    h-14 w-1/4 rounded-md text-black font-bold text-lg"
-                                                style={{ backgroundColor: '#D9F99D' }}
-                                                onClick={() => {
-                                                    onReservation(roomInfos.d_code, roomInfos.r_code)
-                                                }}
-                                            >
-
-                                                예약하기
-                                            </button> :
-                                            <button
-                                                className="tab-size-4 user-select-text box-border flex items-center justify-center
-                                                    h-14 w-1/4 rounded-md text-black font-bold text-lg"
-                                                style={{ backgroundColor: '#adadad' }}
-                                                onClick={() => {
-                                                    onReservation(roomInfos.d_code, roomInfos.r_code)
-                                                }}
-                                                disabled>
-
-                                                예약불가
-                                            </button>}
-
-                                    </Row>
-                                </Column>
-                            </Box>
-                        </Column>
-                    </Row>
+                    <SliderComponent roomInfos={roomInfos} index={index} onReservation={onReservation} />
                 ))}
         </div>
+    )
+}
+
+
+const SliderComponent = ({ roomInfos, index, onReservation }) => {
+    const slider1 = useRef();
+    const slider2 = useRef();
+    const [centerPadding, setCenterPadding] = useState('10px')
+    const extendedRoomInfos = [roomInfos.r_url[roomInfos.r_url.length - 1], ...roomInfos.r_url, roomInfos.r_url[0]];
+
+    // useEffect(() => {
+    //     setCenterPadding('10px')
+    // }, [])
+
+    return (
+        <Row key={index} className="w-full h-1000 mt-24">
+            <Column className="w-5/12 m-auto">
+                <Slider asNavFor={slider2.current} ref={slider => (slider1.current = slider)}
+                    beforeChange={(current, next) => {
+                        if (next >= roomInfos.r_url.length) {
+                            setTimeout(() => slider1.current.slickGoTo(0), 0);
+                        }
+                        slider2.current.slickGoTo(next);
+                    }}
+                >
+                    {extendedRoomInfos.map((roomInfo, index) => (
+                        <div key={index} className="h-80">
+                            <img src={roomInfo} className="w-full h-full rounded-2xl" alt="" />
+                        </div>
+                    ))}
+                </Slider>
+                <Slider
+                    asNavFor={slider1.current}
+                    ref={slider => (slider2.current = slider)}
+                    slidesToShow={3}
+                    swipeToSlide={true}
+                    focusOnSelect={true}
+                    centerMode={true}
+                    infinite={true}
+                    lazyLoad={true}
+                    centerPadding={centerPadding}
+                    beforeChange={(current, next) => {
+                        if (next >= extendedRoomInfos.length) {
+                            setTimeout(() => slider2.current.slickGoTo(0), 0);
+                        }
+                        slider1.current.slickGoTo(next);
+                    }}
+                >
+                    {extendedRoomInfos.map((roomInfo, index) => (
+                        <>
+                            <div key={index} className='h-24'>
+                                <img src={roomInfo} className="pl-1 pr-1 w-full h-full object-fill rounded-xl" alt="" />
+                            </div>
+                        </>
+                    ))}
+                </Slider>
+            </Column>
+            <Column className="w-1/2 pl-8">
+                <Row className="text-3xl font-semibold mt-0">{roomInfos.r_name}</Row>
+                <hr className="mt-4 border-b-2 border-b-black" />
+                <Column>{roomInfos.r_description}</Column>
+                <Box className="mt-8">
+                    <Column>
+                        <Row className="">
+                            <Row
+                                className="mt-0 text-2xl">{parseInt(roomInfos.r_price).toLocaleString()}원</Row>
+                            {roomInfos.r_status == "O" ?
+                                <button
+                                    className="tab-size-4 user-select-text box-border flex items-center justify-center
+                    h-14 w-1/4 rounded-md text-black font-bold text-lg"
+                                    style={{ backgroundColor: '#D9F99D' }}
+                                    onClick={() => {
+                                        onReservation(roomInfos.d_code, roomInfos.r_code)
+                                    }}
+                                >
+
+                                    예약하기
+                                </button> :
+                                <button
+                                    className="tab-size-4 user-select-text box-border flex items-center justify-center
+                    h-14 w-1/4 rounded-md text-black font-bold text-lg"
+                                    style={{ backgroundColor: '#adadad' }}
+                                    onClick={() => {
+                                        onReservation(roomInfos.d_code, roomInfos.r_code)
+                                    }}
+                                    disabled>
+
+                                    예약불가
+                                </button>}
+
+                        </Row>
+                    </Column>
+                </Box>
+            </Column>
+        </Row>
     )
 }

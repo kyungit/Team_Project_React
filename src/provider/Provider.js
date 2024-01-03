@@ -21,9 +21,9 @@ const Provider = ({ children }) => {
         })
     }
 
-    // useEffect(() => {
-    //     console.log('location.coordinates : ', location.coordinates)
-    // }, [location])
+    useEffect(() => {
+        console.log('location.coordinates : ', location.coordinates)
+    }, [location])
 
     const onError = (error) => {
         setLocation({
