@@ -15,6 +15,8 @@ export default function Menu1() {
                 <Link to='/menu/reservation'><Row className='mt-8 text-2xl font-medium'>예약 내역</Row></Link>
                 <Row className='mt-8 border-b border-b-gray-300'></Row>
                 <Link to='/menu/visited'><Row className='mt-6 text-2xl font-medium'>방문 내역</Row></Link>
+                <Row className='mt-8 border-b border-b-gray-300'></Row>
+                <Link to='/menu/visited'><Row className='mt-6 text-2xl font-medium'>내가 쓴 리뷰</Row></Link>
             </Box >
         </div>
     )

@@ -93,7 +93,7 @@ export default function Home2() {
         }))
         navigate('/searchList')
     }, [setSearchdata])
-    
+
 
     const region = ['서울', '인천', '경기', '강원', '충북,대전,세종', '충남', '부산,울산,대구', '경북', '경남', '전북', '광주', '전남,광주', '제주']
     const images = [Seoul, Incheon, Gyeonggi, Gangwon, Daejeon, Chungnam, Busan, Gyeongbuk, Gyeongnam, Jeonbuk, Gwangju, Jeonnam, Jeju]
