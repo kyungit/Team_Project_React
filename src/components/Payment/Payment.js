@@ -60,7 +60,10 @@ const Payment = (data) => {
                     })
                         .then((data) => {
                             console.log(data)
-                            navigate('/reservation')
+                            if(data.status==200){
+                                navigate('/menu/reservation');
+                            }
+                            // navigate('/reservation')
                         })
                         .catch((error) => {
                             console.log(error)

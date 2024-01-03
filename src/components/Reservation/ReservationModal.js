@@ -9,7 +9,7 @@ import ReservationContext from '../../context/Reservation_Context'
 import Payment from '../../components/Payment/Payment'
 import '../../assets/css/modal.css'
 import axios from 'axios'
-export default function ReservationModal({ closeModal, children }){
+export default function ReservationModal({ closeModal, children, price }){
     const { searchdata } = useContext(Context)
     const {reservations, reservationdata, setReservationdata} = useContext(ReservationContext)
     let search = null;
@@ -22,7 +22,8 @@ export default function ReservationModal({ closeModal, children }){
         reservation3 = reservations.reservations3
     }
     let data={
-        price:reservationdata.reservation_price,
+        // price:reservationdata.reservation_price,
+        price: price,
         name:reservationdata.m_username,
         telno:reservationdata.m_telno,
     }

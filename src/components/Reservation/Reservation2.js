@@ -112,7 +112,7 @@ export default function Reservation2() {
             </Box>
 
             {isModalOpen && (
-                <ReservationModal closeModal={closeModal}>
+                <ReservationModal closeModal={closeModal} price={(reservation.r_price - (reservation.r_price * reservation.d_discount) / 100)}>
 
                 </ReservationModal>
             )}
