@@ -3,12 +3,19 @@ import RoomImageSlide from './RoomImageSlide'
 import ImageContext from '../../context/Home_Context'
 import Row from '../Common/Row'
 import Column from '../Common/Column'
-import beach from '../../assets/img/beach.jpg'
-import bird from '../../assets/img/bird.png'
-import butterfly from '../../assets/img/butterfly.jpg'
-import forest from '../../assets/img/forest.jpg'
-import mountain from '../../assets/img/mountain.jpg'
-import vine from '../../assets/img/vine.jpg'
+import Seoul from '../../assets/img/Seoul.jpg'
+import Incheon from '../../assets/img/Incheon.jpeg'
+import Gyeonggi from '../../assets/img/Gyeonggi.jpg'
+import Gangwon from '../../assets/img/Gangwon.jpg'
+import Daejeon from '../../assets/img/Daejeon.jpg'
+import Chungnam from '../../assets/img/Chungnam.jpg'
+import Busan from '../../assets/img/Busan.avif'
+import Gyeongbuk from '../../assets/img/Gyeongbuk.jpg'
+import Gyeongnam from '../../assets/img/Gyeongnam.jpg'
+import Jeonbuk from '../../assets/img/Jeonbuk.jpeg'
+import Jeonnam from '../../assets/img/Jeonnam.jpg'
+import Gwangju from '../../assets/img/Gwangju.webp'
+import Jeju from '../../assets/img/Jeju.jpg'
 import Slider from 'react-slick'
 import '../../assets/css/slick-theme.css'
 import '../../assets/css/slick.css'
@@ -90,8 +97,8 @@ export default function Home2() {
         [setSearchdata],
     )
 
-    const region = ['서울', '인천', '경기', '강원', '충북,대전,세종', '충남', '부산,울산,대구', '경북', '경남', '전북', '전남,광주', '제주']
-    const images = [mountain, vine, beach, bird, butterfly, forest, mountain, vine, beach, bird, butterfly, forest]
+    const region = ['서울', '인천', '경기', '강원', '충북,대전,세종', '충남', '부산,울산,대구', '경북', '경남', '전북', '광주', '전남,광주', '제주']
+    const images = [Seoul, Incheon, Gyeonggi, Gangwon, Daejeon, Chungnam, Busan, Gyeongbuk, Gyeongnam, Jeonbuk, Gwangju, Jeonnam, Jeju]
 
     return (
         <div className="col-start-2 col-end-12 w-full h-auto pt-16 pl-6 pr-6 mt-32 relative">
