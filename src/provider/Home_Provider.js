@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback, useContext } from 'react'
+import React, { useState, useEffect, useMemo, useCallback, useContext, useRef } from 'react'
 import axios from 'axios'
 import HomeContext from '../context/Home_Context'
 import { useNavigate } from 'react-router-dom'
@@ -55,59 +55,68 @@ const HomeProvider = ({ children }) => {
     // )
 
     const { location } = useContext(Context)
-    const coordinates = location.coordinates
+    const { coordinates } = location
 
+    // useEffect(() => {
+    const ImagesAPI = async (params) => {
+        const result1 = await axios.get('http://localhost:8080/star', {
+            params,
+        })
+        const result2 = await axios.get('http://localhost:8080/discount', {
+            params,
+        })
+        const result3 = await axios.get('http://localhost:8080/earlyCheckin', {
+            params,
+        })
+        // const result4 = await axios.get('http://localhost:8080/type')
+
+        setImages({
+            images1: result1.data,
+            images2: result2.data,
+            images3: result3.data,
+            // images4: result4.data,
+        })
+
+        console.log('result1 : ', result1)
+        console.log('result2 : ', result2)
+        console.log('result3 : ', result3)
+        // console.log('result4 : ', result4)
+    }
+
+    // 위치 정보가 로드되었는지 확인
+    //     ImagesAPI()
+    // }, [coordinates])
+
+    // API 호출 상태를 추적하는 상태 변수
+    const [apiCalled, setApiCalled] = useState(false)
     useEffect(() => {
-        const ImagesAPI = async () => {
-            let result1 = ''
-            let result2 = ''
-            let result3 = ''
+        // 이미 API를 호출했다면 다시 호출하지 않습니다.
+        if (apiCalled) return
 
-            result1 = await axios.get('http://localhost:8080/star', {
-                params: {
-                    lat: coordinates.lat || '37.49616859',
-                    lng: coordinates.lng || '127.0204826',
-                },
-            })
-            result2 = await axios.get('http://localhost:8080/discount')
-            result3 = await axios.get('http://localhost:8080/earlyCheckin')
-            // const result4 = await axios.get('http://localhost:8080/type')
+        // 위치 정보가 로드되었으면 실제 위치를, 그렇지 않으면 기본 위치를 사용합니다.
+        const lat = coordinates?.lat ?? '37.49616859'
+        const lng = coordinates?.lng ?? '127.0204826'
+        const params = { lat, lng }
 
-            setImages({
-                images1: result1.data,
-                images2: result2.data,
-                images3: result3.data,
-                // images4: result4.data,
-            })
-
-            console.log('result1 : ', result1)
-            console.log('result2 : ', result2)
-            console.log('result3 : ', result3)
-            // console.log('result4 : ', result4)
+        const callApiIfNotCalled = () => {
+            if (!apiCalled) {
+                ImagesAPI(params)
+                setApiCalled(true) // API를 호출했다는 상태를 업데이트
+            }
         }
 
-        ImagesAPI()
-    }, [location])
+        // 위치 정보가 로드되었을 때 한 번만 API 호출
+        if (location.loaded) {
+            callApiIfNotCalled()
+        }
+
+        // // 컴포넌트 마운트 시에 API 호출
+        // if (!location.loaded) {
+        //     callApiIfNotCalled()
+        // }
+    }, [location.loaded]) // 빈 배열은 컴포넌트 마운트 시에만 실행됨을 보장합니다.
 
     const value = useMemo(() => ({ images }), [images])
-
-    // axios({
-    //     method: 'get', // 또는 'post', 서버 설정에 따라 다름
-    //     url: 'http://localhost:8080/login/oauth2/code/{registrationId}',
-    //     // 필요하다면 headers 등의 추가적인 설정이 가능합니다.
-    //     })
-    //     .then(response => {
-    //         // 서버로부터 받은 응답에서 액세스 토큰을 추출합니다.
-    //         const accessToken = response.data.access_token;
-    //         setToken(accessToken);
-    //         console.log(accessToken);
-    //         // 액세스 토큰을 사용하는 로직을 여기에 작성합니다.
-    //         // 예를 들어, 상태에 저장하거나, API 요청에 사용하거나, 로컬 스토리지에 저장할 수 있습니다.
-    //     })
-    //     .catch(error => {
-    //         // 오류 처리
-    //         console.error('There was an error!', error);
-    //     });
 
     return (
         <HomeContext.Provider value={value}>

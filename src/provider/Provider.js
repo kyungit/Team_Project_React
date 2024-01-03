@@ -8,7 +8,7 @@ import getCookie from '../api/cookie/getCookie'
 const Provider = ({ children }) => {
     const [location, setLocation] = useState({
         loaded: false,
-        coordinates: { lat: '', lng: '' },
+        coordinates: { lat: '37.49616859', lng: '127.0204826' },
     })
 
     const onSuccess = (location) => {
@@ -21,13 +21,13 @@ const Provider = ({ children }) => {
         })
     }
 
-    useEffect(() => {
-        console.log('location.coordinates : ', location.coordinates)
-    }, [location])
+    // useEffect(() => {
+    //     console.log('location.coordinates : ', location.coordinates)
+    // }, [location])
 
     const onError = (error) => {
         setLocation({
-            loaded: true,
+            loaded: false,
             error,
         })
     }

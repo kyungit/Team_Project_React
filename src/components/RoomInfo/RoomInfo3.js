@@ -112,6 +112,23 @@ export default function RoomInfo3() {
         // cssEase: "linear"
     }
 
+    const settings2 = {
+        // className: 'center',
+        // centerMode: true,
+        lazyLoad: true,
+        dots: true,
+        infinite: true,
+        speed: 2000,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        arrows: true,
+        prevArrow: <PrevArrow />,
+        nextArrow: <NextArrow />,
+        // autoplay: true,
+        // autoplaySpeed: 2000,
+        // cssEase: "linear"
+    }
+
     return (
         <div className="col-start-3 col-end-11 w-full h-1000">
             {roomInfos4 &&
@@ -125,7 +142,7 @@ export default function RoomInfo3() {
                                     </div>
                                 ))}
                             </Slider>
-                            <Slider asNavFor={nav1} ref={slider2Ref} slidesToShow={3} swipeToSlide={true} focusOnSelect={true}>
+                            <Slider asNavFor={nav2} ref={slider1Ref} {...settings2}>
                                 {roomInfos.r_url.map((roomInfo, index) => (
                                     <div key={index} className="pl-3 pr-3 h-44 mt-6">
                                         <img src={roomInfo} className="w-full h-36 object-fit" alt="" />
