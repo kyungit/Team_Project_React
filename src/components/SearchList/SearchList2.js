@@ -85,13 +85,13 @@ export default function SearchList2() {
                                     <Row className="text-sm mt-1 text-gray-500" splitEnabled={false}>★ {searchlist.d_star}</Row>
                                     <Row className="mt-0" >{searchlist.d_road}</Row>
                                     <Row className="mt-4 text-xl font-semibold">
-                                        /<Row>{parseInt(searchlist.min_r_price).toLocaleString()}원 ~ 
+                                        /<Row>{parseInt(searchlist.min_r_price).toLocaleString()}원 ~
                                         {parseInt(searchlist.max_r_price).toLocaleString()}원</Row>
                                     </Row>
                                     <Row className="mt-1">
                                         /
                                         <button
-                                            className="tab-size-4 user-select-text box-border flex items-center justify-center 
+                                            className="tab-size-4 user-select-text box-border flex items-center justify-center
                                                     h-10 w-1/4 rounded-md text-black font-bold text-lg"
                                             style={{ backgroundColor: '#D9F99D' }}
                                         >

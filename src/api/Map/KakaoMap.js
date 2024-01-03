@@ -251,7 +251,7 @@ export default function KakaoMap() {
 
 
     const markerRef = useRef(null)
-    
+
     // useEffect(() => {
     //     const overlayInfos = accommodations?.map(accomodation => {
     //       return {
@@ -261,14 +261,14 @@ export default function KakaoMap() {
     //         d_star: accomodation.d_star
     //       };
     //     });
-    
+
     //     overlayInfos.forEach(el => {
     //       let marker = new kakao.maps.Marker({
     //         map: markerRef.current,
     //         position: new kakao.maps.LatLng(el.lat, el.lng),
     //         d_name: el.d_name,
     //       });
-    
+
     //       const content = ReactDOMServer.renderToString(
     //         <div className=" w-20 h-20 bg-teal-200">
     //             <div className="accommInfoWrap">
@@ -280,18 +280,18 @@ export default function KakaoMap() {
     //             <div className="overlayArrow"></div>
     //           </div>
     //       )
-    
+
     //       let position = new kakao.maps.LatLng(el.lat, el.lng);
-    
+
     //       let customOverlay = new kakao.maps.CustomOverlay({
     //         position: position,
     //         content: content,
     //       });
-    
+
     //       kakao.maps.event.addListener(marker, 'mouseover', function () {
     //         customOverlay.setMap(markerRef.current);
     //       });
-    
+
     //       kakao.maps.event.addListener(marker, 'mouseout', function () {
     //         setTimeout(function () {
     //           customOverlay.setMap();
@@ -352,7 +352,7 @@ export default function KakaoMap() {
                 {!state.isLoading && isOpen && (
                     <div>안녕</div>
                 )}
-                
+
             </Map>
 
             <div>
