@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useMemo} from 'react'
 import axios from 'axios'
 import MenuContext from '../context/Menu_Context'
+import getCookie from '../api/cookie/getCookie'
 
 const MenuProvider = ({ children }) => {
     const [images, setImages] = useState({
@@ -32,10 +33,10 @@ const MenuProvider = ({ children }) => {
     useEffect(() => {
         const ImagesAPI = async () => {
             try{
-            const result1 = await axios.get('http://localhost:8080/menu/memberInfo')
-            const result2 = await axios.get(`http://localhost:8080/menu/reservationInfo`)
-            const result3 = await axios.get('http://localhost:8080/menu/visited')
-            const result4 = await axios.get('http://localhost:8080/menu/memberReview')
+            const result1 = await axios.get(`http://localhost:8080/menu/memberInfo?userid=${getCookie('userid')}`)
+            const result2 = await axios.get(`http://localhost:8080/menu/reservationInfo?userid=${getCookie('userid')}`)
+            const result3 = await axios.get(`http://localhost:8080/menu/visited?userid=${getCookie('userid')}`)
+            const result4 = await axios.get(`http://localhost:8080/menu/memberReview?userid=${getCookie('userid')}`)
             // const result5 = await axios.get('http://localhost:8080/menu/review')
 
 
