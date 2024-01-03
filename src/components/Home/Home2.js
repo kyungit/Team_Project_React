@@ -5,11 +5,11 @@ import Row from '../Common/Row'
 import Column from '../Common/Column'
 import Seoul from '../../assets/img/Seoul.jpg'
 import Incheon from '../../assets/img/Incheon.jpeg'
-import Gyeonggi from '../../assets/img/Gyeonggi.jpg'
+import Gyeonggi from '../../assets/img/Gyeonggi.jpeg'
 import Gangwon from '../../assets/img/Gangwon.jpg'
 import Daejeon from '../../assets/img/Daejeon.jpg'
 import Chungnam from '../../assets/img/Chungnam.jpg'
-import Busan from '../../assets/img/Busan.avif'
+import Busan from '../../assets/img/Busan.jpg'
 import Gyeongbuk from '../../assets/img/Gyeongbuk.jpg'
 import Gyeongnam from '../../assets/img/Gyeongnam.jpg'
 import Jeonbuk from '../../assets/img/Jeonbuk.jpeg'
@@ -86,17 +86,19 @@ export default function Home2() {
 
     const navigate = useNavigate()
 
-    const onRegionChange = useCallback((region) => {
-        setSearchdata((searchdata) => ({
-            ...searchdata,
-            keyword: region
-        }))
-        navigate('/searchList')
-    }, [setSearchdata])
+    const onRegionChange = useCallback(
+        (region) => {
+            setSearchdata((searchdata) => ({
+                ...searchdata,
+                keyword: region,
+            }))
+            navigate('/searchList')
+        },
+        [setSearchdata],
+    )
 
-
-    const region = ['서울', '인천', '경기', '강원', '충북,대전,세종', '충남', '부산,울산,대구', '경북', '경남', '전북', '광주', '전남,광주', '제주']
-    const images = [Seoul, Incheon, Gyeonggi, Gangwon, Daejeon, Chungnam, Busan, Gyeongbuk, Gyeongnam, Jeonbuk, Gwangju, Jeonnam, Jeju]
+    const region = ['서울', '인천', '경기', '강원', '충북,대전,세종', '충남', '부산,울산,대구', '경북', '경남', '전북',  '전남,광주', '제주']
+    const images = [Seoul, Incheon, Gyeonggi, Gangwon, Daejeon, Chungnam, Busan, Gyeongbuk, Gyeongnam, Jeonbuk, Jeonnam, Jeju]
 
     return (
         <div className="col-start-2 col-end-12 w-full h-auto pt-16 pl-6 pr-6 mt-32 relative">
@@ -104,10 +106,13 @@ export default function Home2() {
             <Slider {...settings}>
                 {images &&
                     images.map((image, index) => (
-                        <div key={index} className="pl-3 pr-3 w-44 h-44 mt-8"
-                        onClick={() => {
-                            onRegionChange(region[index])
-                            }}>
+                        <div
+                            key={index}
+                            className="pl-3 pr-3 w-44 h-44 mt-8"
+                            onClick={() => {
+                                onRegionChange(region[index])
+                            }}
+                        >
                             <img className="w-full h-full object-fit rounded-2xl" src={images[index]} alt="" />
                             <Row className="mt-2 text-sm">{region[index]}</Row>
                         </div>

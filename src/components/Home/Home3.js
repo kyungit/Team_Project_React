@@ -34,7 +34,6 @@ export default function Home3() {
         navigate('/roomInfo')
     }
 
-
     const { images } = useContext(HomeContext)
     const images2 = images.images2
 
@@ -45,10 +44,13 @@ export default function Home3() {
             <Slider {...settings}>
                 {images2 &&
                     images2.map((image, index) => (
-                        <div key={index} className="pl-3 pr-3 w-44 h-44 mt-2"
+                        <div
+                            key={index}
+                            className="pl-3 pr-3 w-44 h-44 mt-2"
                             onClick={() => {
                                 onRoomInfo(image.d_code)
-                            }}>
+                            }}
+                        >
                             <img className="w-full h-full object-fit rounded-2xl mt-6" src={image.d_img} alt="" />
                             <Row className="mt-4 text-xs text-gray-500" splitEnabled={false}>{`★${image.d_star} - ${image.d_road}`}</Row>
                             <Row className="mt-0 text-base">{image.d_name}</Row>

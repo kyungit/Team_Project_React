@@ -50,15 +50,14 @@ export default function RoomInfo3() {
     const PrevArrow = (props) => {
         const { className, onClick } = props
         return (
-            !isVisible && (
+            isVisible && (
                 <img
-                    width="64"
-                    height="64"
-                    className="absolute z-10  w-10 h-10 object-cover bg-blue-300"
-                    style={{ left: '1%', top: '61%' }}
+                    width="500"
+                    height="500"
+                    className="absolute z-10 w-10 h-10 object-cover bg-blue-400"
+                    style={{ left: '0%', top: '0%' }}
                     onClick={() => {
                         onClick()
-                        // setIsVisible(true)
                     }}
                     src="https://www.tripbtoz.com/images/main/bg_btn_mGroup2_arr.svg"
                     alt="circled-chevron-right"
@@ -75,10 +74,9 @@ export default function RoomInfo3() {
                     width="32"
                     height="32"
                     className="absolute z-10 w-10 h-10 object-cover bg-red-300"
-                    style={{ right: '1%', bottom: '28%', transform: 'scaleX(-1)' }}
+                    style={{ right: '0%', bottom: '6%', transform: 'scaleX(-1)' }}
                     onClick={() => {
                         onClick()
-                        // setIsVisible(false)
                     }}
                     src="https://www.tripbtoz.com/images/main/bg_btn_mGroup2_arr.svg"
                     alt="circled-chevron-right"
@@ -87,46 +85,64 @@ export default function RoomInfo3() {
         )
     }
 
+    const [nav1, setNav1] = useState(null)
+    const [nav2, setNav2] = useState(null)
+    const slider1Ref = useRef()
+    const slider2Ref = useRef()
+
+    useEffect(() => {
+        setNav1(slider1Ref.current)
+        setNav2(slider2Ref.current)
+    }, [])
+
     const settings = {
+        // className: 'center',
+        // centerMode: true,
+        lazyLoad: true,
         dots: true,
-        arrows: true,
         infinite: true,
+        speed: 2000,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
         prevArrow: <PrevArrow />,
         nextArrow: <NextArrow />,
+        // autoplay: true,
+        // autoplaySpeed: 2000,
+        // cssEase: "linear"
     }
 
-    // const [nav1, setNav1] = useState();
-    // const [nav2, setNav2] = useState();
-    // const slider1Ref = useRef();
-    // const slider2Ref = useRef();
-
-    // useEffect(() => {
-    //     setNav1(slider1Ref.current);
-    //     setNav2(slider2Ref.current);
-    // }, [slider1Ref, slider2Ref]);
-
-    const [nav1, setNav1] = useState()
-    const [nav2, setNav2] = useState()
-
-    // useEffect(() => {
-    //     setNav1(sliderRef1)
-    //     setNav2(sliderRef2)
-    // }, [])
+    const settings2 = {
+        // className: 'center',
+        // centerMode: true,
+        lazyLoad: true,
+        dots: true,
+        infinite: true,
+        speed: 2000,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        arrows: true,
+        prevArrow: <PrevArrow />,
+        nextArrow: <NextArrow />,
+        // autoplay: true,
+        // autoplaySpeed: 2000,
+        // cssEase: "linear"
+    }
 
     return (
         <div className="col-start-3 col-end-11 w-full h-1000">
             {roomInfos4 &&
                 Object.values(roomInfos4).map((roomInfos, index) => (
                     <Row key={index} className="w-full h-1000 mt-24">
-                        <Column className="w-5/12 m-auto">
-                            <Slider asNavFor={nav2} ref={(slider1) => setNav1(slider1)}>
+                        <Column className="w-5/12 m-auto relative">
+                            <Slider asNavFor={nav2} ref={slider1Ref} {...settings}>
                                 {roomInfos.r_url.map((roomInfo, index) => (
                                     <div key={index} className="">
                                         <img src={roomInfo} className="w-full h-96 rounded-2xl" alt="" />
                                     </div>
                                 ))}
                             </Slider>
-                            <Slider asNavFor={nav1} ref={(slider2) => setNav2(slider2)} slidesToShow={3} swipeToSlide={true} focusOnSelect={true}>
+                            <Slider asNavFor={nav2} ref={slider1Ref} {...settings2}>
                                 {roomInfos.r_url.map((roomInfo, index) => (
                                     <div key={index} className="pl-3 pr-3 h-44 mt-6">
                                         <img src={roomInfo} className="w-full h-36 object-fit" alt="" />
@@ -141,17 +157,32 @@ export default function RoomInfo3() {
                             <Box className="mt-8">
                                 <Column>
                                     <Row className="">
-                                        <Row className="mt-0 text-2xl">{parseInt(roomInfos.r_price).toLocaleString()}원</Row>
-                                        <button
-                                            className="tab-size-4 user-select-text box-border flex items-center justify-center
+                                        <Row
+                                            className="mt-0 text-2xl">{parseInt(roomInfos.r_price).toLocaleString()}원</Row>
+                                        {roomInfos.r_status=="O" ?
+                                            <button
+                                                className="tab-size-4 user-select-text box-border flex items-center justify-center
                                                     h-14 w-1/4 rounded-md text-black font-bold text-lg"
-                                            style={{ backgroundColor: '#D9F99D' }}
-                                            onClick={() => {
-                                                onReservation(roomInfos.d_code, roomInfos.r_code)
-                                            }}
-                                        >
-                                            예약하기
-                                        </button>
+                                                style={{ backgroundColor: '#D9F99D' }}
+                                                onClick={() => {
+                                                    onReservation(roomInfos.d_code, roomInfos.r_code)
+                                                }}
+                                            >
+
+                                                예약하기
+                                            </button> :
+                                            <button
+                                                className="tab-size-4 user-select-text box-border flex items-center justify-center
+                                                    h-14 w-1/4 rounded-md text-black font-bold text-lg"
+                                                style={{ backgroundColor: '#adadad' }}
+                                                onClick={() => {
+                                                    onReservation(roomInfos.d_code, roomInfos.r_code)
+                                                }}
+                                                disabled>
+
+                                                예약불가
+                                            </button>}
+
                                     </Row>
                                 </Column>
                             </Box>
