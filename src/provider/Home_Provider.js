@@ -69,42 +69,42 @@ const HomeProvider = ({ children }) => {
             params,
         })
         // const result4 = await axios.get('http://localhost:8080/type')
-    // useEffect(() => {
-    //     const ImagesAPI = async () => {
-    //         let result1 = ''
-    //         let result2 = ''
-    //         let result3 = ''
-    //
-    //         if(coordinates==null){
-    //             result1 = await axios.get('http://localhost:8080/star', {
-    //                 params: {
-    //                     lat: '37.49616859',
-    //                     lng: '127.0204826',
-    //                 },
-    //             })
-    //         }
-    //         else {
-    //             result1 = await axios.get('http://localhost:8080/star', {
-    //                 params: {
-    //                     lat: coordinates.lat ,
-    //                     lng: coordinates.lng ,
-    //                 },
-    //             })
-    //         }
-    //         // result1 = await axios.get('http://localhost:8080/star', {
-    //         //     params: {
-    //         //         lat: coordinates.lat'37.4961 || 6859',
-    //         //         lng: coordinates.lng || '127.0204826',
-    //         //     },
-    //         // })
-    //         result2 = await axios.get('http://localhost:8080/discount',{
-    //             params: {
-    //                 lat: coordinates.lat ,
-    //                 lng: coordinates.lng ,
-    //             },
-    //         })
-    //         result3 = await axios.get('http://localhost:8080/earlyCheckin')
-    //         // const result4 = await axios.get('http://localhost:8080/type')
+        // useEffect(() => {
+        //     const ImagesAPI = async () => {
+        //         let result1 = ''
+        //         let result2 = ''
+        //         let result3 = ''
+        //
+        //         if(coordinates==null){
+        //             result1 = await axios.get('http://localhost:8080/star', {
+        //                 params: {
+        //                     lat: '37.49616859',
+        //                     lng: '127.0204826',
+        //                 },
+        //             })
+        //         }
+        //         else {
+        //             result1 = await axios.get('http://localhost:8080/star', {
+        //                 params: {
+        //                     lat: coordinates.lat ,
+        //                     lng: coordinates.lng ,
+        //                 },
+        //             })
+        //         }
+        //         // result1 = await axios.get('http://localhost:8080/star', {
+        //         //     params: {
+        //         //         lat: coordinates.lat'37.4961 || 6859',
+        //         //         lng: coordinates.lng || '127.0204826',
+        //         //     },
+        //         // })
+        //         result2 = await axios.get('http://localhost:8080/discount',{
+        //             params: {
+        //                 lat: coordinates.lat ,
+        //                 lng: coordinates.lng ,
+        //             },
+        //         })
+        //         result3 = await axios.get('http://localhost:8080/earlyCheckin')
+        //         // const result4 = await axios.get('http://localhost:8080/type')
 
         setImages({
             images1: result1.data,
@@ -147,9 +147,9 @@ const HomeProvider = ({ children }) => {
         }
 
         // // 컴포넌트 마운트 시에 API 호출
-        if (!location.loaded) {
-            callApiIfNotCalled()
-        }
+        // if (!location.loaded) {
+        //     callApiIfNotCalled()
+        // }
     }, [location.loaded]) // 빈 배열은 컴포넌트 마운트 시에만 실행됨을 보장합니다.
 
     const value = useMemo(() => ({ images }), [images])
