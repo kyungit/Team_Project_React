@@ -84,13 +84,14 @@ export default function Menu2() {
                         </Column>
                         <Column className='w-full'>
                             <Row className='text-base'>휴대폰 번호</Row>
-                            <Input disabled={true}>{memberInfo.userid}</Input>
+                            <Input disabled={true} value={memberInfo.telno}></Input>
                         </Column>
                     </Row>
                     <Row>
                         <Column className='w-full'>
                             <Row className='text-base'>사업자 번호(숙소코드)</Row>
                             <input
+                                className='h-12 mt-1'
                                 type="text"
                                 value={inputValue}
                                 onChange={handleChange}

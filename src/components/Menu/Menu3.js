@@ -15,26 +15,41 @@ export default function Menu3() {
      }
     console.log("images를 넣은 배열"+imageInfo);
     return (
-        <div className="col-start-4 col-end-13 w-full h-auto pt-16">
+        <div className="col-start-4 col-end-13 w-4/5 h-auto pt-16 flex flex-col m-auto">
             { imageInfo && imageInfo.map((reservation,index)=> (
 
-                <Box key={index}>
+                <Box key={index} className='mb-24 p-12'>
 
-                    <Row className="text-2xl m-0 text-black">{index+1}</Row>
-                   <Row className="mt-1">{reservation.d_code}</Row>
-                    <Row className="mt-1">{reservation.r_code}</Row>
-                    <Row className="mt-1">{reservation.d_name}</Row>
-                    <Row className="mt-1">{reservation.d_type}</Row>
-                    <Row className="mt-1">{reservation.r_img}</Row>
-                    <Row className="mt-1">{reservation.r_name}</Row>
-                    <Row className="mt-1">{reservation.m_userid}</Row>
-                    <Row className="mt-1">{reservation.m_telno}</Row>
-                    <Row className="mt-1">{reservation.reservation_checkin}</Row>
-                    <Row className="mt-1">{reservation.reservation_checkout}</Row>
-                    <Row className="mt-1">{reservation.reservation_guest}</Row>
-                    <Row className="mt-1">{reservation.reservation_price}</Row>
-                    <Row className="mt-1">{reservation.reservation_description}</Row>
-                    <Row className="mt-1">{reservation.s_status}</Row>
+                    <Row className="text-2xl font-bold m-0 text-black">{` ${index+1} . ${reservation.d_name} ${reservation.d_type} ` }</Row>
+                   {/*<Row className="mt-1">{reservation.d_code}</Row>*/}
+                   {/* <Row className="mt-1">{reservation.r_code}</Row>*/}
+                   {/* <Row className="mt-1">{reservation.d_name}</Row>*/}
+                   {/* <Row className="mt-1">{reservation.d_type}</Row>*/}
+                    <Row className="w-3/5 h-80">
+                        <img src={reservation.r_img} alt=""/>
+                    </Row>
+                    <Row className="text-2xl mt-1">{`방 정보 : ${reservation.r_name}`}</Row>
+                    {/*<Row className="text-2xl mt-1">{reservation.m_userid}</Row>*/}
+                    <Row className="text-2xl mt-1">{`전화번호 : ${reservation.m_telno}`}</Row>
+                    <Row className="text-2xl mt-1">{`체크인 : ${reservation.reservation_checkin}`}</Row>
+                    <Row className="text-2xl mt-1">{`체크아웃 : ${reservation.reservation_checkout}`}</Row>
+                    <Row className="text-2xl mt-1">{`인원 수 : ${reservation.reservation_guest}`}</Row>
+                    <Row className="text-2xl mt-1">{` 가격 : ${reservation.reservation_price}`}</Row>
+                    <Row className="text-2xl mt-1">{` 요청사항 : ${reservation.reservation_description}`}</Row>
+                    <Row className="text-2xl mt-1">
+                        {(() => {
+                            switch (reservation.s_status) {
+                                case 1:
+                                    return '상태 : 결제완료';
+                                case 3:
+                                    return '상태 : 체크인 완료';
+                                case 4:
+                                    return '상태 : 체크아웃 완료';
+                                default:
+                                    return '상태 : 알 수 없는 상태';
+                            }
+                        })()}
+                    </Row>
 
                 </Box>
             ))}
