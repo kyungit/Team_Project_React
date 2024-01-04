@@ -30,16 +30,16 @@ export default function Menu5() {
     }
 
     return (
-        <div className="col-start-4 col-end-13 w-full h-auto pt-16">
+        <div className="col-start-4 col-end-13 w-4/5 h-auto pt-16 flex flex-col m-auto">
             {imageInfo &&
                 imageInfo.map((review, index) => (
-                    <Box key={index}>
-                        <Row className="text-2xl m-0 text-black">{index + 1}</Row>
-                        <Row className="mt-1">{review.d_code}</Row>
-                        <Row className="mt-1">{review.r_code}</Row>
-                        <Row className="mt-1">{review.m_userid}</Row>
-                        <Row className="mt-1">{review.review_score}</Row>
-                        <Row className="mt-1">{review.review_comment}</Row>
+                    <Box key={index} className='mb-24 p-12'>
+                        <Row className="text-2xl m-0 text-black">{` ${index + 1}. `}</Row>
+                        {/*<Row className="text-2xl mt-1">{review.d_code}</Row>*/}
+                        {/*<Row className="text-2xl mt-1">{review.r_code}</Row>*/}
+                        <Row className="text-2xl mt-1">{`작성자 ID: ${review.m_userid}`}</Row>
+                        <Row className="text-2xl mt-1">{`별점 : ${review.review_score}`}</Row>
+                        <Row className="text-2xl mt-1">{` 내용 : ${review.review_comment}`}</Row>
 
                         {review.fileInfo && review.fileInfo.length > 0 && (
                             <div
