@@ -37,7 +37,7 @@ const MenuProvider = ({ children }) => {
             const result2 = await axios.get(`http://localhost:8080/menu/reservationInfo?userid=${getCookie('userid')}`)
             const result3 = await axios.get(`http://localhost:8080/menu/visited?userid=${getCookie('userid')}`)
             const result4 = await axios.get(`http://localhost:8080/menu/memberReview?userid=${getCookie('userid')}`)
-            // const result5 = await axios.get('http://localhost:8080/menu/review')
+            const result5 = await axios.get(`http://localhost:8080/menu/managerReservation?userid=${getCookie('userid')}`)
 
 
                 // const result4 = await axios.get('')
@@ -47,7 +47,7 @@ const MenuProvider = ({ children }) => {
                 images2: result2.data,
                 images3: result3.data,
                 images4: result4.data,
-                //result5: result5.data
+                images5: result5.data
             });
             console.log('result1 : ', result1)
             console.log('result2 : ', result2)

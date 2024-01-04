@@ -21,9 +21,6 @@ export default function Review1() {
                     <Row className="mt-1">{review.m_userid}</Row>
                     <Row className="mt-1">{review.review_comment}</Row>
                     <Row className="mt-1">{review.review_score}</Row>
-
-
-                    <Row className="w-1/2 h-96 bg-red-400">리뷰 사진내용</Row>
                 </Column>
                 </div>
             ))}

@@ -7,6 +7,7 @@ import MenuProvider from '../../provider/Menu_Provider'
 import Layout2 from '../../Layout2'
 import { Route, Routes } from 'react-router-dom'
 import Menu5 from '../../components/Menu/Menu5'
+import Menu6 from "../../components/Menu/Menu6";
 
 export default function Menu() {
     return (
@@ -22,6 +23,7 @@ export default function Menu() {
                         <Route path="/Reservation" element={<Menu3 />} />
                         <Route path="/visited" element={<Menu4 />} />
                         <Route path="/review" element={<Menu5 />} />
+                        <Route path="/manager" element={<Menu6 />} />
                     </Route>
                 </Routes>
             </Grid>

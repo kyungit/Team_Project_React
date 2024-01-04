@@ -123,7 +123,7 @@
 
             // 후속 처리
             // 리뷰 제출 후 모달을 닫습니다.
-            /*window.location.reload();*/
+            window.location.reload();
             closeModal();
         };
 
