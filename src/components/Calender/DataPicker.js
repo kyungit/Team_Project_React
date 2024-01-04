@@ -45,7 +45,7 @@ export default function DataPicker() {
     const { images, searchdata, setSearchdata } = useContext(Context)
     // const { images, searchdata, setSearchdata } = useContext(SearchListContext)
     // const { keyword, startDate, endDate, guest } = searchdata
-    const { startDate, endDate } = searchdata
+    const { keyword, startDate, endDate, guest, type, star } = searchdata
 
     const today = new Date()
     const tomorrow = addDays(today, 1)
@@ -58,14 +58,15 @@ export default function DataPicker() {
     const location = useLocation()
 
     useEffect(() => {
-        setValue({
-            startDate: startDate,
-            endDate: endDate,
-        })
         if (location.pathname === '/') {
             setValue({
                 startDate: format(today, 'yyyy-MM-dd'),
                 endDate: format(tomorrow, 'yyyy-MM-dd'),
+            })
+        } else {
+            setValue({
+                startDate: startDate,
+                endDate: endDate,
             })
         }
     }, [location])
@@ -109,6 +110,28 @@ export default function DataPicker() {
     useEffect(() => {
         console.log('onSearchChange3 : ', searchdata)
     }, [searchdata])
+
+    // useEffect(() => {
+    //     // URL이 변경될 때마다 keyword를 초기화합니다.
+    //     if (location.pathname === '/searchList') {
+    //         setSearchdata({
+    //             keyword: '',
+    //             guest: 1,
+    //             type: [],
+    //             star: [],
+    //         })
+    //     } else {
+    //         setSearchdata({
+    //             keyword: keyword,
+    //             guest: guest,
+    //             startDate: startDate,
+    //             endDate: endDate,
+    //             type: type,
+    //             star: star,
+    //         })
+    //     }
+    // }, [location])
+
     return (
         <Styled>
             <Datepicker key={trigger} value={value} onChange={handleValueChange} />

@@ -16,9 +16,7 @@ import React from 'react'
 export default function Row({ className, children, splitEnabled = true }) {
     const items = React.Children.map(children, (child, index) => {
         if (typeof child === 'string' && splitEnabled) {
-            return child
-                .split('/')
-                .map((item, subIndex) => <div key={`${index}-${subIndex}`}>{item.trim()}</div>)
+            return child.split('/').map((item, subIndex) => <div key={`${index}-${subIndex}`}>{item.trim()}</div>)
         }
         return child
     })

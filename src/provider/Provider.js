@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useCallback, useContext, useQuery } from 'react'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import Context from '../context/Context'
 import SearchListContext from '../context/SearchList_Context'
 import getCookie from '../api/cookie/getCookie'
@@ -45,6 +45,8 @@ const Provider = ({ children }) => {
     })
 
     const [searchClicked, setSearchClicked] = useState(true)
+
+    const link = useLocation()
 
     const [searchdata, setSearchdata] = useState({
         keyword: null,

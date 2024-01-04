@@ -1,9 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: [
-        './src/**/*.{html,js,jsx,tx,tsx,css}',
-        './node_modules/react-tailwindcss-datepicker/dist/index.esm.js',
-    ],
+    content: ['./src/**/*.{html,js,jsx,tx,tsx,css}', './node_modules/react-tailwindcss-datepicker/dist/index.esm.js'],
     theme: {
         extend: {
             spacing: {
@@ -29,7 +26,25 @@ module.exports = {
                 },
                 '.mt-36': {
                     marginTop: '9rem !important',
-                }
+                },
+                '.bg-gray-100': {
+                    backgroundColor: 'rgb(243 244 246) !important',
+                },
+                '.outline-none': {
+                    outline: 'none !important',
+                },
+                '.p-4': {
+                    padding: '1rem !important',
+                },
+                '.mb-48': {
+                    marginBottom: '12rem !important',
+                },
+                '.p-10': {
+                    padding: '2.5rem !important',
+                },
+                '.h-112': {
+                    height: '28rem !important',
+                },
             }
             addUtilities(newUtilities)
         },
