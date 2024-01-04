@@ -68,7 +68,7 @@ export default function SearchList2() {
     return (
         <div className="col-start-5 col-end-12 w-full pt-16 flex flex-row justify-start">
             <div className="flex flex-col w-11/12">
-                <div>qweasdzxc</div>
+                <div>n개 중 예약 가능 n개</div>
                 {searchlists &&
                     searchlists.map((searchlist, index) => (
                         <div

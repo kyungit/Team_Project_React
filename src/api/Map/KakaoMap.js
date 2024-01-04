@@ -1,7 +1,9 @@
 import axios from 'axios'
 import { useEffect, useRef, useState } from 'react'
-import { Map, MapMarker } from 'react-kakao-maps-sdk'
+import { Map, MapMarker, CustomOverlayMap } from 'react-kakao-maps-sdk'
 import ReactDOMServer from 'react-dom/server'
+import Box from '../../components/Common/Box'
+import Row from '../../components/Common/Row'
 
 // export default function KakaoMap() {
 //     const { kakao } = window
@@ -77,7 +79,7 @@ export default function KakaoMap() {
         isLoading: true,
         name: '',
     })
-    const [searchAddress, SetSearchAddress] = useState('여기 어디게.')
+    const [searchAddress, SetSearchAddress] = useState('')
     const [info, setInfo] = useState()
     const [markers, setMarkers] = useState([])
     const [map, setMap] = useState()
@@ -170,7 +172,8 @@ export default function KakaoMap() {
         }
     }, [])
 
-    useEffect(() => {
+    // useEffect(() => {
+        const onSearchAdrress = () => {
         if (!map) return
         const ps = new kakao.maps.services.Places()
 
@@ -199,7 +202,8 @@ export default function KakaoMap() {
                 map.setBounds(bounds)
             }
         })
-    }, [map, searchAddress])
+    }
+    // }, [map])
 
     const [LatLng, setLatLng] = useState({
         swLat: null,
@@ -207,7 +211,7 @@ export default function KakaoMap() {
         neLat: null,
         neLng: null,
     })
-    const defaultLevel = 7
+    const defaultLevel = 3
     const [level, setLevel] = useState(defaultLevel)
     const mapRef = useRef(null) // 지도 객체를 담을 ref 생성
     // idle 이벤트 핸들러
@@ -307,27 +311,31 @@ export default function KakaoMap() {
                 isPanto={state.isPanto}
                 style={{
                     // 지도의 크기
-                    width: '100%',
-                    height: '450px',
+                    width: '1200px',
+                    height: '800px',
                 }}
                 level={defaultLevel} // 지도의 확대 레벨
                 onCreate={setMap}
                 ref={mapRef}
+                onIdle={handleIdle}
             >
                 {/* {!state.isLoading && (
                     <MapMarker position={state.center}>
                         <div style={{ padding: '5px', color: '#000' }}>{state.errMsg ? state.errMsg : searchAddress}</div>
                     </MapMarker>
                 )} */}
-                {/* {markers.map((marker) => (
+                {markers.map((marker) => (
                     <MapMarker
                         key={`marker-${marker.content}-${marker.position.lat},${marker.position.lng}`}
                         position={marker.position}
-                        onClick={() => setInfo(marker)}
+                        onClick={() => {
+                            setInfo(marker)
+                            setState((prev) => ({...prev, center: marker.position }))
+                        }}
                     >
                         {info && info.content === marker.content && <div style={{ color: '#000' }}>{marker.content}</div>}
                     </MapMarker>
-                ))} */}
+                ))}
 
                 {/* {places.map((place, index) => (
                     <MapMarker key={index} position={place.position} onClick={() => moveToPlace(place.position)}>
@@ -347,6 +355,22 @@ export default function KakaoMap() {
                                 }}
                                 ref={markerRef}
                             />
+                                            <CustomOverlayMap position={accomodation.position}>
+                                <Box
+                                    className="w-48 h-24 p-4 mb-48">
+                        <div>{accomodation.d_name}</div>
+                        <div>
+                            <a href={`https://map.kakao.com/link/map/${accomodation.d_name},${accomodation.position.lat},${accomodation.position.lng}`} style={{ color: 'blue' }} target="_blank" rel="noreferrer">
+                                큰지도보기
+                            </a>
+                        </div>
+                        <div>
+                            <a href={`https://map.kakao.com/link/to/${accomodation.d_name},${accomodation.position.lat},${accomodation.position.lng}`} style={{ color: 'blue' }} target="_blank" rel="noreferrer">
+                                길찾기
+                            </a>
+                        </div>
+                    </Box>
+                </CustomOverlayMap>
                         </>
                     ))}
                 {!state.isLoading && isOpen && (
@@ -356,10 +380,30 @@ export default function KakaoMap() {
             </Map>
 
             <div>
-                <input onChange={(e) => handleSearchAddress(e)}></input>
-                <button onClick={() => SearchMap()}>클릭</button>
-                <button onClick={() => handleIdle()}>클릭2</button>
-                <button onClick={() => fetchAccommodations(LatLng)}>클릭3</button>
+            <Row splitEnabled={false}>
+
+                <input
+                className="border-solid border border-gray-300 rounded-lg h-10 p-4 w-1/4 bg-white text-gray-900 font-normal text-base"
+                placeholder="위치를 입력하세요"
+                onChange={(e) => handleSearchAddress(e)}
+            />
+                    <button
+                        className="tab-size-4 user-select-text box-border flex items-center justify-center
+                                h-10 w-1/4 rounded-md text-black font-bold text-lg"
+                        style={{ backgroundColor: '#D9F99D' }}
+                        onClick={() => onSearchAdrress()}
+                        >
+                        위치 검색
+                    </button>
+                    <button
+                        className="tab-size-4 user-select-text box-border flex items-center justify-center
+                                h-10 w-1/4 rounded-md text-black font-bold text-lg"
+                        style={{ backgroundColor: '#D9F99D' }}
+                        onClick={() => fetchAccommodations(LatLng)}
+                        >
+                        근처 숙소 검색하기
+                    </button>
+                    </Row>
             </div>
         </>
     )

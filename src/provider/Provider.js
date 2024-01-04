@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import Context from '../context/Context'
 import SearchListContext from '../context/SearchList_Context'
 import getCookie from '../api/cookie/getCookie'
+import { format, addDays } from 'date-fns'
 
 const Provider = ({ children }) => {
     const [location, setLocation] = useState({
@@ -48,20 +49,55 @@ const Provider = ({ children }) => {
 
     const link = useLocation()
 
-    const [searchdata, setSearchdata] = useState({
-        keyword: null,
-        startDate: null,
-        endDate: null,
-        guest: null,
-        type: [],
-        star: [],
+    const today = new Date()
+    const tomorrow = addDays(today, 1)
+
+    const [searchdata, setSearchdata] = useState(() => {
+        // 로컬 스토리지에서 저장된 값을 가져옵니다.
+        const saved = localStorage.getItem('searchdata')
+        // 저장된 값이 있으면 파싱하여 반환하고, 없으면 초기 상태를 반환합니다.
+        return saved
+            ? JSON.parse(saved)
+            : {
+                  keyword: null,
+                  startDate: format(today, 'yyyy-MM-dd'),
+                  endDate: format(tomorrow, 'yyyy-MM-dd'),
+                  guest: 1,
+                  type: [],
+                  star: [],
+              }
     })
 
-    const navigate = useNavigate()
+    // 상태가 변경될 때마다 로컬 스토리지에 저장합니다.
+    // 단, 현재 페이지가 홈('/')이 아닐 때만 저장합니다.
+    useEffect(() => {
+        if (link.pathname !== '/') {
+            // 상태를 문자열로 변환하여 로컬 스토리지에 저장합니다.
+            localStorage.setItem('searchdata', JSON.stringify(searchdata))
+        }
+    }, [searchdata, link.pathname]) // 상태와 pathname이 변경될 때만 이 effect를 실행합니다.
+
+    // pathname이 변경될 때마다 실행합니다.
+    useEffect(() => {
+        // 홈 화면일 때 로컬 스토리지의 searchdata를 삭제합니다.
+        if (link.pathname === '/') {
+            setSearchdata({
+                keyword: null,
+                startDate: format(today, 'yyyy-MM-dd'),
+                endDate: format(tomorrow, 'yyyy-MM-dd'),
+                guest: 1,
+                type: [],
+                star: [],
+            }) // 상태를 초기화합니다.
+            localStorage.removeItem('searchdata')
+        }
+    }, [link.pathname]) // pathname이 변경될 때만 이 effect를 실행합니다.
 
     useEffect(() => {
         console.log(searchdata.keyword, searchdata.startDate, searchdata.endDate, searchdata.guest)
     }, [searchdata])
+
+    const navigate = useNavigate()
 
     const onSubmitSearch = useCallback(() => {
         setImages((prevItems) => ({

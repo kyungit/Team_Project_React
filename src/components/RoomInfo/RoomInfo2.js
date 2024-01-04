@@ -24,7 +24,7 @@ export default function RoomInfo2() {
                     <Row className="text-3xl font-semibold mt-1">/{`${parseInt(roomInfo1.r_price).toLocaleString()}원 ~`}</Row>
                     <Row className="mt-1 w-full">
                         {`★ ${roomInfo1.d_star} 35 riviews`}
-                        <Row className="mt-0 w-1/4">
+                        <Row className="mt-0 w-1/3">
                             <div>
                                 <img src="https://www.tripbtoz.com/images/common/bg_ico_share01.svg" className="w-16 h-16" alt="" />
                             </div>

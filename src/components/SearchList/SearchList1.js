@@ -2,6 +2,8 @@ import { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import Column from '../Common/Column'
 import SearchListContext from '../../context/SearchList_Context'
 import Context from '../../context/Context'
+import KakaoMap from '../../api/Map/KakaoMap'
+import x from '../../assets/img/x.png'
 
 export default function HigherOrderRadioInputTest() {
     const DormitoryType = useMemo(() => ['All', 'HOTEL', 'MOTEL', 'PENSION', 'GUESTHOUSE'], [])
@@ -111,24 +113,59 @@ export default function HigherOrderRadioInputTest() {
         [ReviewStar, SelectedIndexes2, onChange2],
     )
 
+    const [isModalOpen, setModalOpen] = useState(false)
+
+    const openModal = () => setModalOpen(true)
+    const closeModal = () => setModalOpen(false)
+
     return (
-        <div className="col-start-2 col-end-5 w-4/5 h-auto pt-16 flex flex-row justify-center">
-            <Column className=" items-start">
-                <section className="mt-4">
-                    <div>PropertyType</div>
+        <div className="col-start-2 col-end-5 w-full pt-16 flex flex-col items-center">
+            <button onClick={openModal} className="relative w-2/3">
+                <img src="https://static.yeogi.com/_next/static/media/thumbnail_map.74bb1588.png" className="" alt="" />
+                <button
+                    className="relative bottom-1/2 left-28 tab-size-4 user-select-text box-border flex items-center justify-center
+                                        h-12 w-1/3 rounded-md text-black font-bold text-lg"
+                    style={{ backgroundColor: '#DBDBFC' }}
+                >
+                    지도 보기
+                </button>
+            </button>
+            <Modal isOpen={isModalOpen} close={closeModal}>
+                <div className="w-full flex flex-row justify-end mb-4">
+                    <button className="" onClick={closeModal}>
+                        <img src={x} className="w-6 h-6" alt="" />
+                    </button>
+                </div>
+                <KakaoMap />
+            </Modal>
+            <Column className="items-start">
+                <section className="">
+                    <div className="text-lg font-semibold">PropertyType</div>
                     {/* {SelectedIndexes.map((index) => DormitoryType[index]).join(', ')} */}
-                    <div className="flex p-4 mt-4">
-                        <div className="mt-4">{radioInputs}</div>
+                    <div className="flex p-2">
+                        <div className="mt-4 text-base font-normal text-gray-500">{radioInputs}</div>
                     </div>
                 </section>
                 <section className="mt-4">
-                    <div>Star Rating</div>
+                    <div className="text-lg font-semibold">Star Rating</div>
                     {/* {SelectedIndexes2.map((index) => ReviewStar[index]).join(', ')} */}
-                    <div className="flex p-4 mt-4">
-                        <div className="mt-4">{radioInputs2}</div>
+                    <div className="flex p-2">
+                        <div className="mt-4 text-base font-normal text-gray-500">{radioInputs2}</div>
                     </div>
                 </section>
             </Column>
+        </div>
+    )
+}
+
+const Modal = ({ isOpen, close, children }) => {
+    if (!isOpen) return null
+
+    return (
+        <div className="modal-overlay z-20" onClick={close}>
+            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                {children}
+            </div>
         </div>
     )
 }
