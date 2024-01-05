@@ -87,6 +87,7 @@ export default function Menu4() {
                                 <Row className="text-base mt-2">{`인원 수 : ${visited.reservation_guest}`}</Row>
                                 <Row className="text-base mt-2">{` 가격 : ${visited.reservation_price}`}</Row>
                                 <Row className="text-base mt-2">{` 요청사항 : ${visited.reservation_description}`}</Row>
+                                <Row className="text-base mt-2">{` 호실 : ${visited.room}호`}</Row>
                                 <Row className="text-base mt-2">
                                     {(() => {
                                         switch (visited.s_status) {

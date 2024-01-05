@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import RoomInfoContext from '../../context/RoomInfo_Context'
 import Column from '../Common/Column'
 import Row from '../Common/Row'
+import Box from '../Common/Box'
 
 export default function UnderReview() {
     const { roomInfos } = useContext(RoomInfoContext)
@@ -14,13 +15,13 @@ export default function UnderReview() {
         <div className="col-start-3 col-end-11 w-full h-1000">
             {reviewInfo &&
                 reviewInfo.map((review, index) => (
-                    <div key={index}>
+                    <Box key={index} className="mt-8 w-1/2">
                         <Column>
-                            <Row>리뷰 띄우기</Row>
-                            <Row className="mt-1">{review.r_name}</Row>
-                            <Row className="mt-1">{review.m_userid}</Row>
-                            <Row className="mt-1">{review.review_comment}</Row>
-                            <Row className="mt-1">{review.review_score}</Row>
+                            <Row className="font-bold">{`${index + 1}.리뷰`}</Row>
+                            <Row className="mt-1">{`방 이름 : ${review.r_name}`}</Row>
+                            <Row className="mt-1">{`작성자ID : ${review.m_userid}`}</Row>
+                            <Row className="mt-1">{`내용 : ${review.review_comment}`}</Row>
+                            <Row className="mt-1">{`평점 : ${review.review_score}`}</Row>
                         </Column>
                         {review.fileInfo && review.fileInfo.length > 0 && (
                             <div
@@ -49,7 +50,7 @@ export default function UnderReview() {
                                 ))}
                             </div>
                         )}
-                    </div>
+                    </Box>
                 ))}
         </div>
     )

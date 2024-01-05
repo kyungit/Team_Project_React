@@ -63,6 +63,7 @@ export default function Menu6() {
                                 <Row className="text-base mt-2">{`인원수 : ${reservation.reservation_guest}명`}</Row>
                                 <Row className="text-base mt-2">{`가격 : ${reservation.reservation_price}`}</Row>
                                 <Row className="text-base mt-2">{`요청사항 : ${reservation.reservation_description}`}</Row>
+                                <Row className="text-base mt-2">{` 호실 : ${reservation.room}호`}</Row>
                                 <Row className="text-base mt-2">
                                     {(() => {
                                         switch (reservation.s_status) {
