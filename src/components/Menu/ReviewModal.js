@@ -50,12 +50,13 @@ export default function ReviewModal({ closeModal }) {
 
         const formData = new FormData()
 
-        formData.append('d_code', imagesdata.d_code)
-        formData.append('r_code', imagesdata.r_code)
-        formData.append('m_userid', imagesdata.m_userid)
-        formData.append('review_score', imagesdata.review_score)
-        formData.append('review_comment', imagesdata.review_comment)
-        formData.append('reservation_code', imagesdata.reservation_code)
+        formData.append('d_code',imagesdata.d_code);
+        formData.append('r_code',imagesdata.r_code);
+        formData.append('r_name',imagesdata.r_name);
+        formData.append('m_userid',imagesdata.m_userid);
+        formData.append('review_score',imagesdata.review_score);
+        formData.append('review_comment',imagesdata.review_comment);
+        formData.append('reservation_code',imagesdata.reservation_code);
 
         // 파일이 있다면 추가
         if (uploadedFilesInfo.length > 0) {

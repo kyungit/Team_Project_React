@@ -32,7 +32,8 @@ export default function Menu4() {
             d_code: visited.d_code,
             r_code: visited.r_code,
             m_userid: visited.m_userid,
-            reservation_code: visited.reservation_code
+            reservation_code: visited.reservation_code,
+            r_name: visited.r_name
         })
         // if(imagesdata.review_score == null){
         //     alert('별점을 입력하세요');
