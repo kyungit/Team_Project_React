@@ -55,6 +55,7 @@ export default function ReviewModal({ closeModal }) {
 
         formData.append('d_code',imagesdata.d_code);
         formData.append('r_code',imagesdata.r_code);
+        formData.append('r_name',imagesdata.r_name);
         formData.append('m_userid',imagesdata.m_userid);
         formData.append('review_score',imagesdata.review_score);
         formData.append('review_comment',imagesdata.review_comment);
