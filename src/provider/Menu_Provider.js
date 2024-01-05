@@ -18,7 +18,8 @@ const MenuProvider = ({ children }) => {
         review_score: null,
         review_comment: null,
         reservation_code:null,
-        fileInfo:null
+        fileInfo:null,
+        r_name:null
     })
 
     const [reviewFile, setReviewFile] = useState({

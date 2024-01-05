@@ -17,7 +17,7 @@ export default function UnderReview() {
                 <div key={index}>
                     <Column>
                         <Row>리뷰 띄우기</Row>
-                        <Row className="mt-1">{review.r_code}</Row>
+                        <Row className="mt-1">{review.r_name}</Row>
                         <Row className="mt-1">{review.m_userid}</Row>
                         <Row className="mt-1">{review.review_comment}</Row>
                         <Row className="mt-1">{review.review_score}</Row>
