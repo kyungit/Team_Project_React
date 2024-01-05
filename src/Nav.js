@@ -13,7 +13,7 @@ export default function Nav() {
                 <Link to="/" onClick={() => (window.location.href = '/')}>
                     칼퇴시켜줄래
                 </Link>
-                <div className=" w-1/6 flex justify-between">
+                <div className=" w-1/12 flex justify-between">
                     {!accessToken ? (
                         <>
                             <Link to="/login">로그인</Link>

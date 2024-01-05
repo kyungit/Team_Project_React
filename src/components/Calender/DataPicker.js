@@ -50,10 +50,10 @@ export default function DataPicker() {
     const today = new Date()
     const tomorrow = addDays(today, 1)
 
-    const [value, setValue] = useState({
-        startDate: format(today, 'yyyy-MM-dd'),
-        endDate: format(tomorrow, 'yyyy-MM-dd'),
-    })
+    // const [value, setValue] = useState({
+    //     startDate: format(today, 'yyyy-MM-dd'),
+    //     endDate: format(tomorrow, 'yyyy-MM-dd'),
+    // })
 
     const location = useLocation()
 
@@ -65,33 +65,37 @@ export default function DataPicker() {
         // console.log('newValue:', newValue)
         if (newStartDate.getTime() < today.getTime() || newEndDate.getTime() < today.getTime()) {
             alert('날짜를 오늘 날짜 이후로 설정해주세요.')
-            setValue({
+            setSearchdata((searchdata) => ({
+                ...searchdata,
                 startDate: format(today, 'yyyy-MM-dd'),
-                endDate: format(tomorrow, 'yyyy-MM-dd'),
-            })
-
+                endDate: format(tomorrow, 'yyyy-MM-dd')
+            }))
             // 달력 컴포넌트의 인스턴스를 새로 만들기 위해 key값을 변경
             setTrigger(Date.now())
         } else {
-            setValue(newValue)
+            setSearchdata((searchdata) => ({
+                ...searchdata,
+                startDate: format(newStartDate, 'yyyy-MM-dd'),
+                endDate: format(newEndDate, 'yyyy-MM-dd')
+            }))
         }
     }
 
-    useEffect(() => {
-        // console.log('value : ', value)
-        onSearchChange(value)
-    }, [value])
+    // useEffect(() => {
+    //     // console.log('value : ', value)
+    //     onSearchChange(value)
+    // }, [value])
 
-    const onSearchChange = useCallback(
-        (value) => {
-            setSearchdata((searchdata) => ({
-                ...searchdata,
-                startDate: value.startDate,
-                endDate: value.endDate,
-            }))
-        },
-        [value],
-    )
+    // const onSearchChange = useCallback(
+    //     (value) => {
+    //         setSearchdata((searchdata) => ({
+    //             ...searchdata,
+    //             startDate: value.startDate,
+    //             endDate: value.endDate,
+    //         }))
+    //     },
+    //     [value],
+    // )
 
     useEffect(() => {
         console.log('onSearchChange3 : ', searchdata)
@@ -99,7 +103,7 @@ export default function DataPicker() {
 
     return (
         <Styled>
-            <Datepicker key={trigger} value={value} onChange={handleValueChange} />
+            <Datepicker key={trigger} value={{ startDate, endDate }} onChange={handleValueChange} />
         </Styled>
     )
 }

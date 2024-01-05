@@ -17,10 +17,10 @@ export default function Menu3() {
         <div className="col-start-4 col-end-13 w-4/5 h-auto pt-16 flex flex-col m-auto">
             {imageInfo &&
                 imageInfo.map((reservation, index) => (
-                    <Box key={index} className="mb-24 p-12">
+                    <Box key={index} className="mb-24 p-10 pb-12">
                         <Row className="justify-start grid grid-cols-12 h-auto">
                             <Column className="col-start-1 col-end-7">
-                                <Row className="text-2xl font-semibold m-0 text-black">{` ${index + 1} . ${reservation.d_name} ${reservation.d_type} `}</Row>
+                                <Row className="text-2xl font-semibold mt-0 text-black">{` ${index + 1}. ${reservation.d_name} ${reservation.d_type} `}</Row>
                                 {/*<Row className="mt-1">{reservation.d_code}</Row>*/}
                                 {/* <Row className="mt-1">{reservation.r_code}</Row>*/}
                                 {/* <Row className="mt-1">{reservation.d_name}</Row>*/}
@@ -30,7 +30,7 @@ export default function Menu3() {
                                 </Row>
                             </Column>
                             <Column className="col-start-7 col-end-13">
-                                <Row className="text-base mt-4">{`방 정보 : ${reservation.r_name}`}</Row>
+                                <Row className="text-base mt-0">{`방 정보 : ${reservation.r_name}`}</Row>
                                 {/*<Row className="text-2xl mt-1">{reservation.m_userid}</Row>*/}
                                 <Row className="text-base mt-2">{`전화번호 : ${reservation.m_telno}`}</Row>
                                 <Row className="text-base mt-2">{`체크인 : ${reservation.reservation_checkin}`}</Row>
@@ -38,6 +38,7 @@ export default function Menu3() {
                                 <Row className="text-base mt-2">{`인원 수 : ${reservation.reservation_guest}`}</Row>
                                 <Row className="text-base mt-2">{` 가격 : ${reservation.reservation_price}`}</Row>
                                 <Row className="text-base mt-2">{` 요청사항 : ${reservation.reservation_description}`}</Row>
+                                <Row className="text-base mt-2">{` 호실 : ${reservation.room}호`}</Row>
                                 <Row className="text-base mt-2">
                                     {(() => {
                                         switch (reservation.s_status) {

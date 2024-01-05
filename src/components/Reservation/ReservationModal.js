@@ -25,7 +25,7 @@ export default function ReservationModal({ closeModal, children, price }) {
         // price:reservationdata.reservation_price,
         price: price,
         name: reservationdata.m_username,
-        telno: reservationdata.m_telno,
+        telno: reservationdata.m_telno
     }
 
     // if(reservationdata && reservationdata){
@@ -39,7 +39,7 @@ export default function ReservationModal({ closeModal, children, price }) {
     }
 
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-4" onClick={closeModal}>
+        <div className="z-20 fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-4" onClick={closeModal}>
             <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full" onClick={(e) => e.stopPropagation()}>
                 <div className="px-10 py-8 flex flex-col">
                     <button className=" self-end" href="#" onClick={closeModal}>

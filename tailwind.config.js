@@ -42,6 +42,12 @@ module.exports = {
                 '.p-10': {
                     padding: '2.5rem !important'
                 },
+                '.p-12': {
+                    padding: '3rem !important'
+                },
+                '.pb-12': {
+                    paddingBottom: '3rem !important'
+                },
                 '.h-112': {
                     height: '28rem !important'
                 },
