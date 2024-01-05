@@ -18,7 +18,7 @@ export default function Menu5() {
     // 모달을 여는 함수.
     const openModal = (review) => {
         setImagesdata({
-            ...review,
+            ...review
         })
         console.log('review', review)
         console.log('reviewFile77777', reviewFile)
@@ -33,24 +33,25 @@ export default function Menu5() {
         <div className="col-start-4 col-end-13 w-4/5 h-auto pt-16 flex flex-col m-auto">
             {imageInfo &&
                 imageInfo.map((review, index) => (
-                    <Box key={index} className='mb-24 p-12'>
-                        <Row className="text-2xl m-0 text-black">{` ${index + 1}. `}</Row>
+                    <Box key={index} className="mb-24 p-10 pb-12 w-2/3">
+                        <Row className="text-2xl m-0 text-black">{` ${index + 1}. 제목 `}</Row>
                         {/*<Row className="text-2xl mt-1">{review.d_code}</Row>*/}
                         {/*<Row className="text-2xl mt-1">{review.r_code}</Row>*/}
-                        <Row className="text-2xl mt-1">{`작성자 ID: ${review.m_userid}`}</Row>
-                        <Row className="text-2xl mt-1">{`별점 : ${review.review_score}`}</Row>
-                        <Row className="text-2xl mt-1">{` 내용 : ${review.review_comment}`}</Row>
+                        <Row className="text-base mt-2">{`작성자 ID: ${review.m_userid}`}</Row>
+                        <Row className="text-base mt-2">{`별점 : ${review.review_score}`}</Row>
+                        <Row className="text-base mt-2">{`내용 : ${review.review_comment}`}</Row>
 
                         {review.fileInfo && review.fileInfo.length > 0 && (
                             <div
                                 id="imageZone"
                                 style={{
-                                    width: '350px',
+                                    width: '50%',
                                     height: '350px',
                                     border: '1px solid #ddd',
+                                    marginTop: '16px',
                                     overflow: 'auto', // overflow 속성 추가
                                     display: 'flex', // flexbox 사용하여 내부 컨텐츠 정렬
-                                    flexWrap: 'wrap', // 내부 컨텐츠가 넘칠 경우 줄바꿈
+                                    flexWrap: 'wrap' // 내부 컨텐츠가 넘칠 경우 줄바꿈
                                 }}
                             >
                                 {review.fileInfo.map((e, i) => (
@@ -61,7 +62,7 @@ export default function Menu5() {
                                             style={{
                                                 width: '100%',
                                                 height: '100%',
-                                                objectFit: 'cover', // 이미지 크기 조절을 위해 objectFit 속성 추가
+                                                objectFit: 'cover' // 이미지 크기 조절을 위해 objectFit 속성 추가
                                             }}
                                         />
                                     </div>
@@ -70,7 +71,7 @@ export default function Menu5() {
                         )}
                         {/* 리뷰 수정 버튼입니다. 이 버튼을 누르면 모달창이 열립니다. */}
                         <button
-                            className="tab-size-4 user-select-text box-border flex items-center justify-center h-14 w-full rounded-md text-black font-bold text-lg mt-5"
+                            className="tab-size-4 user-select-text box-border flex items-center justify-center h-14 w-1/2 rounded-md text-black font-bold text-lg mt-6"
                             style={{ backgroundColor: '#D9F99D' }}
                             onClick={() => {
                                 openModal(review)
