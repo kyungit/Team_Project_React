@@ -9,7 +9,7 @@ const HomeProvider = ({ children }) => {
         images1: null,
         images2: null,
         images3: null,
-        images4: null,
+        images4: null
     })
 
     // const[token,setToken] = useState(null);
@@ -60,13 +60,13 @@ const HomeProvider = ({ children }) => {
     // useEffect(() => {
     const ImagesAPI = async (params) => {
         const result1 = await axios.get('http://localhost:8080/star', {
-            params,
+            params
         })
         const result2 = await axios.get('http://localhost:8080/discount', {
-            params,
+            params
         })
         const result3 = await axios.get('http://localhost:8080/earlyCheckin', {
-            params,
+            params
         })
         // const result4 = await axios.get('http://localhost:8080/type')
         // useEffect(() => {
@@ -109,7 +109,7 @@ const HomeProvider = ({ children }) => {
         setImages({
             images1: result1.data,
             images2: result2.data,
-            images3: result3.data,
+            images3: result3.data
             // images4: result4.data,
         })
 

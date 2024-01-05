@@ -31,7 +31,7 @@ export default function HigherOrderRadioInputTest() {
         setSearchdata((prevData) => ({
             ...prevData,
             type: selectedTypes,
-            star: selectedStars,
+            star: selectedStars
         }))
     }, [SelectedIndexes, SelectedIndexes2])
 
@@ -53,7 +53,7 @@ export default function HigherOrderRadioInputTest() {
                 }
             })
         },
-        [],
+        []
     )
 
     const onChange2 = useCallback(
@@ -74,7 +74,7 @@ export default function HigherOrderRadioInputTest() {
                 }
             })
         },
-        [],
+        []
     )
 
     const radioInputs = useMemo(
@@ -92,7 +92,7 @@ export default function HigherOrderRadioInputTest() {
                     <span className="label-text">{value}</span>
                 </label>
             )),
-        [DormitoryType, SelectedIndexes, onChange],
+        [DormitoryType, SelectedIndexes, onChange]
     )
 
     const radioInputs2 = useMemo(
@@ -110,7 +110,7 @@ export default function HigherOrderRadioInputTest() {
                     <span className="label-text">{value}</span>
                 </label>
             )),
-        [ReviewStar, SelectedIndexes2, onChange2],
+        [ReviewStar, SelectedIndexes2, onChange2]
     )
 
     const [isModalOpen, setModalOpen] = useState(false)
@@ -123,9 +123,9 @@ export default function HigherOrderRadioInputTest() {
             <button onClick={openModal} className="relative w-2/3">
                 <img src="https://static.yeogi.com/_next/static/media/thumbnail_map.74bb1588.png" className="" alt="" />
                 <button
-                    className="relative bottom-1/2 left-28 tab-size-4 user-select-text box-border flex items-center justify-center
-                                        h-12 w-1/3 rounded-md text-black font-bold text-lg"
-                    style={{ backgroundColor: '#DBDBFC' }}
+                    className="relative bottom-1/2 tab-size-4 user-select-text box-border flex items-center justify-center
+                                        h-12 w-32 rounded-md text-black font-bold text-lg"
+                    style={{ backgroundColor: '#DBDBFC', left: 'calc(50% - 64px)' }}
                 >
                     지도 보기
                 </button>
