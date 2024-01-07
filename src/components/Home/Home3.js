@@ -16,7 +16,9 @@ import HomeContext from '../../context/Home_Context'
 import { useNavigate } from 'react-router-dom'
 
 export default function Home3() {
-    const data = useContext(ImageContext)
+    const { images } = useContext(HomeContext)
+    const images2 = images.images2
+    const slides = images2?.length
     const settings = {
         lazyLoad: true,
         dots: true,
@@ -24,7 +26,7 @@ export default function Home3() {
         speed: 2000,
         arrows: true,
         slidesToShow: 2,
-        rows: 2,
+        rows: slides >= 8 ? 2 : 1,
         slidesPerRow: 2,
     }
 
@@ -33,9 +35,6 @@ export default function Home3() {
         sessionStorage.setItem('d_code', d_code)
         navigate('/roomInfo')
     }
-
-    const { images } = useContext(HomeContext)
-    const images2 = images.images2
 
     const imagess = [mountain, vine, beach, bird, butterfly, forest, mountain, vine, beach, bird, butterfly, forest]
     return (

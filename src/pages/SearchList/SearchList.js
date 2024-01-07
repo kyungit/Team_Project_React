@@ -1,5 +1,5 @@
 import Grid from '../../components/Common/Grid'
-import Search from '../../components/Search/Search'
+import Search from '../../features/Search/Search'
 import SearchList1 from '../../components/SearchList/SearchList1'
 import SearchList2 from '../../components/SearchList/SearchList2'
 import SearchList3 from '../../components/SearchList/SearchList3'
@@ -10,7 +10,7 @@ export default function SearchList() {
     return (
         <SearchListProvider className="grid grid-cols-12 h-auto">
             <Grid>
-                <Search />
+                {/* <Search /> */}
                 <SearchList1 />
                 <SearchList2 />
                 <SearchList3 />

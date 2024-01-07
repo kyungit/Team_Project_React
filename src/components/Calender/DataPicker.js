@@ -40,11 +40,10 @@ const Styled = styled.div`
     }
 `
 
-export default function DataPicker() {
+export default function DataPicker({}) {
     // const { images, searchdata, setSearchdata } = useContext(HomeContext)
     const { images, searchdata, setSearchdata } = useContext(Context)
     // const { images, searchdata, setSearchdata } = useContext(SearchListContext)
-    // const { keyword, startDate, endDate, guest } = searchdata
     const { keyword, startDate, endDate, guest, type, star } = searchdata
 
     const today = new Date()

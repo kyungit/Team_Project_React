@@ -59,13 +59,13 @@ const Provider = ({ children }) => {
         return saved
             ? JSON.parse(saved)
             : {
-                  keyword: null,
-                  startDate: format(today, 'yyyy-MM-dd'),
-                  endDate: format(tomorrow, 'yyyy-MM-dd'),
-                  guest: 1,
-                  type: [],
-                  star: [],
-              }
+                keyword: null,
+                startDate: format(today, 'yyyy-MM-dd'),
+                endDate: format(tomorrow, 'yyyy-MM-dd'),
+                guest: 1,
+                type: [],
+                star: [],
+            }
     })
 
     // 상태가 변경될 때마다 로컬 스토리지에 저장합니다.

@@ -4,10 +4,10 @@ import Home1 from '../../components/Home/Home1'
 import Home2 from '../../components/Home/Home2'
 import Home3 from '../../components/Home/Home3'
 import Home4 from '../../components/Home/Home4'
-import Search from '../../components/Search/Search'
+// import Search from '../../features/Search/Search'
+import Search from '../../features/Search/container'
 import axios from 'axios'
 import Grid from '../../components/Common/Grid'
-import Search2 from '../../components/Search/Search2'
 import getCookie from '../../api/cookie/getCookie'
 
 

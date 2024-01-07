@@ -1,13 +1,15 @@
 import { Button } from '@mui/material'
 import React, { useCallback, useContext, useEffect, useState } from 'react'
-import DataPicker from '../Calender/DataPicker'
+import DataPicker from '../../components/Calender/DataPicker'
 import SearchListContext from '../../context/SearchList_Context'
 import HomeContext from '../../context/Home_Context'
 import Context from '../../context/Context'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { format, addDays } from 'date-fns'
 
-export default function Search() {
+export function Search({ setKeyword, setGuest }) {
+    console.log('setGuest : ', setGuest);
+
     // const { images, searchdata, setSearchdata, onSubmitSearch } = useContext(HomeContext)
     const { searchdata, setSearchdata, onSubmitSearch } = useContext(Context)
     // const { images, searchdata, setSearchdata, onSubmitSearch } = useContext(SearchListContext)
@@ -23,6 +25,7 @@ export default function Search() {
             ...searchdata,
             keyword: e.target.value,
         }))
+        setKeyword(e.target.value)
         if (e) {
             // console.log('onKeywordChange : ', searchdata)
         }
@@ -33,10 +36,11 @@ export default function Search() {
             ...searchdata,
             guest: e.target.value,
         }))
+        setGuest(e.target.value)
         if (e) {
             // console.log('onGuestChange : ', searchdata)
         }
-    }, [])
+    }, [setGuest])
 
     useEffect(() => {
         console.log(searchdata)
