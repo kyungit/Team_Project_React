@@ -2,16 +2,16 @@
 
 ## Category
 
-### 1. [User Flow](#User Flow)
-### 2. [Stroy Board](#Story Board)
-### 3. [Test Senario](#Test Senario)
+### 1. [User Flow](#UserFlow)
+### 2. [Stroy Board](#StoryBoard)
+### 3. [Test Senario](#TestSenario)
 ### 4. [Images](#Images)
 
-## User Flow
+## UserFlow
 
 <img src="https://github.com/jingom368/Team_Project_React/assets/151482642/37e09a07-497a-4072-b3d8-e4589e2c72c4" width="800" height="450">
 
-## Story Board
+## StoryBoard
 
 
 <img src="https://github.com/jingom368/Team_Project_React/assets/151482642/39139260-3455-4941-8d4f-51774fe57f1c" width="800" height="450">
@@ -22,7 +22,7 @@
 <img src="https://github.com/jingom368/Team_Project_React/assets/151482642/9f6e8fba-8c08-41bd-a2ff-8864438d37a8" width="800" height="450">
 
 
-## Test Senario
+## TestSenario
 
 <img src="https://github.com/jingom368/Team_Project_React/assets/151482642/f70e293e-c8ea-4506-b067-7b4e2a69b2a9" width="800" height="450">
 <img src="https://github.com/jingom368/Team_Project_React/assets/151482642/e71a819b-637c-47b2-8d08-3dc0e4d21a97" width="800" height="450">
