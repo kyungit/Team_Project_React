@@ -3,7 +3,7 @@
 ## Category
 
 ### 1. [UserFlow](#UserFlow)
-### 2. [StroyBoard](#StoryBoard)
+### 2. [StoryBoard](#StoryBoard)
 ### 3. [TestSenario](#TestSenario)
 ### 4. [Images](#Images)
 
