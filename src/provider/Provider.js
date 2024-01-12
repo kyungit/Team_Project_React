@@ -109,7 +109,7 @@ const Provider = ({ children }) => {
 
     const GetSearchList = useCallback(
         async (pageNum) => {
-            const result1 = await api.post(`http://localhost:8080/searchList/dormitory?pageNum=${pageNum}`, searchdata)
+            const result1 = await api.post(`/searchList/dormitory?pageNum=${pageNum}`, searchdata)
 
             console.log('result1 : ', result1)
             console.log('searchdata.type', searchdata.type)

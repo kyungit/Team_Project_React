@@ -238,7 +238,7 @@ export default function KakaoMap() {
     const fetchAccommodations = async (LatLng) => {
         try {
             const response = await api.get(
-                `http://localhost:8080/roomInfo/map?swLat=${LatLng.swLat}&swLng=${LatLng.swLng}&neLat=${LatLng.neLat}&neLng=${LatLng.neLng}&centerLat=${state.center.lat}&centerLng=${state.center.lng}`,
+                `/roomInfo/map?swLat=${LatLng.swLat}&swLng=${LatLng.swLng}&neLat=${LatLng.neLat}&neLng=${LatLng.neLng}&centerLat=${state.center.lat}&centerLng=${state.center.lng}`,
             )
             setAccommodations(response.data)
             console.log('response.data : ', response.data)
