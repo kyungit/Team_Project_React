@@ -1,3 +1,4 @@
+import React from 'react'
 import Grid from '../../components/Common/Grid'
 import Reservation1 from '../../components/Reservation/Reservation1'
 import Reservation2 from '../../components/Reservation/Reservation2'

@@ -1,3 +1,4 @@
+import React from 'react'
 import Grid from '../../components/Common/Grid'
 import Menu1 from '../../components/Menu/Menu1'
 import Menu2 from '../../components/Menu/Menu2'
@@ -7,7 +8,7 @@ import MenuProvider from '../../provider/Menu_Provider'
 import Layout2 from '../../Layout2'
 import { Route, Routes } from 'react-router-dom'
 import Menu5 from '../../components/Menu/Menu5'
-import Menu6 from "../../components/Menu/Menu6";
+import Menu6 from '../../components/Menu/Menu6'
 
 export default function Menu() {
     return (

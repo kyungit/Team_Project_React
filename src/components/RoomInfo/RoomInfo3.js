@@ -145,7 +145,9 @@ export default function RoomInfo3() {
     return (
         <div className="col-start-3 col-end-11 w-full h-1000">
             {roomInfos4 &&
-                Object.values(roomInfos4).map((roomInfos, index) => <SliderComponent roomInfos={roomInfos} index={index} onReservation={onReservation} />)}
+                Object.values(roomInfos4).map((roomInfos, index) => (
+                    <SliderComponent key={index} roomInfos={roomInfos} index={index} onReservation={onReservation} />
+                ))}
         </div>
     )
 }

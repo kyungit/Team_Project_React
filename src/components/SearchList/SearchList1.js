@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import Column from '../Common/Column'
 import SearchListContext from '../../context/SearchList_Context'
 import Context from '../../context/Context'
