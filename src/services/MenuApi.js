@@ -1,13 +1,14 @@
 // services/MenuApi.js
 import axios from 'axios'
 import getCookie from '../api/cookie/getCookie'
+import api from '../api/api'
 
 export const fetchMenuApi = async () => {
-    const result1 = await axios.get(`http://localhost:8080/menu/memberInfo?userid=${getCookie('userid')}`)
-    const result2 = await axios.get(`http://localhost:8080/menu/reservationInfo?userid=${getCookie('userid')}`)
-    const result3 = await axios.get(`http://localhost:8080/menu/visited?userid=${getCookie('userid')}`)
-    const result4 = await axios.get(`http://localhost:8080/menu/memberReview?userid=${getCookie('userid')}`)
-    const result5 = await axios.get(`http://localhost:8080/menu/managerReservation?userid=${getCookie('userid')}`)
+    const result1 = await api.get(`http://localhost:8080/menu/memberInfo?userid=${getCookie('userid')}`)
+    const result2 = await api.get(`http://localhost:8080/menu/reservationInfo?userid=${getCookie('userid')}`)
+    const result3 = await api.get(`http://localhost:8080/menu/visited?userid=${getCookie('userid')}`)
+    const result4 = await api.get(`http://localhost:8080/menu/memberReview?userid=${getCookie('userid')}`)
+    const result5 = await api.get(`http://localhost:8080/menu/managerReservation?userid=${getCookie('userid')}`)
 
     // console.log('result1 : ', result1)
     // console.log('result2 : ', result2)
