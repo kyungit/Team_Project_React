@@ -24,9 +24,9 @@
 
 ## TestSenario
 
-<img src="https://github.com/jingom368/Team_Project_React/assets/151482642/f70e293e-c8ea-4506-b067-7b4e2a69b2a9" width="480" height="270">
-<img src="https://github.com/jingom368/Team_Project_React/assets/151482642/e71a819b-637c-47b2-8d08-3dc0e4d21a97" width="480" height="270">
-<img src="https://github.com/jingom368/Team_Project_React/assets/151482642/b6132052-5c7c-46f9-9e37-4a3dcca112f9" width="480" height="270" text-align=center>
+<img src="https://github.com/jingom368/Team_Project_React/assets/151482642/f70e293e-c8ea-4506-b067-7b4e2a69b2a9" width="960" height="540">
+<img src="https://github.com/jingom368/Team_Project_React/assets/151482642/e71a819b-637c-47b2-8d08-3dc0e4d21a97" width="960" height="540">
+<img src="https://github.com/jingom368/Team_Project_React/assets/151482642/b6132052-5c7c-46f9-9e37-4a3dcca112f9" width="960" height="540">
 
 ## Images
 
