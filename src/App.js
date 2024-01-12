@@ -15,8 +15,13 @@ import page from './pages/page'
 import KakaoMap from './api/Map/KakaoMap'
 import { Provider as ReduxProvider } from 'react-redux'
 import { useStore } from './features/useStore'
+import axios from 'axios'
 
 function App() {
+    const api = axios.create({
+        baseURL: '/api'
+    })
+
     const store = useStore()
     return (
         <ReduxProvider store={store}>
@@ -35,11 +40,10 @@ function App() {
                         <Route path="/payment" element={<Payment />} />
                         <Route path="/redirect" element={<RedirectPage />} />
                         <Route path="/map" element={<KakaoMap />} />
-
                     </Route>
                 </Routes>
             </Provider>
-        </ReduxProvider >
+        </ReduxProvider>
     )
 }
 

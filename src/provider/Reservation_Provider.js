@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useMemo } from 'react'
-import axios from 'axios'
 import ReservationContext from '../context/Reservation_Context'
 import { fetchReservationApi } from '../services/ReservationApi'
 
@@ -7,7 +6,7 @@ const ReservationProvider = ({ children }) => {
     const [reservations, setRerservations] = useState({
         reservations1: null,
         reservations2: null,
-        reservations3: null,
+        reservations3: null
     })
 
     const [reservationdata, setReservationdata] = useState({
@@ -23,13 +22,12 @@ const ReservationProvider = ({ children }) => {
         m_telno: null,
         m_username: null,
 
-
         reservation_checkin: null,
         reservation_checkout: null,
         reservation_guest: null,
         reservation_price: null,
         reservation_description: null,
-        s_status: 3,
+        s_status: 3
     })
 
     let d_code = sessionStorage.getItem('d_code')
@@ -43,8 +41,6 @@ const ReservationProvider = ({ children }) => {
 
         fetchAndSetReservations()
     }, [])
-
-
 
     const value = useMemo(() => ({ reservations, reservationdata, setReservationdata }), [reservations, reservationdata, setReservationdata])
 

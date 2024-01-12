@@ -1,9 +1,8 @@
 // services/MenuApi.js
-import axios from 'axios';
+import axios from 'axios'
 import getCookie from '../api/cookie/getCookie'
 
 export const fetchMenuApi = async () => {
-
     const result1 = await axios.get(`http://localhost:8080/menu/memberInfo?userid=${getCookie('userid')}`)
     const result2 = await axios.get(`http://localhost:8080/menu/reservationInfo?userid=${getCookie('userid')}`)
     const result3 = await axios.get(`http://localhost:8080/menu/visited?userid=${getCookie('userid')}`)
@@ -22,5 +21,5 @@ export const fetchMenuApi = async () => {
         images3: result3.data,
         images4: result4.data,
         images5: result5.data
-    };
+    }
 }

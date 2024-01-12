@@ -6,10 +6,10 @@ import HomeContext from '../../context/Home_Context'
 import Context from '../../context/Context'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { format, addDays } from 'date-fns'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 export function Search({ setKeyword, setGuest }) {
-    console.log('setGuest : ', setGuest);
-
     // const { images, searchdata, setSearchdata, onSubmitSearch } = useContext(HomeContext)
     const { searchdata, setSearchdata, onSubmitSearch } = useContext(Context)
     // const { images, searchdata, setSearchdata, onSubmitSearch } = useContext(SearchListContext)
@@ -23,7 +23,7 @@ export function Search({ setKeyword, setGuest }) {
     const onKeywordChange = useCallback((e) => {
         setSearchdata((searchdata) => ({
             ...searchdata,
-            keyword: e.target.value,
+            keyword: e.target.value
         }))
         setKeyword(e.target.value)
         if (e) {
@@ -31,16 +31,19 @@ export function Search({ setKeyword, setGuest }) {
         }
     }, [])
 
-    const onGuestChange = useCallback((e) => {
-        setSearchdata((searchdata) => ({
-            ...searchdata,
-            guest: e.target.value,
-        }))
-        setGuest(e.target.value)
-        if (e) {
-            // console.log('onGuestChange : ', searchdata)
-        }
-    }, [setGuest])
+    const onGuestChange = useCallback(
+        (e) => {
+            setSearchdata((searchdata) => ({
+                ...searchdata,
+                guest: e.target.value
+            }))
+            setGuest(e.target.value)
+            if (e) {
+                // console.log('onGuestChange : ', searchdata)
+            }
+        },
+        [setGuest]
+    )
 
     useEffect(() => {
         console.log(searchdata)
@@ -51,8 +54,8 @@ export function Search({ setKeyword, setGuest }) {
         {
             adults: 1,
             children: 0,
-            childAge: '',
-        },
+            childAge: ''
+        }
     ])
 
     const handleGuestChange = (index, type, value) => {
@@ -68,8 +71,8 @@ export function Search({ setKeyword, setGuest }) {
             {
                 adults: 1,
                 children: 0,
-                childAge: '',
-            },
+                childAge: ''
+            }
         ])
     }
 

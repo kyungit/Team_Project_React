@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react'
-import axios from 'axios'
 import MenuContext from '../context/Menu_Context'
-import getCookie from '../api/cookie/getCookie'
 import { fetchMenuApi } from '../services/MenuApi'
 
 const MenuProvider = ({ children }) => {
@@ -25,10 +23,10 @@ const MenuProvider = ({ children }) => {
 
     const [reviewFile, setReviewFile] = useState({
         src: null,
-        fileseqno: null,
+        fileseqno: null
     })
     const [deleteFile, setDeleteFile] = useState({
-        fileseqno: null,
+        fileseqno: null
     })
 
     useEffect(() => {
@@ -39,10 +37,17 @@ const MenuProvider = ({ children }) => {
 
         fetchAndSetImages()
     }, [])
-    
-    const value = useMemo(() => ({ images, setImages, imagesdata, setImagesdata, reviewFile, setReviewFile, deleteFile, setDeleteFile }), [images, setImages, imagesdata, setImagesdata, reviewFile, setReviewFile, deleteFile, setDeleteFile])
 
-    return <MenuContext.Provider value={value}><div>{children}</div></MenuContext.Provider>
+    const value = useMemo(
+        () => ({ images, setImages, imagesdata, setImagesdata, reviewFile, setReviewFile, deleteFile, setDeleteFile }),
+        [images, setImages, imagesdata, setImagesdata, reviewFile, setReviewFile, deleteFile, setDeleteFile]
+    )
+
+    return (
+        <MenuContext.Provider value={value}>
+            <div>{children}</div>
+        </MenuContext.Provider>
+    )
 }
 
 export default MenuProvider
