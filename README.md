@@ -2,9 +2,9 @@
 
 ## Category
 
-### 1. [User Flow](#UserFlow)
-### 2. [Stroy Board](#StoryBoard)
-### 3. [Test Senario](#TestSenario)
+### 1. [UserFlow](#UserFlow)
+### 2. [StroyBoard](#StoryBoard)
+### 3. [TestSenario](#TestSenario)
 ### 4. [Images](#Images)
 
 ## UserFlow
