@@ -5,7 +5,7 @@ import Context from '../context/Context'
 import { fetchRoomInfoApi } from '../services/RoomInfoApi'
 
 const RoomInfoProvider = ({ children }) => {
-    const [roomInfos, setRoomInfos] = useState({
+        const [roomInfos, setRoomInfos] = useState({
         roomInfos1: null,
         roomInfos2: null,
         //roomInfos3: null,

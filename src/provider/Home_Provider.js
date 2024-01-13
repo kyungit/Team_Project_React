@@ -12,15 +12,13 @@ const HomeProvider = ({ children }) => {
         images3: null,
     })
 
-    const { location } = useContext(Context)
-    const { coordinates } = location
-
-    // useEffect(() => {
     const fetchAndSetImages = async (params) => {
         const fetchHomeData = await fetchHomeApi(params)
         setImages(fetchHomeData)
     }
 
+    const { location } = useContext(Context)
+    const { coordinates } = location
 
     // API 호출 상태를 추적하는 상태 변수
     const [apiCalled, setApiCalled] = useState(false)

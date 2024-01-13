@@ -5,6 +5,7 @@ import Context from '../context/Context'
 import SearchListContext from '../context/SearchList_Context'
 import getCookie from '../api/cookie/getCookie'
 import { format, addDays } from 'date-fns'
+import { fetchProviderApi } from '../services/ProviderApi'
 
 const Provider = ({ children }) => {
     const [location, setLocation] = useState({
@@ -110,15 +111,7 @@ const Provider = ({ children }) => {
 
     const GetSearchList = useCallback(
         async (pageNum) => {
-            const result1 = await axios.post(`http://localhost:8080/searchList/dormitory?pageNum=${pageNum}`, searchdata)
-
-            console.log('result1 : ', result1)
-            console.log('searchdata.type', searchdata.type)
-            console.log('searchdata.star', searchdata.star)
-            // setImages((prevItems) => ({
-            //     searchlist1: [...prevItems.searchlist1, result1.data],
-            // }))
-            return result1.data
+            return fetchProviderApi(pageNum, searchdata)
         },
         [searchdata],
     )
