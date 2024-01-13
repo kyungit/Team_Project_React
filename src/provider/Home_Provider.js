@@ -1,7 +1,5 @@
-import React, { useState, useEffect, useMemo, useCallback, useContext, useRef } from 'react'
-import axios from 'axios'
+import React, { useState, useEffect, useMemo, useContext } from 'react'
 import HomeContext from '../context/Home_Context'
-import { useNavigate } from 'react-router-dom'
 import Context from '../context/Context'
 import { fetchHomeApi } from '../services/HomeApi'
 
@@ -9,7 +7,7 @@ const HomeProvider = ({ children }) => {
     const [images, setImages] = useState({
         images1: null,
         images2: null,
-        images3: null,
+        images3: null
     })
 
     const fetchAndSetImages = async (params) => {

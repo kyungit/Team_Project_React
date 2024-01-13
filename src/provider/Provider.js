@@ -1,16 +1,15 @@
-import React, { useState, useEffect, useMemo, useCallback, useContext, useQuery } from 'react'
+import React, { useState, useEffect, useMemo, useCallback } from 'react'
 import axios from 'axios'
+import api from '../api/api'
 import { useLocation, useNavigate } from 'react-router-dom'
 import Context from '../context/Context'
-import SearchListContext from '../context/SearchList_Context'
-import getCookie from '../api/cookie/getCookie'
 import { format, addDays } from 'date-fns'
 import { fetchProviderApi } from '../services/ProviderApi'
 
 const Provider = ({ children }) => {
     const [location, setLocation] = useState({
         loaded: false,
-        coordinates: { lat: '37.49616859', lng: '127.0204826' },
+        coordinates: { lat: '37.49616859', lng: '127.0204826' }
     })
 
     const onSuccess = (location) => {
@@ -18,8 +17,8 @@ const Provider = ({ children }) => {
             loaded: true,
             coordinates: {
                 lat: location.coords.latitude,
-                lng: location.coords.longitude,
-            },
+                lng: location.coords.longitude
+            }
         })
     }
 
@@ -30,7 +29,7 @@ const Provider = ({ children }) => {
     const onError = (error) => {
         setLocation({
             loaded: false,
-            error,
+            error
         })
     }
 
@@ -43,7 +42,7 @@ const Provider = ({ children }) => {
     }, [])
 
     const [images, setImages] = useState({
-        searchlist1: [],
+        searchlist1: []
     })
 
     const [searchClicked, setSearchClicked] = useState(true)
@@ -60,13 +59,13 @@ const Provider = ({ children }) => {
         return saved
             ? JSON.parse(saved)
             : {
-                keyword: null,
-                startDate: format(today, 'yyyy-MM-dd'),
-                endDate: format(tomorrow, 'yyyy-MM-dd'),
-                guest: 1,
-                type: [],
-                star: [],
-            }
+                  keyword: null,
+                  startDate: format(today, 'yyyy-MM-dd'),
+                  endDate: format(tomorrow, 'yyyy-MM-dd'),
+                  guest: 1,
+                  type: [],
+                  star: []
+              }
     })
 
     // 상태가 변경될 때마다 로컬 스토리지에 저장합니다.
@@ -88,7 +87,7 @@ const Provider = ({ children }) => {
                 endDate: format(tomorrow, 'yyyy-MM-dd'),
                 guest: 1,
                 type: [],
-                star: [],
+                star: []
             }) // 상태를 초기화합니다.
             localStorage.removeItem('searchdata')
         }
@@ -103,7 +102,7 @@ const Provider = ({ children }) => {
     const onSubmitSearch = useCallback(() => {
         setImages((prevItems) => ({
             ...prevItems,
-            searchlist1: [], // or some default value
+            searchlist1: [] // or some default value
         }))
         navigate('/searchList')
         setSearchClicked(true)
@@ -112,13 +111,14 @@ const Provider = ({ children }) => {
     const GetSearchList = useCallback(
         async (pageNum) => {
             return fetchProviderApi(pageNum, searchdata)
+
         },
-        [searchdata],
+        [searchdata]
     )
 
     const value = useMemo(
         () => ({ location, images, setImages, searchdata, setSearchdata, GetSearchList, onSubmitSearch }),
-        [location, images, setImages, searchdata, setSearchdata, GetSearchList, onSubmitSearch],
+        [location, images, setImages, searchdata, setSearchdata, GetSearchList, onSubmitSearch]
     )
 
     return (
@@ -197,7 +197,7 @@ const Provider = ({ children }) => {
     useEffect(() => {
         axios
             .get('http://localhost:8080/api/token', {
-                withCredentials: true,
+                withCredentials: true
             })
             .then((response) => console.log(response.data))
     }, [])
