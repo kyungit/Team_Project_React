@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useMemo, useContext } from 'react'
-import axios from 'axios'
 import RoomInfoContext from '../context/RoomInfo_Context'
 import Context from '../context/Context'
 import { fetchRoomInfoApi } from '../services/RoomInfoApi'
@@ -12,7 +11,7 @@ const RoomInfoProvider = ({ children }) => {
         roomInfos4: null,
         roomInfos5: null,
         roomInfos6: null,
-        roomInfos7: null,
+        roomInfos7: null
     })
 
     let d_code = sessionStorage.getItem('d_code')

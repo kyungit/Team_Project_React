@@ -4,6 +4,7 @@ import { Map, MapMarker, CustomOverlayMap } from 'react-kakao-maps-sdk'
 import ReactDOMServer from 'react-dom/server'
 import Box from '../../components/Common/Box'
 import Row from '../../components/Common/Row'
+import api from '../api'
 
 // export default function KakaoMap() {
 //     const { kakao } = window
@@ -236,8 +237,8 @@ export default function KakaoMap() {
     const [accommodations, setAccommodations] = useState([])
     const fetchAccommodations = async (LatLng) => {
         try {
-            const response = await axios.get(
-                `http://localhost:8080/roomInfo/map?swLat=${LatLng.swLat}&swLng=${LatLng.swLng}&neLat=${LatLng.neLat}&neLng=${LatLng.neLng}&centerLat=${state.center.lat}&centerLng=${state.center.lng}`,
+            const response = await api.get(
+                `/roomInfo/map?swLat=${LatLng.swLat}&swLng=${LatLng.swLng}&neLat=${LatLng.neLat}&neLng=${LatLng.neLng}&centerLat=${state.center.lat}&centerLng=${state.center.lng}`,
             )
             setAccommodations(response.data)
             console.log('response.data : ', response.data)

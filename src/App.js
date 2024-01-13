@@ -35,11 +35,10 @@ function App() {
                         <Route path="/payment" element={<Payment />} />
                         <Route path="/redirect" element={<RedirectPage />} />
                         <Route path="/map" element={<KakaoMap />} />
-
                     </Route>
                 </Routes>
             </Provider>
-        </ReduxProvider >
+        </ReduxProvider>
     )
 }
 

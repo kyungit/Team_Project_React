@@ -1,6 +1,5 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react'
 import ImageUploadComponent from './ImageUploadComponent'
-import axios from 'axios'
 import MenuContext from '../../context/Menu_Context'
 import Row from '../Common/Row'
 import Column from '../Common/Column'

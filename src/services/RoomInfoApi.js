@@ -1,17 +1,15 @@
 // services/RoomInfoApi.js
-import axios from 'axios';
+import axios from 'axios'
+import api from '../api/api'
 
 export const fetchRoomInfoApi = async (d_code, startDate, endDate) => {
-
-    const result1 = await axios.get(`http://localhost:8080/roomInfo/roomReview?d_code=${d_code}`)
-    const result2 = await axios.get(`http://localhost:8080/roomInfo/review?d_code=${d_code}`)
+    const result1 = await api.get(`/roomInfo/roomReview?d_code=${d_code}`)
+    const result2 = await api.get(`/roomInfo/review?d_code=${d_code}`)
     // const result3 = await axios.get(`http://localhost:8080/roomInfo/map?d_code=${d_code}`)
-    const result4 = await axios.get(
-        `http://localhost:8080/roomInfo/roomDetail?d_code=${d_code}&reservation_checkin=${startDate}&reservation_checkout=${endDate}`,
-    )
-    const result5 = await axios.get(`http://localhost:8080/roomInfo/dormitory?d_code=${d_code}`)
-    const result6 = await axios.get(`http://localhost:8080/roomInfo/cancel?d_code=${d_code}`)
-    const result7 = await axios.get(`http://localhost:8080/roomInfo/amenity?d_code=${d_code}`)
+    const result4 = await axios.get(`/api/roomInfo/roomDetail?d_code=${d_code}&reservation_checkin=${startDate}&reservation_checkout=${endDate}`)
+    const result5 = await api.get(`/roomInfo/dormitory?d_code=${d_code}`)
+    const result6 = await api.get(`/roomInfo/cancel?d_code=${d_code}`)
+    const result7 = await api.get(`/roomInfo/amenity?d_code=${d_code}`)
 
     // console.log('result1 : ', result1)
     // console.log('result2 : ', result2)
@@ -28,6 +26,6 @@ export const fetchRoomInfoApi = async (d_code, startDate, endDate) => {
         roomInfos4: result4.data,
         roomInfos5: result5.data,
         roomInfos6: result6.data,
-        roomInfos7: result7.data,
+        roomInfos7: result7.data
     }
 }
