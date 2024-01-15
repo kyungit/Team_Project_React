@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 import axios from 'axios'
 import ReservationContext from '../../context/Reservation_Context'
 import { useNavigate } from 'react-router-dom'
+import api from '../../api/api'
 
 const Payment = (data) => {
     const { price, name, telno } = data.data
@@ -27,24 +28,24 @@ const Payment = (data) => {
                 name: '숙소예약Test', //입력란 만들기
                 amount: price, //나중에 숙소 가격 DB에서 가져오기
                 buyer_name: name, //입력란 만들기
-                buyer_tel: telno, //입력란 만들기
+                buyer_tel: telno //입력란 만들기
             },
             (rsp) => {
                 if (rsp.success) {
                     console.log('가격' + rsp.paid_amount)
-                    axios({
-                        url: 'http://localhost:8080/reservation/reservationInfo',
+                    api({
+                        url: '/reservation/reservationInfo',
                         method: 'post',
                         headers: { 'Content-Type': 'application/json' },
                         data: {
                             ...reservationdata
-                        },
+                        }
                     }).then((data) => {
                         console.log(data)
                     })
 
-                    axios({
-                        url: 'http://localhost:8080/reservation/payment',
+                    api({
+                        url: '/reservation/payment',
                         method: 'post',
                         headers: { 'Content-Type': 'application/json' },
                         data: {
@@ -55,13 +56,13 @@ const Payment = (data) => {
                             buyer_tel: rsp.buyer_tel,
                             paid_status: rsp.status,
                             success: rsp.success,
-                            reservation_code: 3,
-                        },
+                            reservation_code: 3
+                        }
                     })
                         .then((data) => {
                             console.log(data)
-                            if(data.status==200){
-                                navigate('/menu/reservation');
+                            if (data.status == 200) {
+                                navigate('/menu/reservation')
                             }
                             // navigate('/reservation')
                         })
@@ -69,13 +70,10 @@ const Payment = (data) => {
                             console.log(error)
                             alert('예약 처리 중 오류가 발생했습니다.')
                         })
-
-
-
                 } else {
                     alert(`결제에 실패하였습니다. 에러 내용: ${rsp.error_msg}`)
                 }
-            },
+            }
         )
     }
 
