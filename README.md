@@ -41,7 +41,8 @@
 
 <img src="https://github.com/jingom368/Team_Project_React/assets/151482642/47330466-b750-45c2-add2-e558b97548b7" width="800" height="450">
 
- - OAuth2 Key를 이용하여 구글, 네이버, 카카오의 로그인 API를 통해 로그인을 구현하였다. 로그아웃의 경우 우상단의 로그아웃 버튼을 누르면 실행된다.
+ - OAuth2 Key를 이용하여 구글, 네이버, 카카오의 로그인 API를 통해 로그인을 구현하였다.
+ - 로그아웃의 경우 우상단의 로그아웃 버튼을 누르면 실행된다.
 
 ### Main
 
