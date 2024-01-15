@@ -59,8 +59,7 @@ export default function RoomInfo2() {
     return (
         <div className="col-start-3 col-end-11 w-full h-1000">
             {roomInfos4 &&
-                Object.values(roomInfos4).map((roomInfos, index) =>
-                    <SliderComponent roomInfos={roomInfos} index={index} onReservation={onReservation} />)}
+                Object.values(roomInfos4).map((roomInfos, index) => <SliderComponent roomInfos={roomInfos} index={index} onReservation={onReservation} />)}
         </div>
     )
 }
@@ -119,11 +118,12 @@ const SliderComponent = ({ roomInfos, index, onReservation }) => {
                         <Row className="">
                             <Row className="mt-0 text-2xl">{parseInt(roomInfos.r_price).toLocaleString()}원</Row>
                             <Button
-                                className='h-14 w-1/4'
+                                className="h-14 w-1/4"
                                 onClick={() => {
                                     onReservation(roomInfos.d_code, roomInfos.r_code)
                                 }}
                                 style={{ backgroundColor: roomInfos.r_status == 'O' ? '#D9F99D' : '#adadad' }}
+                                disabled={roomInfos.r_status == 'O' ? false : true}
                             >
                                 {roomInfos.r_status == 'O' ? '예약하기' : '예약불가'}
                             </Button>

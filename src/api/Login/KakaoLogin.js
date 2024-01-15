@@ -7,13 +7,15 @@ const SocialKakao = () => {
     // const code = new URL(window.location.href).searchParams.get('code')
     // oauth 요청 URL
     // const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${Kakao_CLIENT_ID}&redirect_uri=http://localhost:3000/auth&response_type=code`
-    const kakaoURL = 'http://localhost:8080/oauth2/authorization/kakao'
+    const kakaoURL = 'http://localhost:8080/api/oauth2/authorization/kakao'
     const handleLogin = () => {
         window.location.href = kakaoURL
     }
     return (
         <>
-            <button onClick={handleLogin}><img src={kakaoLogin} /></button>
+            <button onClick={handleLogin}>
+                <img src={kakaoLogin} />
+            </button>
         </>
     )
 }

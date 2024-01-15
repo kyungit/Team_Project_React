@@ -39,11 +39,6 @@ const MenuProvider = ({ children }) => {
         fileseqno: null
     })
 
-
-        fetchAndSetImages()
-
-
-
     const value = useMemo(
         () => ({ images, setImages, imagesdata, setImagesdata, reviewFile, setReviewFile, deleteFile, setDeleteFile }),
         [images, setImages, imagesdata, setImagesdata, reviewFile, setReviewFile, deleteFile, setDeleteFile]

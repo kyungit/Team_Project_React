@@ -12,7 +12,11 @@ const NaverLogin = () => {
         window.location.href = NAVER_AUTH_URL
     }
 
-    return <button onClick={NaverLogin}><img src={naverLogin} style={{width:'180px'}}/> </button>
+    return (
+        <button onClick={NaverLogin}>
+            <img src={naverLogin} style={{ width: '180px' }} />{' '}
+        </button>
+    )
 }
 
 export default NaverLogin
