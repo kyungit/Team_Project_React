@@ -1,5 +1,8 @@
-<div><img src="https://github.com/jingom368/Team_Project_React/assets/67932739/9322a882-6cdc-49d3-b097-d85b16e5edf3"></div>
+<div align=center>
+	<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=Airbnb&fontSize=80" />	
+</div>
 
+<div><img src="https://github.com/jingom368/Team_Project_React/assets/67932739/9322a882-6cdc-49d3-b097-d85b16e5edf3"></div>
 
 # Team_Project_React
 
