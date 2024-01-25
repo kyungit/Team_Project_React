@@ -9,6 +9,10 @@
 <h2>SSL/TLS 설정</h2>
 <div><img src="https://github.com/jingom368/Team_Project_Spring/assets/67932739/c001c9db-a76f-4d4e-b814-32479a63abac"></div>
 
+<h2>Kakao Map API</h2>
+<div><img src="https://github.com/jingom368/Team_Project_React/assets/67932739/c08cf2e4-843b-4d73-9675-c86d91793641"></div>
+
+
 <br />
 
 # Team_Project_React
