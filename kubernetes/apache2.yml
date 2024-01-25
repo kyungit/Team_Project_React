@@ -19,26 +19,26 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 80
-        volumeMounts:
-        - name: tls-cert
-          mountPath: /usr/local/apache2/conf/server.crt
-          subPath: tls.crt
-        - name: tls-key
-          mountPath: /usr/local/apache2/conf/server.key
-          subPath: tls.key
-      volumes:
-      - name: tls-cert
-        secret:
-          secretName: my-tls-cert
-          items:
-          - key: tls.crt
-            path: tls.crt
-      - name: tls-key
-        secret:
-          secretName: my-tls-cert
-          items:
-          - key: tls.key
-            path: tls.key
+      # volumeMounts:
+      # - name: tls-cert
+      #   mountPath: /usr/local/apache2/conf/server.crt
+      #   subPath: tls.crt
+      # - name: tls-key
+      #   mountPath: /usr/local/apache2/conf/server.key
+      #   subPath: tls.key
+      # volumes:
+      # - name: tls-cert
+      #   secret:
+      #     secretName: my-tls-cert
+      #     items:
+      #     - key: tls.crt
+      #       path: tls.crt
+      # - name: tls-key
+      #   secret:
+      #     secretName: my-tls-cert
+      #     items:
+      #     - key: tls.key
+      #       path: tls.key
 
 ---
 apiVersion: v1
