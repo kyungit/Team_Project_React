@@ -2,7 +2,14 @@
 	<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=Airbnb&fontSize=80" />	
 </div>
 
+<h2>Dokcer/Kubernetes/Jenkins</h2>
 <div><img src="https://github.com/jingom368/Team_Project_React/assets/67932739/9322a882-6cdc-49d3-b097-d85b16e5edf3"></div>
+
+<br />
+<h2>SSL/TLS 설정</h2>
+<div><img src="https://github.com/jingom368/Team_Project_Spring/assets/67932739/c001c9db-a76f-4d4e-b814-32479a63abac"></div>
+
+<br />
 
 # Team_Project_React
 
