@@ -2,6 +2,10 @@
 	<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=Airbnb&fontSize=80" />	
 </div>
 
+<h2>Frontend Development</h2>
+<div><img src="https://github.com/jingom368/Team_Project_React/assets/67932739/ab192d1e-a4de-4c29-adf8-89aae8fcc05c" /></div>
+
+
 
 <h2>DevOps & Containerization</h2>
 <div><img src="https://github.com/jingom368/Team_Project_Spring/assets/67932739/984bd890-eaff-4ed6-96e5-e4a90f2e1549" /></div>
