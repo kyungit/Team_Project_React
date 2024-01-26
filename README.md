@@ -2,13 +2,13 @@
 	<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=Airbnb&fontSize=80" />	
 </div>
 
-<h2>Frontend Development</h2>
+<h2- Frontend Development</h2>
 <div><img src="https://github.com/jingom368/Team_Project_React/assets/67932739/ab192d1e-a4de-4c29-adf8-89aae8fcc05c" /></div>
 
-<h2>Development Tools & Collaboration</h2>
+<h2>- Development Tools & Collaboration</h2>
 <div><img src="https://github.com/jingom368/Team_Project_React/assets/67932739/e3f47fef-f2eb-499f-a101-4f4c7afb9da3"></div>
 
-<h2>DevOps & Containerization</h2>
+<h2>- DevOps & Containerization</h2>
 <div><img src="https://github.com/jingom368/Team_Project_Spring/assets/67932739/984bd890-eaff-4ed6-96e5-e4a90f2e1549" /></div>
 <div><img src="https://github.com/jingom368/Team_Project_React/assets/67932739/9322a882-6cdc-49d3-b097-d85b16e5edf3"></div>
 
