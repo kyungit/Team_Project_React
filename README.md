@@ -33,12 +33,14 @@
 ### 3. [TestSenario](#TestSenario)
 ### 4. [Images](#Images)
 
+<br />
 ## UserFlow
 
 회원이 어느 목표를 이루기까지의 인터랙션을 각 뎁스 별로 정리하였다.
 
 <img src="https://github.com/jingom368/Team_Project_React/assets/151482642/37e09a07-497a-4072-b3d8-e4589e2c72c4" width="800" height="450">
 
+<br />
 ## StoryBoard
 
 앞의 유저플로우를 바탕으로 쓸모없는 인터랙션을 지우고 직관적이지 않은 UI/UX를 좀 더 직관적으로 바꾸었다.
@@ -50,6 +52,7 @@
 <img src="https://github.com/jingom368/Team_Project_React/assets/151482642/c0d17d26-65e2-4eae-a2b7-9221bf1454af" width="256" height="144">
 <img src="https://github.com/jingom368/Team_Project_React/assets/151482642/9f6e8fba-8c08-41bd-a2ff-8864438d37a8" width="256" height="144">
 
+<br />
 ## TestSenario
 
 실제로 구현한 애플리케이션의 기능들이 실행하는 지 테스트하여 어느 부분이 되지 않는 지 확인 후 수정하였다.
@@ -58,6 +61,7 @@
 <img src="https://github.com/jingom368/Team_Project_React/assets/151482642/e71a819b-637c-47b2-8d08-3dc0e4d21a97" width="800" height="450">
 <img src="https://github.com/jingom368/Team_Project_React/assets/151482642/b6132052-5c7c-46f9-9e37-4a3dcca112f9" width="800" height="450">
 
+<br />
 ## Images
 
 유저플로우를 실제로 구현한 프로젝트의 이미지를 이용하여 구현하였다.
