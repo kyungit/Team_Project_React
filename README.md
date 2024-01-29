@@ -36,12 +36,13 @@
 
 ## UserFlow
 
-<img src="https://github.com/jingom368/Team_Project_React/assets/151482642/37e09a07-497a-4072-b3d8-e4589e2c72c4" width="800" height="450">
-
 회원이 어느 목표를 이루기까지의 인터랙션을 각 뎁스 별로 정리하였다.
+
+<img src="https://github.com/jingom368/Team_Project_React/assets/151482642/37e09a07-497a-4072-b3d8-e4589e2c72c4" width="800" height="450">
 
 ## StoryBoard
 
+앞의 유저플로우를 바탕으로 쓸모없는 인터랙션을 지우고 직관적이지 않은 UI/UX를 좀 더 직관적으로 바꾸었다.
 
 <img src="https://github.com/jingom368/Team_Project_React/assets/151482642/39139260-3455-4941-8d4f-51774fe57f1c" width="256" height="144">
 <img src="https://github.com/jingom368/Team_Project_React/assets/151482642/76be35b9-b7e8-4c00-a7c1-e33bbb7dec0d" width="256" height="144">
@@ -50,15 +51,13 @@
 <img src="https://github.com/jingom368/Team_Project_React/assets/151482642/c0d17d26-65e2-4eae-a2b7-9221bf1454af" width="256" height="144">
 <img src="https://github.com/jingom368/Team_Project_React/assets/151482642/9f6e8fba-8c08-41bd-a2ff-8864438d37a8" width="256" height="144">
 
-앞의 유저플로우를 바탕으로 쓸모없는 인터랙션을 지우고 직관적이지 않은 UI/UX를 좀 더 직관적으로 바꾸었다.
-
 ## TestSenario
+
+실제로 구현한 애플리케이션의 기능들이 실행하는 지 테스트하여 어느 부분이 되지 않는 지 확인 후 수정하였다.
 
 <img src="https://github.com/jingom368/Team_Project_React/assets/151482642/f70e293e-c8ea-4506-b067-7b4e2a69b2a9" width="800" height="450">
 <img src="https://github.com/jingom368/Team_Project_React/assets/151482642/e71a819b-637c-47b2-8d08-3dc0e4d21a97" width="800" height="450">
 <img src="https://github.com/jingom368/Team_Project_React/assets/151482642/b6132052-5c7c-46f9-9e37-4a3dcca112f9" width="800" height="450">
-
-실제로 구현한 애플리케이션의 기능들이 실행하는 지 테스트하여 어느 부분이 되지 않는 지 확인 후 수정하였다.
 
 ## Images
 
