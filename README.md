@@ -26,7 +26,7 @@
 <br />
 
 # Team_Project_React
-## Category
+<h2>Category</h2>
 
 ### 1. [UserFlow](#UserFlow)
 ### 2. [StoryBoard](#StoryBoard)
