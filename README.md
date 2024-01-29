@@ -25,7 +25,7 @@
 
 <br />
 
-# Team_Project_React
+<h1>Team_Project_React</h1>
 <h2>Category</h2>
 
 ### 1. [UserFlow](#UserFlow)
