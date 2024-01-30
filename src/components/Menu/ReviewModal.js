@@ -65,7 +65,7 @@ export default function ReviewModal({ closeModal }) {
             })
         }
         try {
-            const response = await fetch('http://localhost:8080/menu/imageUpload?kind=I', {
+            const response = await fetch('http://localhost:8080/api/menu/imageUpload?kind=I', {
                 method: 'POST',
                 // headers: { 'Content-Type': 'application/json' },
                 body: formData
@@ -106,7 +106,7 @@ export default function ReviewModal({ closeModal }) {
                     <ImageUploadComponent
                         onImageUpload={handleFileUploadInfo}
                         onFileDelete={handleFileDelete}
-                        /*uploadedFiles={uploadedFilesInfo}*/ // 추가: 이미 업로드된 파일 정보를 전달
+                    /*uploadedFiles={uploadedFilesInfo}*/ // 추가: 이미 업로드된 파일 정보를 전달
                     />
                     <button
                         className="tab-size-4 user-select-text box-border flex items-center justify-center h-14 w-full rounded-md text-black font-bold text-lg mt-6"

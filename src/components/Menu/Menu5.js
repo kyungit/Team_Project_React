@@ -46,7 +46,7 @@ export default function Menu5() {
                                 id="imageZone"
                                 style={{
                                     width: '50%',
-                                    height: '350px',
+                                    height: '320px',
                                     border: '1px solid #ddd',
                                     marginTop: '16px',
                                     overflow: 'auto', // overflow 속성 추가
@@ -57,7 +57,7 @@ export default function Menu5() {
                                 {review.fileInfo.map((e, i) => (
                                     <div key={i}>
                                         <img
-                                            src={`http://localhost:8080/file/${e.review_stored}`}
+                                            src={`http://localhost:8080/api/file/${e.review_stored}`}
                                             alt="미리보기"
                                             style={{
                                                 width: '100%',

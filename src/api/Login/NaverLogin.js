@@ -7,7 +7,7 @@ const NaverLogin = () => {
     const REDIRECT_URI = 'http://localhost:3000/oauth'
     const STATE = 'false'
     // const NAVER_AUTH_URL = `http://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${Naver_CLIENT_ID}&state=${STATE}&redirect_uri=${REDIRECT_URI}`
-    const NAVER_AUTH_URL = 'http://localhost:8080/oauth2/authorization/naver'
+    const NAVER_AUTH_URL = 'http://localhost:8080/api/oauth2/authorization/naver'
     const NaverLogin = () => {
         window.location.href = NAVER_AUTH_URL
     }
